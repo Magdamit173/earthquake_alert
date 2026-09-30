@@ -1,0 +1,13 @@
+# Target labels
+ bootloader
+# Source files and their labels
+C:/Magdamit173/UCC/earthquake_alert/build/CMakeFiles/bootloader
+C:/Magdamit173/UCC/earthquake_alert/build/CMakeFiles/bootloader.rule
+C:/Magdamit173/UCC/earthquake_alert/build/CMakeFiles/bootloader-complete.rule
+C:/Magdamit173/UCC/earthquake_alert/build/bootloader-prefix/src/bootloader-stamp/bootloader-build.rule
+C:/Magdamit173/UCC/earthquake_alert/build/bootloader-prefix/src/bootloader-stamp/bootloader-configure.rule
+C:/Magdamit173/UCC/earthquake_alert/build/bootloader-prefix/src/bootloader-stamp/bootloader-download.rule
+C:/Magdamit173/UCC/earthquake_alert/build/bootloader-prefix/src/bootloader-stamp/bootloader-install.rule
+C:/Magdamit173/UCC/earthquake_alert/build/bootloader-prefix/src/bootloader-stamp/bootloader-mkdir.rule
+C:/Magdamit173/UCC/earthquake_alert/build/bootloader-prefix/src/bootloader-stamp/bootloader-patch.rule
+C:/Magdamit173/UCC/earthquake_alert/build/bootloader-prefix/src/bootloader-stamp/bootloader-update.rule

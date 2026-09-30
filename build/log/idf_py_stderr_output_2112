@@ -1,0 +1,392 @@
+Command: C:\Espressif\python_env\idf5.5_py3.11_env\Scripts\python.exe C:\Espressif\frameworks\esp-idf-v5.5.5\tools/idf_monitor.py -p COM11 -b 115200 --toolchain-prefix riscv32-esp-elf- --target esp32c3 --revision 3 --decode-panic backtrace C:\Magdamit173\UCC\earthquake_alert\build\earthquake_alert.elf C:\Magdamit173\UCC\earthquake_alert\build\bootloader\bootloader.elf --force-color -m 'C:\Espressif\python_env\idf5.5_py3.11_env\Scripts\python.exe' 'C:\Espressif\frameworks\esp-idf-v5.5.5\tools\idf.py' '-p' 'COM11'
+--- WARNING: GDB cannot open serial ports accessed as COMx
+--- NOTE: Using \\.\COM11 instead...
+--- esp-idf-monitor 1.10.0 on \\.\COM11 115200
+--- Quit: Ctrl+] | Menu: Ctrl+T | Help: Ctrl+T followed by Ctrl+H
+--- 0x42016f98: panic_print_char_uart at C:/Espressif/frameworks/esp-idf-v5.5.5/components/esp_system/panic.c:96
+--- 0x403cbf10: esp_bootloader_get_description at C:/Espressif/frameworks/esp-idf-v5.5.5/components/esp_bootloader_format/esp_bootloader_desc.c:39
+--- 0x403ce710: esp_flash_encryption_enabled at C:/Espressif/frameworks/esp-idf-v5.5.5/components/bootloader_support/src/flash_encrypt.c:89
+--- 0x403cbf1a: call_start_cpu0 at C:/Espressif/frameworks/esp-idf-v5.5.5/components/bootloader/subproject/main/bootloader_start.c:27
+--- 0x420098c8: adxl_init at C:/Magdamit173/UCC/earthquake_alert/main/main.c:128
+--- 0x40383755: _esp_error_check_failed at C:/Espressif/frameworks/esp-idf-v5.5.5/components/esp_system/esp_err.c:49
+--- Stack dump detected
+--- 0x403837a0: panic_abort at C:/Espressif/frameworks/esp-idf-v5.5.5/components/esp_system/panic.c:491
+--- 0x4038375e: esp_vApplicationTickHook at C:/Espressif/frameworks/esp-idf-v5.5.5/components/esp_system/freertos_hooks.c:31
+--- 0x40380001: _vector_table at C:/Espressif/frameworks/esp-idf-v5.5.5/components/riscv/vectors_intc.S:54
+--- Backtrace:
+
+
+--- 0x40383886: esp_restart_noos at C:/Espressif/frameworks/esp-idf-v5.5.5/components/esp_system/port/soc/esp32c3/system_internal.c:115
+--- 0x403cbf10: esp_bootloader_get_description at C:/Espressif/frameworks/esp-idf-v5.5.5/components/esp_bootloader_format/esp_bootloader_desc.c:39
+--- 0x403ce710: esp_flash_encryption_enabled at C:/Espressif/frameworks/esp-idf-v5.5.5/components/bootloader_support/src/flash_encrypt.c:89
+--- 0x403cbf1a: call_start_cpu0 at C:/Espressif/frameworks/esp-idf-v5.5.5/components/bootloader/subproject/main/bootloader_start.c:27
+--- 0x420098c8: adxl_init at C:/Magdamit173/UCC/earthquake_alert/main/main.c:128
+--- 0x40383755: _esp_error_check_failed at C:/Espressif/frameworks/esp-idf-v5.5.5/components/esp_system/esp_err.c:49
+--- Stack dump detected
+--- 0x403837a0: panic_abort at C:/Espressif/frameworks/esp-idf-v5.5.5/components/esp_system/panic.c:491
+--- 0x4038375e: esp_vApplicationTickHook at C:/Espressif/frameworks/esp-idf-v5.5.5/components/esp_system/freertos_hooks.c:31
+--- 0x40380001: _vector_table at C:/Espressif/frameworks/esp-idf-v5.5.5/components/riscv/vectors_intc.S:54
+--- Backtrace:
+
+
+--- 0x40383886: esp_restart_noos at C:/Espressif/frameworks/esp-idf-v5.5.5/components/esp_system/port/soc/esp32c3/system_internal.c:115
+--- 0x403cbf10: esp_bootloader_get_description at C:/Espressif/frameworks/esp-idf-v5.5.5/components/esp_bootloader_format/esp_bootloader_desc.c:39
+--- 0x403ce710: esp_flash_encryption_enabled at C:/Espressif/frameworks/esp-idf-v5.5.5/components/bootloader_support/src/flash_encrypt.c:89
+--- 0x403cbf1a: call_start_cpu0 at C:/Espressif/frameworks/esp-idf-v5.5.5/components/bootloader/subproject/main/bootloader_start.c:27
+--- 0x420098c8: adxl_init at C:/Magdamit173/UCC/earthquake_alert/main/main.c:128
+--- 0x40383755: _esp_error_check_failed at C:/Espressif/frameworks/esp-idf-v5.5.5/components/esp_system/esp_err.c:49
+--- Stack dump detected
+--- 0x403837a0: panic_abort at C:/Espressif/frameworks/esp-idf-v5.5.5/components/esp_system/panic.c:491
+--- 0x4038375e: esp_vApplicationTickHook at C:/Espressif/frameworks/esp-idf-v5.5.5/components/esp_system/freertos_hooks.c:31
+--- 0x40380001: _vector_table at C:/Espressif/frameworks/esp-idf-v5.5.5/components/riscv/vectors_intc.S:54
+--- Backtrace:
+
+
+--- 0x40383886: esp_restart_noos at C:/Espressif/frameworks/esp-idf-v5.5.5/components/esp_system/port/soc/esp32c3/system_internal.c:115
+--- 0x403cbf10: esp_bootloader_get_description at C:/Espressif/frameworks/esp-idf-v5.5.5/components/esp_bootloader_format/esp_bootloader_desc.c:39
+--- 0x403ce710: esp_flash_encryption_enabled at C:/Espressif/frameworks/esp-idf-v5.5.5/components/bootloader_support/src/flash_encrypt.c:89
+--- 0x403cbf1a: call_start_cpu0 at C:/Espressif/frameworks/esp-idf-v5.5.5/components/bootloader/subproject/main/bootloader_start.c:27
+--- 0x420098c8: adxl_init at C:/Magdamit173/UCC/earthquake_alert/main/main.c:128
+--- 0x40383755: _esp_error_check_failed at C:/Espressif/frameworks/esp-idf-v5.5.5/components/esp_system/esp_err.c:49
+--- Stack dump detected
+--- 0x403837a0: panic_abort at C:/Espressif/frameworks/esp-idf-v5.5.5/components/esp_system/panic.c:491
+--- 0x4038375e: esp_vApplicationTickHook at C:/Espressif/frameworks/esp-idf-v5.5.5/components/esp_system/freertos_hooks.c:31
+--- 0x40380001: _vector_table at C:/Espressif/frameworks/esp-idf-v5.5.5/components/riscv/vectors_intc.S:54
+--- Backtrace:
+
+
+--- 0x40383886: esp_restart_noos at C:/Espressif/frameworks/esp-idf-v5.5.5/components/esp_system/port/soc/esp32c3/system_internal.c:115
+--- 0x403cbf10: esp_bootloader_get_description at C:/Espressif/frameworks/esp-idf-v5.5.5/components/esp_bootloader_format/esp_bootloader_desc.c:39
+--- 0x403ce710: esp_flash_encryption_enabled at C:/Espressif/frameworks/esp-idf-v5.5.5/components/bootloader_support/src/flash_encrypt.c:89
+--- 0x403cbf1a: call_start_cpu0 at C:/Espressif/frameworks/esp-idf-v5.5.5/components/bootloader/subproject/main/bootloader_start.c:27
+--- 0x420098c8: adxl_init at C:/Magdamit173/UCC/earthquake_alert/main/main.c:128
+--- 0x40383755: _esp_error_check_failed at C:/Espressif/frameworks/esp-idf-v5.5.5/components/esp_system/esp_err.c:49
+--- Stack dump detected
+--- 0x403837a0: panic_abort at C:/Espressif/frameworks/esp-idf-v5.5.5/components/esp_system/panic.c:491
+--- 0x4038375e: esp_vApplicationTickHook at C:/Espressif/frameworks/esp-idf-v5.5.5/components/esp_system/freertos_hooks.c:31
+--- 0x40380001: _vector_table at C:/Espressif/frameworks/esp-idf-v5.5.5/components/riscv/vectors_intc.S:54
+--- Backtrace:
+
+
+--- 0x40383886: esp_restart_noos at C:/Espressif/frameworks/esp-idf-v5.5.5/components/esp_system/port/soc/esp32c3/system_internal.c:115
+--- 0x403cbf10: esp_bootloader_get_description at C:/Espressif/frameworks/esp-idf-v5.5.5/components/esp_bootloader_format/esp_bootloader_desc.c:39
+--- 0x403ce710: esp_flash_encryption_enabled at C:/Espressif/frameworks/esp-idf-v5.5.5/components/bootloader_support/src/flash_encrypt.c:89
+--- 0x403cbf1a: call_start_cpu0 at C:/Espressif/frameworks/esp-idf-v5.5.5/components/bootloader/subproject/main/bootloader_start.c:27
+--- 0x420098c8: adxl_init at C:/Magdamit173/UCC/earthquake_alert/main/main.c:128
+--- 0x40383755: _esp_error_check_failed at C:/Espressif/frameworks/esp-idf-v5.5.5/components/esp_system/esp_err.c:49
+--- Stack dump detected
+--- 0x403837a0: panic_abort at C:/Espressif/frameworks/esp-idf-v5.5.5/components/esp_system/panic.c:491
+--- 0x4038375e: esp_vApplicationTickHook at C:/Espressif/frameworks/esp-idf-v5.5.5/components/esp_system/freertos_hooks.c:31
+--- 0x40380001: _vector_table at C:/Espressif/frameworks/esp-idf-v5.5.5/components/riscv/vectors_intc.S:54
+--- Backtrace:
+
+
+--- 0x40383886: esp_restart_noos at C:/Espressif/frameworks/esp-idf-v5.5.5/components/esp_system/port/soc/esp32c3/system_internal.c:115
+--- 0x403cbf10: esp_bootloader_get_description at C:/Espressif/frameworks/esp-idf-v5.5.5/components/esp_bootloader_format/esp_bootloader_desc.c:39
+--- 0x403ce710: esp_flash_encryption_enabled at C:/Espressif/frameworks/esp-idf-v5.5.5/components/bootloader_support/src/flash_encrypt.c:89
+--- 0x403cbf1a: call_start_cpu0 at C:/Espressif/frameworks/esp-idf-v5.5.5/components/bootloader/subproject/main/bootloader_start.c:27
+--- 0x420098c8: adxl_init at C:/Magdamit173/UCC/earthquake_alert/main/main.c:128
+--- 0x40383755: _esp_error_check_failed at C:/Espressif/frameworks/esp-idf-v5.5.5/components/esp_system/esp_err.c:49
+--- Stack dump detected
+--- 0x403837a0: panic_abort at C:/Espressif/frameworks/esp-idf-v5.5.5/components/esp_system/panic.c:491
+--- 0x4038375e: esp_vApplicationTickHook at C:/Espressif/frameworks/esp-idf-v5.5.5/components/esp_system/freertos_hooks.c:31
+--- 0x40380001: _vector_table at C:/Espressif/frameworks/esp-idf-v5.5.5/components/riscv/vectors_intc.S:54
+--- Backtrace:
+
+
+--- 0x40383886: esp_restart_noos at C:/Espressif/frameworks/esp-idf-v5.5.5/components/esp_system/port/soc/esp32c3/system_internal.c:115
+--- 0x403cbf10: esp_bootloader_get_description at C:/Espressif/frameworks/esp-idf-v5.5.5/components/esp_bootloader_format/esp_bootloader_desc.c:39
+--- 0x403ce710: esp_flash_encryption_enabled at C:/Espressif/frameworks/esp-idf-v5.5.5/components/bootloader_support/src/flash_encrypt.c:89
+--- 0x403cbf1a: call_start_cpu0 at C:/Espressif/frameworks/esp-idf-v5.5.5/components/bootloader/subproject/main/bootloader_start.c:27
+--- 0x420098c8: adxl_init at C:/Magdamit173/UCC/earthquake_alert/main/main.c:128
+--- 0x40383755: _esp_error_check_failed at C:/Espressif/frameworks/esp-idf-v5.5.5/components/esp_system/esp_err.c:49
+--- Stack dump detected
+--- 0x403837a0: panic_abort at C:/Espressif/frameworks/esp-idf-v5.5.5/components/esp_system/panic.c:491
+--- 0x4038375e: esp_vApplicationTickHook at C:/Espressif/frameworks/esp-idf-v5.5.5/components/esp_system/freertos_hooks.c:31
+--- 0x40380001: _vector_table at C:/Espressif/frameworks/esp-idf-v5.5.5/components/riscv/vectors_intc.S:54
+--- Backtrace:
+
+
+--- 0x40383886: esp_restart_noos at C:/Espressif/frameworks/esp-idf-v5.5.5/components/esp_system/port/soc/esp32c3/system_internal.c:115
+--- 0x403cbf10: esp_bootloader_get_description at C:/Espressif/frameworks/esp-idf-v5.5.5/components/esp_bootloader_format/esp_bootloader_desc.c:39
+--- 0x403ce710: esp_flash_encryption_enabled at C:/Espressif/frameworks/esp-idf-v5.5.5/components/bootloader_support/src/flash_encrypt.c:89
+--- 0x403cbf1a: call_start_cpu0 at C:/Espressif/frameworks/esp-idf-v5.5.5/components/bootloader/subproject/main/bootloader_start.c:27
+--- 0x420098c8: adxl_init at C:/Magdamit173/UCC/earthquake_alert/main/main.c:128
+--- 0x40383755: _esp_error_check_failed at C:/Espressif/frameworks/esp-idf-v5.5.5/components/esp_system/esp_err.c:49
+--- Stack dump detected
+--- 0x403837a0: panic_abort at C:/Espressif/frameworks/esp-idf-v5.5.5/components/esp_system/panic.c:491
+--- 0x4038375e: esp_vApplicationTickHook at C:/Espressif/frameworks/esp-idf-v5.5.5/components/esp_system/freertos_hooks.c:31
+--- 0x40380001: _vector_table at C:/Espressif/frameworks/esp-idf-v5.5.5/components/riscv/vectors_intc.S:54
+--- Backtrace:
+
+
+--- 0x40383886: esp_restart_noos at C:/Espressif/frameworks/esp-idf-v5.5.5/components/esp_system/port/soc/esp32c3/system_internal.c:115
+--- 0x403cbf10: esp_bootloader_get_description at C:/Espressif/frameworks/esp-idf-v5.5.5/components/esp_bootloader_format/esp_bootloader_desc.c:39
+--- 0x403ce710: esp_flash_encryption_enabled at C:/Espressif/frameworks/esp-idf-v5.5.5/components/bootloader_support/src/flash_encrypt.c:89
+--- 0x403cbf1a: call_start_cpu0 at C:/Espressif/frameworks/esp-idf-v5.5.5/components/bootloader/subproject/main/bootloader_start.c:27
+--- 0x420098c8: adxl_init at C:/Magdamit173/UCC/earthquake_alert/main/main.c:128
+--- 0x40383755: _esp_error_check_failed at C:/Espressif/frameworks/esp-idf-v5.5.5/components/esp_system/esp_err.c:49
+--- Stack dump detected
+--- 0x403837a0: panic_abort at C:/Espressif/frameworks/esp-idf-v5.5.5/components/esp_system/panic.c:491
+--- 0x4038375e: esp_vApplicationTickHook at C:/Espressif/frameworks/esp-idf-v5.5.5/components/esp_system/freertos_hooks.c:31
+--- 0x40380001: _vector_table at C:/Espressif/frameworks/esp-idf-v5.5.5/components/riscv/vectors_intc.S:54
+--- Backtrace:
+
+
+--- 0x40383886: esp_restart_noos at C:/Espressif/frameworks/esp-idf-v5.5.5/components/esp_system/port/soc/esp32c3/system_internal.c:115
+--- 0x403cbf10: esp_bootloader_get_description at C:/Espressif/frameworks/esp-idf-v5.5.5/components/esp_bootloader_format/esp_bootloader_desc.c:39
+--- 0x403ce710: esp_flash_encryption_enabled at C:/Espressif/frameworks/esp-idf-v5.5.5/components/bootloader_support/src/flash_encrypt.c:89
+--- 0x403cbf1a: call_start_cpu0 at C:/Espressif/frameworks/esp-idf-v5.5.5/components/bootloader/subproject/main/bootloader_start.c:27
+--- 0x420098c8: adxl_init at C:/Magdamit173/UCC/earthquake_alert/main/main.c:128
+--- 0x40383755: _esp_error_check_failed at C:/Espressif/frameworks/esp-idf-v5.5.5/components/esp_system/esp_err.c:49
+--- Stack dump detected
+--- 0x403837a0: panic_abort at C:/Espressif/frameworks/esp-idf-v5.5.5/components/esp_system/panic.c:491
+--- 0x4038375e: esp_vApplicationTickHook at C:/Espressif/frameworks/esp-idf-v5.5.5/components/esp_system/freertos_hooks.c:31
+--- 0x40380001: _vector_table at C:/Espressif/frameworks/esp-idf-v5.5.5/components/riscv/vectors_intc.S:54
+--- Backtrace:
+
+
+--- 0x40383886: esp_restart_noos at C:/Espressif/frameworks/esp-idf-v5.5.5/components/esp_system/port/soc/esp32c3/system_internal.c:115
+--- 0x403cbf10: esp_bootloader_get_description at C:/Espressif/frameworks/esp-idf-v5.5.5/components/esp_bootloader_format/esp_bootloader_desc.c:39
+--- 0x403ce710: esp_flash_encryption_enabled at C:/Espressif/frameworks/esp-idf-v5.5.5/components/bootloader_support/src/flash_encrypt.c:89
+--- 0x403cbf1a: call_start_cpu0 at C:/Espressif/frameworks/esp-idf-v5.5.5/components/bootloader/subproject/main/bootloader_start.c:27
+--- 0x420098c8: adxl_init at C:/Magdamit173/UCC/earthquake_alert/main/main.c:128
+--- 0x40383755: _esp_error_check_failed at C:/Espressif/frameworks/esp-idf-v5.5.5/components/esp_system/esp_err.c:49
+--- Stack dump detected
+--- 0x403837a0: panic_abort at C:/Espressif/frameworks/esp-idf-v5.5.5/components/esp_system/panic.c:491
+--- 0x4038375e: esp_vApplicationTickHook at C:/Espressif/frameworks/esp-idf-v5.5.5/components/esp_system/freertos_hooks.c:31
+--- 0x40380001: _vector_table at C:/Espressif/frameworks/esp-idf-v5.5.5/components/riscv/vectors_intc.S:54
+--- Backtrace:
+
+
+--- 0x40383886: esp_restart_noos at C:/Espressif/frameworks/esp-idf-v5.5.5/components/esp_system/port/soc/esp32c3/system_internal.c:115
+--- 0x403cbf10: esp_bootloader_get_description at C:/Espressif/frameworks/esp-idf-v5.5.5/components/esp_bootloader_format/esp_bootloader_desc.c:39
+--- 0x403ce710: esp_flash_encryption_enabled at C:/Espressif/frameworks/esp-idf-v5.5.5/components/bootloader_support/src/flash_encrypt.c:89
+--- 0x403cbf1a: call_start_cpu0 at C:/Espressif/frameworks/esp-idf-v5.5.5/components/bootloader/subproject/main/bootloader_start.c:27
+--- 0x420098c8: adxl_init at C:/Magdamit173/UCC/earthquake_alert/main/main.c:128
+--- 0x40383755: _esp_error_check_failed at C:/Espressif/frameworks/esp-idf-v5.5.5/components/esp_system/esp_err.c:49
+--- Stack dump detected
+--- 0x403837a0: panic_abort at C:/Espressif/frameworks/esp-idf-v5.5.5/components/esp_system/panic.c:491
+--- 0x4038375e: esp_vApplicationTickHook at C:/Espressif/frameworks/esp-idf-v5.5.5/components/esp_system/freertos_hooks.c:31
+--- 0x40380001: _vector_table at C:/Espressif/frameworks/esp-idf-v5.5.5/components/riscv/vectors_intc.S:54
+--- Backtrace:
+
+
+--- 0x40383886: esp_restart_noos at C:/Espressif/frameworks/esp-idf-v5.5.5/components/esp_system/port/soc/esp32c3/system_internal.c:115
+--- 0x403cbf10: esp_bootloader_get_description at C:/Espressif/frameworks/esp-idf-v5.5.5/components/esp_bootloader_format/esp_bootloader_desc.c:39
+--- 0x403ce710: esp_flash_encryption_enabled at C:/Espressif/frameworks/esp-idf-v5.5.5/components/bootloader_support/src/flash_encrypt.c:89
+--- 0x403cbf1a: call_start_cpu0 at C:/Espressif/frameworks/esp-idf-v5.5.5/components/bootloader/subproject/main/bootloader_start.c:27
+--- 0x420098c8: adxl_init at C:/Magdamit173/UCC/earthquake_alert/main/main.c:128
+--- 0x40383755: _esp_error_check_failed at C:/Espressif/frameworks/esp-idf-v5.5.5/components/esp_system/esp_err.c:49
+--- Stack dump detected
+--- 0x403837a0: panic_abort at C:/Espressif/frameworks/esp-idf-v5.5.5/components/esp_system/panic.c:491
+--- 0x4038375e: esp_vApplicationTickHook at C:/Espressif/frameworks/esp-idf-v5.5.5/components/esp_system/freertos_hooks.c:31
+--- 0x40380001: _vector_table at C:/Espressif/frameworks/esp-idf-v5.5.5/components/riscv/vectors_intc.S:54
+--- Backtrace:
+
+
+--- 0x40383886: esp_restart_noos at C:/Espressif/frameworks/esp-idf-v5.5.5/components/esp_system/port/soc/esp32c3/system_internal.c:115
+--- 0x403cbf10: esp_bootloader_get_description at C:/Espressif/frameworks/esp-idf-v5.5.5/components/esp_bootloader_format/esp_bootloader_desc.c:39
+--- 0x403ce710: esp_flash_encryption_enabled at C:/Espressif/frameworks/esp-idf-v5.5.5/components/bootloader_support/src/flash_encrypt.c:89
+--- 0x403cbf1a: call_start_cpu0 at C:/Espressif/frameworks/esp-idf-v5.5.5/components/bootloader/subproject/main/bootloader_start.c:27
+--- 0x420098c8: adxl_init at C:/Magdamit173/UCC/earthquake_alert/main/main.c:128
+--- 0x40383755: _esp_error_check_failed at C:/Espressif/frameworks/esp-idf-v5.5.5/components/esp_system/esp_err.c:49
+--- Stack dump detected
+--- 0x403837a0: panic_abort at C:/Espressif/frameworks/esp-idf-v5.5.5/components/esp_system/panic.c:491
+--- 0x4038375e: esp_vApplicationTickHook at C:/Espressif/frameworks/esp-idf-v5.5.5/components/esp_system/freertos_hooks.c:31
+--- 0x40380001: _vector_table at C:/Espressif/frameworks/esp-idf-v5.5.5/components/riscv/vectors_intc.S:54
+--- Backtrace:
+
+
+--- 0x40383886: esp_restart_noos at C:/Espressif/frameworks/esp-idf-v5.5.5/components/esp_system/port/soc/esp32c3/system_internal.c:115
+--- 0x403cbf10: esp_bootloader_get_description at C:/Espressif/frameworks/esp-idf-v5.5.5/components/esp_bootloader_format/esp_bootloader_desc.c:39
+--- 0x403ce710: esp_flash_encryption_enabled at C:/Espressif/frameworks/esp-idf-v5.5.5/components/bootloader_support/src/flash_encrypt.c:89
+--- 0x403cbf1a: call_start_cpu0 at C:/Espressif/frameworks/esp-idf-v5.5.5/components/bootloader/subproject/main/bootloader_start.c:27
+--- 0x420098c8: adxl_init at C:/Magdamit173/UCC/earthquake_alert/main/main.c:128
+--- 0x40383755: _esp_error_check_failed at C:/Espressif/frameworks/esp-idf-v5.5.5/components/esp_system/esp_err.c:49
+--- Stack dump detected
+--- 0x403837a0: panic_abort at C:/Espressif/frameworks/esp-idf-v5.5.5/components/esp_system/panic.c:491
+--- 0x4038375e: esp_vApplicationTickHook at C:/Espressif/frameworks/esp-idf-v5.5.5/components/esp_system/freertos_hooks.c:31
+--- 0x40380001: _vector_table at C:/Espressif/frameworks/esp-idf-v5.5.5/components/riscv/vectors_intc.S:54
+--- Backtrace:
+
+
+--- 0x40383886: esp_restart_noos at C:/Espressif/frameworks/esp-idf-v5.5.5/components/esp_system/port/soc/esp32c3/system_internal.c:115
+--- 0x403cbf10: esp_bootloader_get_description at C:/Espressif/frameworks/esp-idf-v5.5.5/components/esp_bootloader_format/esp_bootloader_desc.c:39
+--- 0x403ce710: esp_flash_encryption_enabled at C:/Espressif/frameworks/esp-idf-v5.5.5/components/bootloader_support/src/flash_encrypt.c:89
+--- 0x403cbf1a: call_start_cpu0 at C:/Espressif/frameworks/esp-idf-v5.5.5/components/bootloader/subproject/main/bootloader_start.c:27
+--- 0x420098c8: adxl_init at C:/Magdamit173/UCC/earthquake_alert/main/main.c:128
+--- 0x40383755: _esp_error_check_failed at C:/Espressif/frameworks/esp-idf-v5.5.5/components/esp_system/esp_err.c:49
+--- Stack dump detected
+--- 0x403837a0: panic_abort at C:/Espressif/frameworks/esp-idf-v5.5.5/components/esp_system/panic.c:491
+--- 0x4038375e: esp_vApplicationTickHook at C:/Espressif/frameworks/esp-idf-v5.5.5/components/esp_system/freertos_hooks.c:31
+--- 0x40380001: _vector_table at C:/Espressif/frameworks/esp-idf-v5.5.5/components/riscv/vectors_intc.S:54
+--- Backtrace:
+
+
+--- 0x40383886: esp_restart_noos at C:/Espressif/frameworks/esp-idf-v5.5.5/components/esp_system/port/soc/esp32c3/system_internal.c:115
+--- 0x403cbf10: esp_bootloader_get_description at C:/Espressif/frameworks/esp-idf-v5.5.5/components/esp_bootloader_format/esp_bootloader_desc.c:39
+--- 0x403ce710: esp_flash_encryption_enabled at C:/Espressif/frameworks/esp-idf-v5.5.5/components/bootloader_support/src/flash_encrypt.c:89
+--- 0x403cbf1a: call_start_cpu0 at C:/Espressif/frameworks/esp-idf-v5.5.5/components/bootloader/subproject/main/bootloader_start.c:27
+--- 0x420098c8: adxl_init at C:/Magdamit173/UCC/earthquake_alert/main/main.c:128
+--- 0x40383755: _esp_error_check_failed at C:/Espressif/frameworks/esp-idf-v5.5.5/components/esp_system/esp_err.c:49
+--- Stack dump detected
+--- 0x403837a0: panic_abort at C:/Espressif/frameworks/esp-idf-v5.5.5/components/esp_system/panic.c:491
+--- 0x4038375e: esp_vApplicationTickHook at C:/Espressif/frameworks/esp-idf-v5.5.5/components/esp_system/freertos_hooks.c:31
+--- 0x40380001: _vector_table at C:/Espressif/frameworks/esp-idf-v5.5.5/components/riscv/vectors_intc.S:54
+--- Backtrace:
+
+
+--- 0x40383886: esp_restart_noos at C:/Espressif/frameworks/esp-idf-v5.5.5/components/esp_system/port/soc/esp32c3/system_internal.c:115
+--- 0x403cbf10: esp_bootloader_get_description at C:/Espressif/frameworks/esp-idf-v5.5.5/components/esp_bootloader_format/esp_bootloader_desc.c:39
+--- 0x403ce710: esp_flash_encryption_enabled at C:/Espressif/frameworks/esp-idf-v5.5.5/components/bootloader_support/src/flash_encrypt.c:89
+--- 0x403cbf1a: call_start_cpu0 at C:/Espressif/frameworks/esp-idf-v5.5.5/components/bootloader/subproject/main/bootloader_start.c:27
+--- 0x420098c8: adxl_init at C:/Magdamit173/UCC/earthquake_alert/main/main.c:128
+--- 0x40383755: _esp_error_check_failed at C:/Espressif/frameworks/esp-idf-v5.5.5/components/esp_system/esp_err.c:49
+--- Stack dump detected
+--- 0x403837a0: panic_abort at C:/Espressif/frameworks/esp-idf-v5.5.5/components/esp_system/panic.c:491
+--- 0x4038375e: esp_vApplicationTickHook at C:/Espressif/frameworks/esp-idf-v5.5.5/components/esp_system/freertos_hooks.c:31
+--- 0x40380001: _vector_table at C:/Espressif/frameworks/esp-idf-v5.5.5/components/riscv/vectors_intc.S:54
+--- Backtrace:
+
+
+--- 0x40383886: esp_restart_noos at C:/Espressif/frameworks/esp-idf-v5.5.5/components/esp_system/port/soc/esp32c3/system_internal.c:115
+--- 0x403cbf10: esp_bootloader_get_description at C:/Espressif/frameworks/esp-idf-v5.5.5/components/esp_bootloader_format/esp_bootloader_desc.c:39
+--- 0x403ce710: esp_flash_encryption_enabled at C:/Espressif/frameworks/esp-idf-v5.5.5/components/bootloader_support/src/flash_encrypt.c:89
+--- 0x403cbf1a: call_start_cpu0 at C:/Espressif/frameworks/esp-idf-v5.5.5/components/bootloader/subproject/main/bootloader_start.c:27
+--- 0x420098c8: adxl_init at C:/Magdamit173/UCC/earthquake_alert/main/main.c:128
+--- 0x40383755: _esp_error_check_failed at C:/Espressif/frameworks/esp-idf-v5.5.5/components/esp_system/esp_err.c:49
+--- Stack dump detected
+--- 0x403837a0: panic_abort at C:/Espressif/frameworks/esp-idf-v5.5.5/components/esp_system/panic.c:491
+--- 0x4038375e: esp_vApplicationTickHook at C:/Espressif/frameworks/esp-idf-v5.5.5/components/esp_system/freertos_hooks.c:31
+--- 0x40380001: _vector_table at C:/Espressif/frameworks/esp-idf-v5.5.5/components/riscv/vectors_intc.S:54
+--- Backtrace:
+
+
+--- 0x40383886: esp_restart_noos at C:/Espressif/frameworks/esp-idf-v5.5.5/components/esp_system/port/soc/esp32c3/system_internal.c:115
+--- 0x403cbf10: esp_bootloader_get_description at C:/Espressif/frameworks/esp-idf-v5.5.5/components/esp_bootloader_format/esp_bootloader_desc.c:39
+--- 0x403ce710: esp_flash_encryption_enabled at C:/Espressif/frameworks/esp-idf-v5.5.5/components/bootloader_support/src/flash_encrypt.c:89
+--- 0x403cbf1a: call_start_cpu0 at C:/Espressif/frameworks/esp-idf-v5.5.5/components/bootloader/subproject/main/bootloader_start.c:27
+--- 0x420098c8: adxl_init at C:/Magdamit173/UCC/earthquake_alert/main/main.c:128
+--- 0x40383755: _esp_error_check_failed at C:/Espressif/frameworks/esp-idf-v5.5.5/components/esp_system/esp_err.c:49
+--- Stack dump detected
+--- 0x403837a0: panic_abort at C:/Espressif/frameworks/esp-idf-v5.5.5/components/esp_system/panic.c:491
+--- 0x4038375e: esp_vApplicationTickHook at C:/Espressif/frameworks/esp-idf-v5.5.5/components/esp_system/freertos_hooks.c:31
+--- 0x40380001: _vector_table at C:/Espressif/frameworks/esp-idf-v5.5.5/components/riscv/vectors_intc.S:54
+--- Backtrace:
+
+
+--- 0x40383886: esp_restart_noos at C:/Espressif/frameworks/esp-idf-v5.5.5/components/esp_system/port/soc/esp32c3/system_internal.c:115
+--- 0x403cbf10: esp_bootloader_get_description at C:/Espressif/frameworks/esp-idf-v5.5.5/components/esp_bootloader_format/esp_bootloader_desc.c:39
+--- 0x403ce710: esp_flash_encryption_enabled at C:/Espressif/frameworks/esp-idf-v5.5.5/components/bootloader_support/src/flash_encrypt.c:89
+--- 0x403cbf1a: call_start_cpu0 at C:/Espressif/frameworks/esp-idf-v5.5.5/components/bootloader/subproject/main/bootloader_start.c:27
+--- 0x420098c8: adxl_init at C:/Magdamit173/UCC/earthquake_alert/main/main.c:128
+--- 0x40383755: _esp_error_check_failed at C:/Espressif/frameworks/esp-idf-v5.5.5/components/esp_system/esp_err.c:49
+--- Stack dump detected
+--- 0x403837a0: panic_abort at C:/Espressif/frameworks/esp-idf-v5.5.5/components/esp_system/panic.c:491
+--- 0x4038375e: esp_vApplicationTickHook at C:/Espressif/frameworks/esp-idf-v5.5.5/components/esp_system/freertos_hooks.c:31
+--- 0x40380001: _vector_table at C:/Espressif/frameworks/esp-idf-v5.5.5/components/riscv/vectors_intc.S:54
+--- Backtrace:
+
+
+--- 0x40383886: esp_restart_noos at C:/Espressif/frameworks/esp-idf-v5.5.5/components/esp_system/port/soc/esp32c3/system_internal.c:115
+--- 0x403cbf10: esp_bootloader_get_description at C:/Espressif/frameworks/esp-idf-v5.5.5/components/esp_bootloader_format/esp_bootloader_desc.c:39
+--- 0x403ce710: esp_flash_encryption_enabled at C:/Espressif/frameworks/esp-idf-v5.5.5/components/bootloader_support/src/flash_encrypt.c:89
+--- 0x403cbf1a: call_start_cpu0 at C:/Espressif/frameworks/esp-idf-v5.5.5/components/bootloader/subproject/main/bootloader_start.c:27
+--- 0x420098c8: adxl_init at C:/Magdamit173/UCC/earthquake_alert/main/main.c:128
+--- 0x40383755: _esp_error_check_failed at C:/Espressif/frameworks/esp-idf-v5.5.5/components/esp_system/esp_err.c:49
+--- Stack dump detected
+--- 0x403837a0: panic_abort at C:/Espressif/frameworks/esp-idf-v5.5.5/components/esp_system/panic.c:491
+--- 0x4038375e: esp_vApplicationTickHook at C:/Espressif/frameworks/esp-idf-v5.5.5/components/esp_system/freertos_hooks.c:31
+--- 0x40380001: _vector_table at C:/Espressif/frameworks/esp-idf-v5.5.5/components/riscv/vectors_intc.S:54
+--- Backtrace:
+
+
+--- 0x40383886: esp_restart_noos at C:/Espressif/frameworks/esp-idf-v5.5.5/components/esp_system/port/soc/esp32c3/system_internal.c:115
+--- 0x403cbf10: esp_bootloader_get_description at C:/Espressif/frameworks/esp-idf-v5.5.5/components/esp_bootloader_format/esp_bootloader_desc.c:39
+--- 0x403ce710: esp_flash_encryption_enabled at C:/Espressif/frameworks/esp-idf-v5.5.5/components/bootloader_support/src/flash_encrypt.c:89
+--- 0x403cbf1a: call_start_cpu0 at C:/Espressif/frameworks/esp-idf-v5.5.5/components/bootloader/subproject/main/bootloader_start.c:27
+--- 0x420098c8: adxl_init at C:/Magdamit173/UCC/earthquake_alert/main/main.c:128
+--- 0x40383755: _esp_error_check_failed at C:/Espressif/frameworks/esp-idf-v5.5.5/components/esp_system/esp_err.c:49
+--- Stack dump detected
+--- 0x403837a0: panic_abort at C:/Espressif/frameworks/esp-idf-v5.5.5/components/esp_system/panic.c:491
+--- 0x4038375e: esp_vApplicationTickHook at C:/Espressif/frameworks/esp-idf-v5.5.5/components/esp_system/freertos_hooks.c:31
+--- 0x40380001: _vector_table at C:/Espressif/frameworks/esp-idf-v5.5.5/components/riscv/vectors_intc.S:54
+--- Backtrace:
+
+
+--- 0x40383886: esp_restart_noos at C:/Espressif/frameworks/esp-idf-v5.5.5/components/esp_system/port/soc/esp32c3/system_internal.c:115
+--- 0x403cbf10: esp_bootloader_get_description at C:/Espressif/frameworks/esp-idf-v5.5.5/components/esp_bootloader_format/esp_bootloader_desc.c:39
+--- 0x403ce710: esp_flash_encryption_enabled at C:/Espressif/frameworks/esp-idf-v5.5.5/components/bootloader_support/src/flash_encrypt.c:89
+--- 0x403cbf1a: call_start_cpu0 at C:/Espressif/frameworks/esp-idf-v5.5.5/components/bootloader/subproject/main/bootloader_start.c:27
+--- 0x420098c8: adxl_init at C:/Magdamit173/UCC/earthquake_alert/main/main.c:128
+--- 0x40383755: _esp_error_check_failed at C:/Espressif/frameworks/esp-idf-v5.5.5/components/esp_system/esp_err.c:49
+--- Stack dump detected
+--- 0x403837a0: panic_abort at C:/Espressif/frameworks/esp-idf-v5.5.5/components/esp_system/panic.c:491
+--- 0x4038375e: esp_vApplicationTickHook at C:/Espressif/frameworks/esp-idf-v5.5.5/components/esp_system/freertos_hooks.c:31
+--- 0x40380001: _vector_table at C:/Espressif/frameworks/esp-idf-v5.5.5/components/riscv/vectors_intc.S:54
+--- Backtrace:
+
+
+--- 0x40383886: esp_restart_noos at C:/Espressif/frameworks/esp-idf-v5.5.5/components/esp_system/port/soc/esp32c3/system_internal.c:115
+--- 0x403cbf10: esp_bootloader_get_description at C:/Espressif/frameworks/esp-idf-v5.5.5/components/esp_bootloader_format/esp_bootloader_desc.c:39
+--- 0x403ce710: esp_flash_encryption_enabled at C:/Espressif/frameworks/esp-idf-v5.5.5/components/bootloader_support/src/flash_encrypt.c:89
+--- 0x403cbf1a: call_start_cpu0 at C:/Espressif/frameworks/esp-idf-v5.5.5/components/bootloader/subproject/main/bootloader_start.c:27
+--- 0x420098c8: adxl_init at C:/Magdamit173/UCC/earthquake_alert/main/main.c:128
+--- 0x40383755: _esp_error_check_failed at C:/Espressif/frameworks/esp-idf-v5.5.5/components/esp_system/esp_err.c:49
+--- Stack dump detected
+--- 0x403837a0: panic_abort at C:/Espressif/frameworks/esp-idf-v5.5.5/components/esp_system/panic.c:491
+--- 0x4038375e: esp_vApplicationTickHook at C:/Espressif/frameworks/esp-idf-v5.5.5/components/esp_system/freertos_hooks.c:31
+--- 0x40380001: _vector_table at C:/Espressif/frameworks/esp-idf-v5.5.5/components/riscv/vectors_intc.S:54
+--- Backtrace:
+
+
+--- 0x40383886: esp_restart_noos at C:/Espressif/frameworks/esp-idf-v5.5.5/components/esp_system/port/soc/esp32c3/system_internal.c:115
+--- 0x403cbf10: esp_bootloader_get_description at C:/Espressif/frameworks/esp-idf-v5.5.5/components/esp_bootloader_format/esp_bootloader_desc.c:39
+--- 0x403ce710: esp_flash_encryption_enabled at C:/Espressif/frameworks/esp-idf-v5.5.5/components/bootloader_support/src/flash_encrypt.c:89
+--- 0x403cbf1a: call_start_cpu0 at C:/Espressif/frameworks/esp-idf-v5.5.5/components/bootloader/subproject/main/bootloader_start.c:27
+--- 0x420098c8: adxl_init at C:/Magdamit173/UCC/earthquake_alert/main/main.c:128
+--- 0x40383755: _esp_error_check_failed at C:/Espressif/frameworks/esp-idf-v5.5.5/components/esp_system/esp_err.c:49
+--- Stack dump detected
+--- 0x403837a0: panic_abort at C:/Espressif/frameworks/esp-idf-v5.5.5/components/esp_system/panic.c:491
+--- 0x4038375e: esp_vApplicationTickHook at C:/Espressif/frameworks/esp-idf-v5.5.5/components/esp_system/freertos_hooks.c:31
+--- 0x40380001: _vector_table at C:/Espressif/frameworks/esp-idf-v5.5.5/components/riscv/vectors_intc.S:54
+--- Backtrace:
+
+
+--- 0x40383886: esp_restart_noos at C:/Espressif/frameworks/esp-idf-v5.5.5/components/esp_system/port/soc/esp32c3/system_internal.c:115
+--- 0x403cbf10: esp_bootloader_get_description at C:/Espressif/frameworks/esp-idf-v5.5.5/components/esp_bootloader_format/esp_bootloader_desc.c:39
+--- 0x403ce710: esp_flash_encryption_enabled at C:/Espressif/frameworks/esp-idf-v5.5.5/components/bootloader_support/src/flash_encrypt.c:89
+--- 0x403cbf1a: call_start_cpu0 at C:/Espressif/frameworks/esp-idf-v5.5.5/components/bootloader/subproject/main/bootloader_start.c:27
+--- 0x420098c8: adxl_init at C:/Magdamit173/UCC/earthquake_alert/main/main.c:128
+--- 0x40383755: _esp_error_check_failed at C:/Espressif/frameworks/esp-idf-v5.5.5/components/esp_system/esp_err.c:49
+--- Stack dump detected
+--- 0x403837a0: panic_abort at C:/Espressif/frameworks/esp-idf-v5.5.5/components/esp_system/panic.c:491
+--- 0x4038375e: esp_vApplicationTickHook at C:/Espressif/frameworks/esp-idf-v5.5.5/components/esp_system/freertos_hooks.c:31
+--- 0x40380001: _vector_table at C:/Espressif/frameworks/esp-idf-v5.5.5/components/riscv/vectors_intc.S:54
+--- Backtrace:
+
+
+--- 0x40383886: esp_restart_noos at C:/Espressif/frameworks/esp-idf-v5.5.5/components/esp_system/port/soc/esp32c3/system_internal.c:115
+--- 0x403cbf10: esp_bootloader_get_description at C:/Espressif/frameworks/esp-idf-v5.5.5/components/esp_bootloader_format/esp_bootloader_desc.c:39
+--- 0x403ce710: esp_flash_encryption_enabled at C:/Espressif/frameworks/esp-idf-v5.5.5/components/bootloader_support/src/flash_encrypt.c:89
+--- 0x403cbf1a: call_start_cpu0 at C:/Espressif/frameworks/esp-idf-v5.5.5/components/bootloader/subproject/main/bootloader_start.c:27
+--- 0x420098c8: adxl_init at C:/Magdamit173/UCC/earthquake_alert/main/main.c:128
+--- 0x40383755: _esp_error_check_failed at C:/Espressif/frameworks/esp-idf-v5.5.5/components/esp_system/esp_err.c:49
+--- Stack dump detected
+--- 0x403837a0: panic_abort at C:/Espressif/frameworks/esp-idf-v5.5.5/components/esp_system/panic.c:491
+--- 0x4038375e: esp_vApplicationTickHook at C:/Espressif/frameworks/esp-idf-v5.5.5/components/esp_system/freertos_hooks.c:31
+--- 0x40380001: _vector_table at C:/Espressif/frameworks/esp-idf-v5.5.5/components/riscv/vectors_intc.S:54
+--- NOTE: To exit from IDF monitor please use "Ctrl+]". Alternatively, you can use Ctrl+T Ctrl+X to exit.
+--- WARNING: Writing to serial is timing out. Please make sure that your application supports an interactive console and that you have picked the correct console for serial communication.
+--- NOTE: To exit from IDF monitor please use "Ctrl+]". Alternatively, you can use Ctrl+T Ctrl+X to exit.
+
+Traceback (most recent call last):
+  File "C:\Espressif\frameworks\esp-idf-v5.5.5\tools/idf_monitor.py", line 11, in <module>
+    sys.exit(subprocess.run([sys.executable, '-m', 'esp_idf_monitor'] + sys.argv[1:]).returncode)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "subprocess.py", line 550, in run
+  File "subprocess.py", line 1199, in communicate
+  File "subprocess.py", line 1262, in wait
+  File "subprocess.py", line 1543, in _wait
+KeyboardInterrupt
