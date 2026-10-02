@@ -1,0 +1,451 @@
+I am continuing an existing ESP32-C3 earthquake alert project. I need you to continue from the exact project context below.
+
+IMPORTANT:
+The original ESP-IDF source code is the authoritative source.
+Do NOT simplify, shorten, redesign, "clean up", or remove functionality when converting it.
+I previously received an Arduino conversion from another LLM that accidentally removed/changed parts of the original code. I do NOT want that repeated.
+
+PRIMARY TASK:
+Convert my original ESP-IDF C project to Arduino IDE C++ while preserving the original behavior and logic as closely as possible.
+
+The conversion should be:
+Original ESP-IDF code
+        ↓
+Arduino IDE equivalent
+NOT:
+Original code
+        ↓
+simplified/reimagined Arduino code
+
+Preserve all of the following from the original:
+- ADXL345 communication
+- I2C configuration
+- calibration
+- low-pass filtering
+- vibration calculation
+- earthquake detection logic
+- hit counting
+- detection window
+- event analysis period
+- event cooldown
+- acceleration calculation
+- PGA/vibration peak tracking
+- magnitude estimation
+- intensity estimation
+- MMI conversion
+- buzzer control
+- Wi-Fi startup
+- Wi-Fi connection
+- NTP time synchronization
+- Unix epoch timestamp
+- ESP-NOW initialization
+- ESP-NOW channel handling
+- ESP-NOW peer setup
+- ESP-NOW receive callback
+- hub ACK handling
+- heartbeat messages
+- earthquake alert messages
+- alert severity handling
+- alert hold time
+- node ID
+- node latitude/longitude
+- message structs
+- message sizes/layout
+- all relevant timing behavior
+- final serial output
+- all behavior that exists in the original source
+
+ONLY replace APIs/mechanisms that are ESP-IDF-specific with Arduino-compatible equivalents.
+
+Hardware:
+
+ESP32-C3 Super Mini
+
+GY-291 ADXL345 accelerometer
+
+Active buzzer
+
+WIRING:
+
+ADXL345:
+VCC -> ESP32 3.3V
+GND -> ESP32 GND
+SDA -> GPIO4
+SCL -> GPIO5
+CS -> 3.3V
+SDO -> GND
+
+Therefore:
+ADXL345 I2C address = 0x53
+
+Buzzer:
+Buzzer + -> GPIO10
+Buzzer - -> GND
+
+ESP32:
+SDA = GPIO4
+SCL = GPIO5
+BUZZER = GPIO10
+
+ADXL345 expected DEVID:
+0xE5
+
+Original ADXL345 configuration:
+DATA_FORMAT = 0x08
+BW_RATE = 0x0A
+POWER_CTL = 0x08
+
+Sampling:
+SAMPLE_RATE_HZ = 100
+SAMPLE_PERIOD_MS = 10
+CALIBRATION_SECONDS = 5
+
+Filter:
+FILTER_ALPHA = 0.01f
+
+Earthquake detection:
+EARTHQUAKE_THRESHOLD_G = 0.08f
+REQUIRED_HITS = 8
+HIT_WINDOW = 10
+
+Event analysis:
+EVENT_ANALYSIS_MS = 3000
+EVENT_COOLDOWN_MS = 10000
+
+Magnitude:
+ASSUMED_SOURCE_DISTANCE_KM = 10.0f
+
+ADXL scaling:
+ADXL345_G_PER_LSB = 0.0039f
+
+ESP-NOW:
+NODE_ID = 4
+NODE_LAT = 14.676000f
+NODE_LNG = 121.043700f
+ESPNOW_CHANNEL = 1
+
+Hazard:
+HAZARD_NONE = 0
+HAZARD_EARTHQUAKE = 5
+
+Heartbeat:
+HEARTBEAT_MS = 1000
+
+Alert hold:
+ALERT_HOLD_MS = 30000
+
+ORIGINAL MESSAGE STRUCTURE:
+
+typedef struct {
+    int   nodeID;
+    float locationLat;
+    float locationLng;
+    int   hazardType;
+    int   severityLevel;
+} disaster_message_t;
+
+typedef struct {
+    int nodeID;
+} ack_message_t;
+
+Original source requires:
+
+_Static_assert(sizeof(disaster_message_t) == 20, "struct must match hub layout");
+
+Preserve this layout in Arduino as closely as possible.
+
+ORIGINAL EARTHQUAKE LOGIC:
+
+The raw ADXL345 X/Y/Z values are converted using:
+
+ax = raw_x * 0.0039f;
+ay = raw_y * 0.0039f;
+az = raw_z * 0.0039f;
+
+Static gravity is estimated using a low-pass filter:
+
+lowpass_x += FILTER_ALPHA * (ax - lowpass_x);
+lowpass_y += FILTER_ALPHA * (ay - lowpass_y);
+lowpass_z += FILTER_ALPHA * (az - lowpass_z);
+
+Dynamic components:
+
+dx = ax - lowpass_x;
+dy = ay - lowpass_y;
+dz = az - lowpass_z;
+
+Vibration:
+
+sqrtf(dx * dx + dy * dy + dz * dz)
+
+Total acceleration:
+
+sqrtf(ax * ax + ay * ay + az * az)
+
+Detection:
+Each sample is checked against 0.08 g.
+The detector collects 10 samples.
+If at least 8 of the 10 samples exceed the threshold, an earthquake event starts.
+Do not change this logic unless absolutely required for Arduino compatibility.
+
+When an event starts:
+- event becomes active
+- event start timestamp is stored
+- Unix epoch timestamp is captured
+- peak vibration is initialized
+- peak acceleration is initialized
+- peak PGA is initialized
+- buzzer turns ON
+- initial alert severity = 2
+- alert hold state is updated
+- hub ACK state is reset
+- heartbeat timing is updated
+- an earthquake ESP-NOW message is sent
+
+During the 3 second analysis window:
+- update peak vibration
+- update peak acceleration
+- update peak PGA
+
+After 3000 ms:
+calculate:
+
+magnitude =
+(
+    logf(pga_g) +
+    logf(ASSUMED_SOURCE_DISTANCE_KM + 7.28f) +
+    2.501f
+) / 0.623f;
+
+Clamp magnitude:
+minimum 0.0
+maximum 9.9
+
+Intensity:
+
+float intensity =
+    3.66f * log10f(pga_g * 100.0f) + 1.99f;
+
+Then round to integer.
+
+Clamp MMI:
+minimum 5
+maximum 8
+
+MMI strings:
+1 = I
+2 = II
+3 = III
+4 = IV
+5 = V
+6 = VI
+7 = VII
+8 = VIII
+9 = IX
+10 = X
+otherwise UNKNOWN
+
+Severity:
+MMI >= 8 -> severity 3
+MMI >= 6 -> severity 2
+otherwise -> severity 1
+
+Then:
+- print earthquake result
+- buzzer OFF
+- update severity
+- update alert hold
+- send earthquake ESP-NOW message
+- end event
+- save last event time
+- reset peak variables
+
+NORMAL SERIAL OUTPUT REQUIREMENT:
+
+During normal operation, do NOT continuously print sensor values.
+
+The intended event output is:
+
+EARTHQUAKE DETECTED
+TIME: <unix epoch>
+MAGNITUDE: <x.x>
+INTENSITY: <MMI>
+ACCELERATION: <x.xxx> g
+VIBRATION: <x.xxx> g
+
+There may also be:
+
+HUB ACK: help is on the way
+
+when the hub replies.
+
+Do NOT add constant debug spam unless necessary.
+
+NTP:
+The timestamp must be a real Unix epoch timestamp.
+Example format:
+1790755938
+
+Original behavior:
+Wi-Fi is used initially to connect and synchronize NTP.
+After time synchronization, ESP-NOW is initialized.
+The original source shuts down SNTP after initialization and disables Wi-Fi power save before ESP-NOW operation.
+
+ESP-NOW details:
+- broadcast MAC:
+FF:FF:FF:FF:FF:FF
+- channel = 1
+- peer interface = STA
+- encryption = false
+- peer channel can be 0 to use current channel
+
+Important Arduino compatibility:
+Use the modern Arduino-ESP32 ESP-NOW receive callback form:
+
+void callback(
+    const esp_now_recv_info_t *info,
+    const uint8_t *data,
+    int len
+)
+
+If an older Arduino ESP32 core requires a different callback API, explicitly explain that compatibility issue rather than silently changing project behavior.
+
+IMPORTANT WIFI TX POWER REQUIREMENT:
+This project uses a low-cost ESP32-C3 Super Mini.
+I specifically want the configured Wi-Fi maximum TX power set to 8.5 dBm.
+
+Use:
+
+#include <esp_wifi.h>
+
+and:
+
+esp_wifi_set_max_tx_power(34);
+
+because the ESP32 API uses 0.25 dBm units:
+
+34 * 0.25 = 8.5 dBm
+
+Also include the esp_wifi.h header because otherwise:
+esp_wifi_set_channel()
+esp_wifi_get_channel()
+esp_wifi_set_ps()
+and related declarations may not compile.
+
+Verify the configured TX power if practical using:
+
+int8_t txPower;
+esp_wifi_get_max_tx_power(&txPower);
+
+and:
+
+txPower * 0.25f
+
+Do not remove the 8.5 dBm configuration.
+
+IMPORTANT:
+The previous bad Arduino conversion omitted/changed code from the original. I explicitly do NOT want a shortened version.
+
+The final Arduino code should be a faithful full conversion of the original source, including all original functionality.
+
+ORIGINAL ESP-IDF TO ARDUINO MAPPING:
+
+ESP-IDF:
+app_main()
+→ Arduino:
+setup() + loop()
+
+ESP-IDF:
+vTaskDelay(pdMS_TO_TICKS(x))
+→ Arduino:
+delay(x)
+
+ESP-IDF:
+esp_timer_get_time()
+→ Arduino:
+micros() or millis() as appropriate, while preserving timing behavior
+
+ESP-IDF I2C:
+driver/i2c_master.h
+→ Arduino:
+Wire.h
+
+ESP-IDF GPIO:
+driver/gpio.h
+→ Arduino:
+pinMode()
+digitalWrite()
+
+ESP-IDF Wi-Fi:
+esp_wifi / esp_netif APIs
+→ Arduino WiFi APIs where appropriate,
+but esp_wifi.h may still be used for low-level functions such as:
+esp_wifi_set_channel()
+esp_wifi_get_channel()
+esp_wifi_set_ps()
+esp_wifi_set_max_tx_power()
+esp_wifi_get_max_tx_power()
+
+ESP-IDF NTP:
+esp_netif_sntp
+→ Arduino:
+configTime()
+plus time()/getLocalTime() or equivalent
+
+ESP-IDF ESP-NOW:
+→ Arduino ESP-NOW API:
+esp_now_init()
+esp_now_add_peer()
+esp_now_send()
+esp_now_register_recv_cb()
+
+ORIGINAL ESP-IDF SOURCE:
+I have the original file named:
+
+Pasted text(10).txt
+
+It is the authoritative 531-line source.
+
+Use that source directly.
+Do not reconstruct it from memory.
+Do not infer missing parts.
+Do not silently modify its algorithm.
+
+The original source contains:
+- all includes
+- all pin definitions
+- Wi-Fi credentials
+- ADXL345 definitions
+- all sampling constants
+- hub communication configuration
+- I2C functions
+- ADXL initialization
+- raw sensor reading
+- buzzer code
+- Wi-Fi event handling
+- Wi-Fi startup
+- NTP synchronization
+- ESP-NOW receive/start/send
+- calibration
+- vibration calculation
+- earthquake detector
+- magnitude estimation
+- intensity estimation
+- MMI conversion
+- app_main
+- the full event loop
+
+When giving me the final answer:
+1. Give the complete Arduino .ino file.
+2. Do not omit sections just because they look repetitive.
+3. Do not replace major sections with "same as above".
+4. Do not give me a shortened version.
+5. Do not remove ESP-NOW, ACK, heartbeat, NTP, calibration, magnitude, intensity, buzzer, or event logic.
+6. Add the required esp_wifi.h include and 8.5 dBm TX power setting.
+7. Preserve the original constants and formulas.
+8. Tell me any Arduino-core version requirement if relevant.
+9. Keep Wi-Fi credentials as placeholders rather than exposing them in the answer.
+10. If something from ESP-IDF cannot be converted literally, explain exactly what changed and why.
+
+Most important:
+I want a COMPLETE FAITHFUL PORT, not a simplified rewrite.
