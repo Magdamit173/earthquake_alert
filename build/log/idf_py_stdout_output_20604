@@ -1,0 +1,190 @@
+Command: C:\Espressif\python_env\idf5.5_py3.11_env\Scripts\python.exe C:\Espressif\frameworks\esp-idf-v5.5.5\tools/idf_monitor.py -p com11 -b 115200 --toolchain-prefix riscv32-esp-elf- --target esp32c3 --revision 3 --decode-panic backtrace C:\Magdamit173\UCC\earthquake_alert\build\earthquake_alert.elf C:\Magdamit173\UCC\earthquake_alert\build\bootloader\bootloader.elf --force-color -m 'C:\Espressif\python_env\idf5.5_py3.11_env\Scripts\python.exe' 'C:\Espressif\frameworks\esp-idf-v5.5.5\tools\idf.py' '-p' 'com11'
+ESP-ROM:esp32c3-api1-20210207
+Build:Feb  7 2021
+rst:0x15 (USB_UART_CHIP_RESET),boot:0xd (SPI_FAST_FLASH_BOOT)
+Saved PC:0x4038435a
+SPIWP:0xee
+mode:DIO, clock div:1
+load:0x3fcd5820,len:0x155c
+load:0x403cbf10,len:0xc84
+load:0x403ce710,len:0x2fac
+entry 0x403cbf1a
+[0;32mI (24) boot: ESP-IDF v5.5.5 2nd stage bootloader[0m
+[0;32mI (24) boot: compile time Sep 30 2026 15:33:38[0m
+[0;32mI (25) boot: chip revision: v0.4[0m
+[0;32mI (25) boot: efuse block revision: v1.3[0m
+[0;32mI (28) boot.esp32c3: SPI Speed      : 80MHz[0m
+[0;32mI (32) boot.esp32c3: SPI Mode       : DIO[0m
+[0;32mI (36) boot.esp32c3: SPI Flash Size : 2MB[0m
+[0;32mI (39) boot: Enabling RNG early entropy source...[0m
+[0;32mI (44) boot: Partition Table:[0m
+[0;32mI (46) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (53) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
+[0;32mI (59) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
+[0;32mI (66) boot:  2 factory          factory app      00 00 00010000 00100000[0m
+[0;32mI (72) boot: End of partition table[0m
+[0;32mI (76) esp_image: segment 0: paddr=00010020 vaddr=3c0a0020 size=19a8ch (105100) map[0m
+[0;32mI (100) esp_image: segment 1: paddr=00029ab4 vaddr=3fc95000 size=031ach ( 12716) load[0m
+[0;32mI (102) esp_image: segment 2: paddr=0002cc68 vaddr=40380000 size=033b0h ( 13232) load[0m
+[0;32mI (106) esp_image: segment 3: paddr=00030020 vaddr=42000020 size=93b30h (604976) map[0m
+[0;32mI (207) esp_image: segment 4: paddr=000c3b58 vaddr=403833b0 size=11c18h ( 72728) load[0m
+[0;32mI (221) esp_image: segment 5: paddr=000d5778 vaddr=50000000 size=00020h (    32) load[0m
+[0;32mI (228) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (229) boot: Disabling RNG early entropy source...[0m
+[0;32mI (239) cpu_start: Unicore app[0m
+[0;32mI (247) cpu_start: GPIO 20 and 21 are used as console UART I/O pins[0m
+[0;32mI (248) cpu_start: Pro cpu start user code[0m
+[0;32mI (248) cpu_start: cpu freq: 160000000 Hz[0m
+[0;32mI (250) app_init: Application information:[0m
+[0;32mI (253) app_init: Project name:     earthquake_alert[0m
+[0;32mI (258) app_init: App version:      1[0m
+[0;32mI (261) app_init: Compile time:     Sep 30 2026 15:30:50[0m
+[0;32mI (267) app_init: ELF file SHA256:  9cd79f4e1...[0m
+[0;32mI (271) app_init: ESP-IDF:          v5.5.5[0m
+[0;32mI (275) efuse_init: Min chip rev:     v0.3[0m
+[0;32mI (278) efuse_init: Max chip rev:     v1.99 [0m
+[0;32mI (282) efuse_init: Chip rev:         v0.4[0m
+[0;32mI (286) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (293) heap_init: At 3FC9C7A0 len 00023860 (142 KiB): RAM[0m
+[0;32mI (298) heap_init: At 3FCC0000 len 0001C710 (113 KiB): Retention RAM[0m
+[0;32mI (304) heap_init: At 3FCDC710 len 00002950 (10 KiB): Retention RAM[0m
+[0;32mI (310) heap_init: At 50000020 len 00001FC8 (7 KiB): RTCRAM[0m
+[0;32mI (316) spi_flash: detected chip: generic[0m
+[0;32mI (319) spi_flash: flash io: dio[0m
+[0;33mW (322) spi_flash: Detected size(4096k) larger than the size in the binary image header(2048k). Using the size in the binary image header.[0m
+[0;32mI (334) sleep_gpio: Configure to isolate all GPIO pins in sleep state[0m
+[0;32mI (340) sleep_gpio: Enable automatic switching of GPIO sleep configuration[0m
+[0;32mI (347) main_task: Started on CPU0[0m
+[0;32mI (347) main_task: Calling app_main()[0m
+
+================================
+EARTHQUAKE ALERT SLAVE
+================================
+NODE ID:           4
+CHANNEL:           1
+MASTER:            98:F4:AB:3A:62:00
+SAMPLE RATE:       100 Hz
+ADXL345 RANGE:     +/-16 g full resolution, 0.0039 g/LSB
+VALIDATION:        1200 ms
+WAVEFORM RANGE:    -2 s to +6 s @ 10 Hz
+================================
+CALIBRATION COMPLETE (5 s gravity + 5 s noise)
+GRAVITY: X=0.0074 Y=-0.0019 Z=-0.9299 g
+NOISE RMS: 0.00724 g
+DETECTION THRESHOLD: 0.04343 g
+READY
+
+DEBUG | NORMAL | VIB=0.0064 g | PGA=0.0061 g | TH=0.0434 g | STA/LTA=0.00 | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0061 g | PGA=0.0022 g | TH=0.0434 g | STA/LTA=0.83 | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0118 g | PGA=0.0103 g | TH=0.0434 g | STA/LTA=1.64 | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+
+CANDIDATE EVENT
+Validating for 1200 ms...
+
+DEBUG | CANDIDATE | VIB=2.3731 g | PGA=2.3730 g | TH=0.0434 g | STA/LTA=0.95 | AMP=1 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+        candidate: samples=100 active=100 strong=100 direction=7 peak=3.5315 g
+
+VALIDATION RESULT
+Active ratio:       1.00
+Second-half active: 60
+Strong hits:        120
+Direction changes:  8
+Max quiet gap:      0 samples
+Peak vibration:     3.5315 g
+Peak PGA:           3.5309 g
+Threshold:          0.0434 g
+EARTHQUAKE CONFIRMED
+
+################################
+EARTHQUAKE CONFIRMED
+SEQUENCE: 1
+BUZZER: QUEUED
+EVENT_START: QUEUED
+################################
+
+DEBUG | EVENT | VIB=1.4035 g | PGA=1.4035 g | TH=0.0434 g | STA/LTA=0.87 | AMP=1 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+        event: seq=1 waveform=40/80 peak_pga=3.5309 g peak_vib=3.5315 g
+DEBUG | EVENT | VIB=0.9863 g | PGA=0.9862 g | TH=0.0434 g | STA/LTA=0.75 | AMP=1 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+        event: seq=1 waveform=50/80 peak_pga=3.5309 g peak_vib=3.5315 g
+DEBUG | EVENT | VIB=1.6752 g | PGA=1.6750 g | TH=0.0434 g | STA/LTA=0.95 | AMP=1 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+        event: seq=1 waveform=60/80 peak_pga=3.5309 g peak_vib=3.5315 g
+DEBUG | EVENT | VIB=1.0237 g | PGA=1.0235 g | TH=0.0434 g | STA/LTA=0.97 | AMP=1 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+        event: seq=1 waveform=70/80 peak_pga=3.5309 g peak_vib=3.5315 g
+================================
+EARTHQUAKE DETECTED
+================================
+LEVEL:            VERY STRONG
+PEAK PGA:         3.5309 g
+PEAK VIBRATION:   3.5315 g
+RMS VIBRATION:    1.2491 g
+SHAKING DURATION: 5.99 s
+MAGNITUDE EST:    9.9
+INTENSITY EST:    VIII
+SEQUENCE:         1
+WAVEFORM:         QUEUED
+EVENT FINAL:      QUEUED
+================================
+
+DEBUG | NORMAL | VIB=0.0417 g | PGA=0.0417 g | TH=0.0434 g | STA/LTA=0.00 | AMP=0 | ONSET=0 | TX ok/fail/drop=3/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0268 g | PGA=0.0268 g | TH=0.0434 g | STA/LTA=0.00 | AMP=0 | ONSET=0 | TX ok/fail/drop=3/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0204 g | PGA=0.0202 g | TH=0.0434 g | STA/LTA=0.82 | AMP=0 | ONSET=0 | TX ok/fail/drop=3/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0083 g | PGA=0.0081 g | TH=0.0434 g | STA/LTA=0.61 | AMP=0 | ONSET=0 | TX ok/fail/drop=3/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=1.2337 g | PGA=1.2336 g | TH=0.0434 g | STA/LTA=0.90 | AMP=1 | ONSET=0 | TX ok/fail/drop=3/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0273 g | PGA=0.0271 g | TH=0.0434 g | STA/LTA=0.07 | AMP=0 | ONSET=0 | TX ok/fail/drop=3/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0149 g | PGA=0.0146 g | TH=0.0434 g | STA/LTA=0.71 | AMP=0 | ONSET=0 | TX ok/fail/drop=3/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0088 g | PGA=0.0085 g | TH=0.0434 g | STA/LTA=0.66 | AMP=0 | ONSET=0 | TX ok/fail/drop=3/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0083 g | PGA=0.0082 g | TH=0.0434 g | STA/LTA=1.33 | AMP=0 | ONSET=0 | TX ok/fail/drop=3/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0030 g | PGA=0.0021 g | TH=0.0434 g | STA/LTA=0.60 | AMP=0 | ONSET=0 | TX ok/fail/drop=3/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0027 g | PGA=0.0021 g | TH=0.0434 g | STA/LTA=0.65 | AMP=0 | ONSET=0 | TX ok/fail/drop=3/0/0 | I2C fails=0
+
+CANDIDATE EVENT
+Validating for 1200 ms...
+
+DEBUG | CANDIDATE | VIB=1.4434 g | PGA=1.4406 g | TH=0.0434 g | STA/LTA=0.82 | AMP=1 | ONSET=0 | TX ok/fail/drop=3/0/0 | I2C fails=0
+        candidate: samples=80 active=80 strong=80 direction=5 peak=3.5188 g
+
+VALIDATION RESULT
+Active ratio:       1.00
+Second-half active: 60
+Strong hits:        120
+Direction changes:  8
+Max quiet gap:      0 samples
+Peak vibration:     3.5188 g
+Peak PGA:           3.5182 g
+Threshold:          0.0434 g
+EARTHQUAKE CONFIRMED
+
+################################
+EARTHQUAKE CONFIRMED
+SEQUENCE: 2
+BUZZER: QUEUED
+EVENT_START: QUEUED
+################################
+
+DEBUG | EVENT | VIB=0.0885 g | PGA=0.0885 g | TH=0.0434 g | STA/LTA=0.09 | AMP=1 | ONSET=0 | TX ok/fail/drop=4/0/0 | I2C fails=0
+        event: seq=2 waveform=38/80 peak_pga=3.5182 g peak_vib=3.5188 g
+DEBUG | EVENT | VIB=0.0220 g | PGA=0.0205 g | TH=0.0434 g | STA/LTA=0.47 | AMP=0 | ONSET=0 | TX ok/fail/drop=4/0/0 | I2C fails=0
+        event: seq=2 waveform=48/80 peak_pga=3.5182 g peak_vib=3.5188 g
+DEBUG | EVENT | VIB=0.0237 g | PGA=0.0236 g | TH=0.0434 g | STA/LTA=0.94 | AMP=0 | ONSET=0 | TX ok/fail/drop=4/0/0 | I2C fails=0
+        event: seq=2 waveform=58/80 peak_pga=3.5182 g peak_vib=3.5188 g
+DEBUG | EVENT | VIB=0.0089 g | PGA=0.0079 g | TH=0.0434 g | STA/LTA=0.62 | AMP=0 | ONSET=0 | TX ok/fail/drop=4/0/0 | I2C fails=0
+        event: seq=2 waveform=68/80 peak_pga=3.5182 g peak_vib=3.5188 g
+DEBUG | EVENT | VIB=0.0081 g | PGA=0.0081 g | TH=0.0434 g | STA/LTA=0.69 | AMP=0 | ONSET=0 | TX ok/fail/drop=4/0/0 | I2C fails=0
+        event: seq=2 waveform=78/80 peak_pga=3.5182 g peak_vib=3.5188 g
+================================
+EARTHQUAKE DETECTED
+================================
+LEVEL:            VERY STRONG
+PEAK PGA:         3.5182 g
+PEAK VIBRATION:   3.5188 g
+RMS VIBRATION:    0.6994 g
+SHAKING DURATION: 2.31 s
+MAGNITUDE EST:    9.9
+INTENSITY EST:    VIII
+SEQUENCE:         2
+WAVEFORM:         QUEUED
+EVENT FINAL:      QUEUED
+================================
+
+DEBUG | NORMAL | VIB=0.0090 g | PGA=0.0089 g | TH=0.0434 g | STA/LTA=0.00 | AMP=0 | ONSET=0 | TX ok/fail/drop=6/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0017 g | PGA=0.0011 g | TH=0.0434 g | STA/LTA=0.64 | AMP=0 | ONSET=0 | TX ok/fail/drop=6/0/0 | I2C fails=0

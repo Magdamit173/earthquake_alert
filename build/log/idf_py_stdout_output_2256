@@ -1,0 +1,73 @@
+Command: ninja flash
+[1/5] C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Magdamit173\UCC\earthquake_alert\build\esp-idf\esptool_py && C:\Espressif\python_env\idf5.5_py3.11_env\Scripts\python.exe C:/Espressif/frameworks/esp-idf-v5.5.5/components/partition_table/check_sizes.py --offset 0x8000 partition --type app C:/Magdamit173/UCC/earthquake_alert/build/partition_table/partition-table.bin C:/Magdamit173/UCC/earthquake_alert/build/earthquake_alert.bin"
+earthquake_alert.bin binary size 0xc5230 bytes. Smallest app partition is 0x100000 bytes. 0x3add0 bytes (23%) free.
+[2/5] Performing build step for 'bootloader'
+[1/1] C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Magdamit173\UCC\earthquake_alert\build\bootloader\esp-idf\esptool_py && C:\Espressif\python_env\idf5.5_py3.11_env\Scripts\python.exe C:/Espressif/frameworks/esp-idf-v5.5.5/components/partition_table/check_sizes.py --offset 0x8000 bootloader 0x0 C:/Magdamit173/UCC/earthquake_alert/build/bootloader/bootloader.bin"
+Bootloader binary size 0x51e0 bytes. 0x2e20 bytes (36%) free.
+[3/5] No install step for 'bootloader'
+[4/5] Completed 'bootloader'
+[4/5] C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Espressif\frameworks\esp-idf-v5.5.5\components\esptool_py && C:\Espressif\tools\cmake\3.30.2\bin\cmake.exe -D IDF_PATH=C:/Espressif/frameworks/esp-idf-v5.5.5 -D SERIAL_TOOL=C:/Espressif/python_env/idf5.5_py3.11_env/Scripts/python.exe;;C:/Espressif/frameworks/esp-idf-v5.5.5/components/esptool_py/esptool/esptool.py;--chip;esp32c3 -D SERIAL_TOOL_ARGS=--before=default_reset;--after=hard_reset;write_flash;@flash_args -D WORKING_DIRECTORY=C:/Magdamit173/UCC/earthquake_alert/build -P C:/Espressif/frameworks/esp-idf-v5.5.5/components/esptool_py/run_serial_tool.cmake"
+esptool.py --chip esp32c3 -p com11 -b 460800 --before=default_reset --after=hard_reset write_flash --flash_mode dio --flash_freq 80m --flash_size 2MB 0x0 bootloader/bootloader.bin 0x10000 earthquake_alert.bin 0x8000 partition_table/partition-table.bin
+esptool.py v4.12.0
+Serial port com11
+Connecting...
+Failed to get PID of a device on com11, using standard reset sequence.
+
+Chip is ESP32-C3 (QFN32) (revision v0.4)
+Features: WiFi, BLE, Embedded Flash 4MB (XMC)
+Crystal is 40MHz
+USB mode: USB-Serial/JTAG
+MAC: 10:00:3b:ae:d2:9c
+Uploading stub...
+Running stub...
+Stub running...
+Changing baud rate to 460800
+Changed.
+Configuring flash size...
+Flash will be erased from 0x00000000 to 0x00005fff...
+Flash will be erased from 0x00010000 to 0x000d5fff...
+Flash will be erased from 0x00008000 to 0x00008fff...
+SHA digest in image updated
+Compressed 20960 bytes to 13275...
+Writing at 0x00000000... (100 %)
+Wrote 20960 bytes (13275 compressed) at 0x00000000 in 0.2 seconds (effective 849.9 kbit/s)...
+Hash of data verified.
+Compressed 807472 bytes to 468058...
+Writing at 0x00010000... (3 %)
+Writing at 0x0001bb24... (6 %)
+Writing at 0x000247da... (10 %)
+Writing at 0x0002e768... (13 %)
+Writing at 0x00034f59... (17 %)
+Writing at 0x0003c1b5... (20 %)
+Writing at 0x0004392e... (24 %)
+Writing at 0x0004a2b6... (27 %)
+Writing at 0x00050978... (31 %)
+Writing at 0x0005769a... (34 %)
+Writing at 0x0005d614... (37 %)
+Writing at 0x0006336e... (41 %)
+Writing at 0x0006916a... (44 %)
+Writing at 0x0006f769... (48 %)
+Writing at 0x00075667... (51 %)
+Writing at 0x0007b8d3... (55 %)
+Writing at 0x00081d61... (58 %)
+Writing at 0x00088832... (62 %)
+Writing at 0x0008fa56... (65 %)
+Writing at 0x00096b3d... (68 %)
+Writing at 0x0009d2cd... (72 %)
+Writing at 0x000a34e9... (75 %)
+Writing at 0x000a9bc5... (79 %)
+Writing at 0x000afb72... (82 %)
+Writing at 0x000b5c3b... (86 %)
+Writing at 0x000bd4a1... (89 %)
+Writing at 0x000c42cc... (93 %)
+Writing at 0x000cb26e... (96 %)
+Writing at 0x000d15a7... (100 %)
+Wrote 807472 bytes (468058 compressed) at 0x00010000 in 3.4 seconds (effective 1891.0 kbit/s)...
+Hash of data verified.
+Compressed 3072 bytes to 103...
+Writing at 0x00008000... (100 %)
+Wrote 3072 bytes (103 compressed) at 0x00008000 in 0.0 seconds (effective 949.6 kbit/s)...
+Hash of data verified.
+
+Leaving...
+Hard resetting via RTS pin...

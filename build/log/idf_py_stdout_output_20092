@@ -1,0 +1,501 @@
+Command: C:\Espressif\python_env\idf5.5_py3.11_env\Scripts\python.exe C:\Espressif\frameworks\esp-idf-v5.5.5\tools/idf_monitor.py -p com11 -b 115200 --toolchain-prefix riscv32-esp-elf- --target esp32c3 --revision 3 --decode-panic backtrace C:\Magdamit173\UCC\earthquake_alert\build\earthquake_alert.elf C:\Magdamit173\UCC\earthquake_alert\build\bootloader\bootloader.elf --force-color -m 'C:\Espressif\python_env\idf5.5_py3.11_env\Scripts\python.exe' 'C:\Espressif\frameworks\esp-idf-v5.5.5\tools\idf.py' '-p' 'com11'
+ESP-ROM:esp32c3-api1-20210207
+Build:Feb  7 2021
+rst:0x15 (USB_UART_CHIP_RESET),boot:0xd (SPI_FAST_FLASH_BOOT)
+Saved PC:0x4038435a
+SPIWP:0xee
+mode:DIO, clock div:1
+load:0x3fcd5820,len:0x155c
+load:0x403cbf10,len:0xc84
+load:0x403ce710,len:0x2fac
+entry 0x403cbf1a
+[0;32mI (24) boot: ESP-IDF v5.5.5 2nd stage bootloader[0m
+[0;32mI (24) boot: compile time Sep 30 2026 15:33:38[0m
+[0;32mI (25) boot: chip revision: v0.4[0m
+[0;32mI (25) boot: efuse block revision: v1.3[0m
+[0;32mI (28) boot.esp32c3: SPI Speed      : 80MHz[0m
+[0;32mI (32) boot.esp32c3: SPI Mode       : DIO[0m
+[0;32mI (36) boot.esp32c3: SPI Flash Size : 2MB[0m
+[0;32mI (39) boot: Enabling RNG early entropy source...[0m
+[0;32mI (44) boot: Partition Table:[0m
+[0;32mI (46) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (53) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
+[0;32mI (59) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
+[0;32mI (66) boot:  2 factory          factory app      00 00 00010000 00100000[0m
+[0;32mI (72) boot: End of partition table[0m
+[0;32mI (76) esp_image: segment 0: paddr=00010020 vaddr=3c0a0020 size=199ach (104876) map[0m
+[0;32mI (100) esp_image: segment 1: paddr=000299d4 vaddr=3fc95000 size=031ach ( 12716) load[0m
+[0;32mI (102) esp_image: segment 2: paddr=0002cb88 vaddr=40380000 size=03490h ( 13456) load[0m
+[0;32mI (106) esp_image: segment 3: paddr=00030020 vaddr=42000020 size=93554h (603476) map[0m
+[0;32mI (207) esp_image: segment 4: paddr=000c357c vaddr=40383490 size=11b38h ( 72504) load[0m
+[0;32mI (221) esp_image: segment 5: paddr=000d50bc vaddr=50000000 size=00020h (    32) load[0m
+[0;32mI (228) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (228) boot: Disabling RNG early entropy source...[0m
+[0;32mI (239) cpu_start: Unicore app[0m
+[0;32mI (247) cpu_start: GPIO 20 and 21 are used as console UART I/O pins[0m
+[0;32mI (247) cpu_start: Pro cpu start user code[0m
+[0;32mI (247) cpu_start: cpu freq: 160000000 Hz[0m
+[0;32mI (249) app_init: Application information:[0m
+[0;32mI (253) app_init: Project name:     earthquake_alert[0m
+[0;32mI (258) app_init: App version:      1[0m
+[0;32mI (261) app_init: Compile time:     Sep 30 2026 15:30:50[0m
+[0;32mI (266) app_init: ELF file SHA256:  191882123...[0m
+[0;32mI (270) app_init: ESP-IDF:          v5.5.5[0m
+[0;32mI (274) efuse_init: Min chip rev:     v0.3[0m
+[0;32mI (278) efuse_init: Max chip rev:     v1.99 [0m
+[0;32mI (282) efuse_init: Chip rev:         v0.4[0m
+[0;32mI (286) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (292) heap_init: At 3FC9C750 len 000238B0 (142 KiB): RAM[0m
+[0;32mI (297) heap_init: At 3FCC0000 len 0001C710 (113 KiB): Retention RAM[0m
+[0;32mI (303) heap_init: At 3FCDC710 len 00002950 (10 KiB): Retention RAM[0m
+[0;32mI (309) heap_init: At 50000020 len 00001FC8 (7 KiB): RTCRAM[0m
+[0;32mI (316) spi_flash: detected chip: generic[0m
+[0;32mI (319) spi_flash: flash io: dio[0m
+[0;33mW (321) spi_flash: Detected size(4096k) larger than the size in the binary image header(2048k). Using the size in the binary image header.[0m
+[0;32mI (334) sleep_gpio: Configure to isolate all GPIO pins in sleep state[0m
+[0;32mI (340) sleep_gpio: Enable automatic switching of GPIO sleep configuration[0m
+[0;32mI (347) main_task: Started on CPU0[0m
+[0;32mI (347) main_task: Calling app_main()[0m
+[0;32mI (367) pp: pp rom version: 9387209[0m
+[0;32mI (367) net80211: net80211 rom version: 9387209[0m
+[0;32mI (377) wifi:wifi driver task: 3fca5a2c, prio:23, stack:6656, core=0[0m
+[0;32mI (377) wifi:wifi firmware version: b9f67df[0m
+[0;32mI (377) wifi:wifi certification version: v7.0[0m
+[0;32mI (377) wifi:config NVS flash: enabled[0m
+[0;32mI (377) wifi:config nano formatting: disabled[0m
+[0;32mI (387) wifi:Init data frame dynamic rx buffer num: 32[0m
+[0;32mI (387) wifi:Init static rx mgmt buffer num: 5[0m
+[0;32mI (397) wifi:Init management short buffer num: 32[0m
+[0;32mI (397) wifi:Init dynamic tx buffer num: 32[0m
+[0;32mI (397) wifi:Init static tx FG buffer num: 2[0m
+[0;32mI (407) wifi:Init static rx buffer size: 1600[0m
+[0;32mI (407) wifi:Init static rx buffer num: 10[0m
+[0;32mI (417) wifi:Init dynamic rx buffer num: 32[0m
+[0;32mI (417) wifi_init: rx ba win: 6[0m
+[0;32mI (417) wifi_init: accept mbox: 6[0m
+[0;32mI (427) wifi_init: tcpip mbox: 32[0m
+[0;32mI (427) wifi_init: udp mbox: 6[0m
+[0;32mI (427) wifi_init: tcp mbox: 6[0m
+[0;32mI (427) wifi_init: tcp tx win: 5760[0m
+[0;32mI (437) wifi_init: tcp rx win: 5760[0m
+[0;32mI (437) wifi_init: tcp mss: 1440[0m
+[0;32mI (437) wifi_init: WiFi IRAM OP enabled[0m
+[0;32mI (447) wifi_init: WiFi RX IRAM OP enabled[0m
+[0;32mI (447) phy_init: phy_version 1235,8bd8c6fc,Apr 13 2026,18:46:20[0m
+[0;32mI (487) phy_init: Saving new calibration data due to checksum failure or outdated calibration data, mode(0)[0m
+[0;32mI (497) wifi:mode : sta (10:00:3b:ae:d2:9c)[0m
+[0;32mI (497) wifi:enable tsf[0m
+[0;32mI (497) wifi:Set ps type: 0, coexist: 0[0m
+
+[0;32mI (497) ESPNOW: espnow [version: 2.0] init[0m
+
+================================
+EARTHQUAKE ALERT SLAVE
+================================
+NODE ID:           4
+CHANNEL:           1
+MASTER:            98:F4:AB:3A:62:00
+SAMPLE RATE:       100 Hz
+VALIDATION:        1200 ms
+WAVEFORM RANGE:    -2 s to +6 s @ 10 Hz
+================================
+CALIBRATION COMPLETE
+GRAVITY: X=0.0034 Y=-0.0030 Z=-0.9302 g
+NOISE RMS: 0.00663 g
+DETECTION THRESHOLD: 0.03978 g
+READY
+
+[0;32mI (10507) main_task: Returned from app_main()[0m
+DEBUG | VIB=0.0019 g | PGA=0.0008 g | TH=0.0398 g | STA/LTA=0.00 | AMP=0 | ONSET=0 | STATE=NORMAL
+DEBUG | VIB=0.0086 g | PGA=0.0083 g | TH=0.0398 g | STA/LTA=1.19 | AMP=0 | ONSET=0 | STATE=NORMAL
+DEBUG | VIB=0.0023 g | PGA=0.0008 g | TH=0.0398 g | STA/LTA=0.70 | AMP=0 | ONSET=0 | STATE=NORMAL
+DEBUG | VIB=0.0041 g | PGA=0.0034 g | TH=0.0398 g | STA/LTA=0.82 | AMP=0 | ONSET=0 | STATE=NORMAL
+DEBUG | VIB=0.0131 g | PGA=0.0085 g | TH=0.0398 g | STA/LTA=1.75 | AMP=0 | ONSET=0 | STATE=NORMAL
+DEBUG | VIB=0.0038 g | PGA=0.0034 g | TH=0.0398 g | STA/LTA=0.55 | AMP=0 | ONSET=0 | STATE=NORMAL
+DEBUG | VIB=0.0018 g | PGA=0.0003 g | TH=0.0398 g | STA/LTA=1.30 | AMP=0 | ONSET=0 | STATE=NORMAL
+DEBUG | VIB=0.0053 g | PGA=0.0050 g | TH=0.0398 g | STA/LTA=0.78 | AMP=0 | ONSET=0 | STATE=NORMAL
+DEBUG | VIB=0.0018 g | PGA=0.0006 g | TH=0.0398 g | STA/LTA=0.76 | AMP=0 | ONSET=0 | STATE=NORMAL
+DEBUG | VIB=0.0104 g | PGA=0.0042 g | TH=0.0398 g | STA/LTA=1.44 | AMP=0 | ONSET=0 | STATE=NORMAL
+DEBUG | VIB=0.0042 g | PGA=0.0035 g | TH=0.0398 g | STA/LTA=0.73 | AMP=0 | ONSET=0 | STATE=NORMAL
+DEBUG | VIB=0.0046 g | PGA=0.0042 g | TH=0.0398 g | STA/LTA=1.39 | AMP=0 | ONSET=0 | STATE=NORMAL
+DEBUG | VIB=0.0059 g | PGA=0.0008 g | TH=0.0398 g | STA/LTA=0.73 | AMP=0 | ONSET=0 | STATE=NORMAL
+DEBUG | VIB=0.0048 g | PGA=0.0044 g | TH=0.0398 g | STA/LTA=1.13 | AMP=0 | ONSET=0 | STATE=NORMAL
+
+CANDIDATE EVENT
+Validating for 1200 ms...
+
+DEBUG | VIB=0.0066 g | PGA=0.0063 g | TH=0.0398 g | STA/LTA=4.33 | AMP=0 | ONSET=0 | STATE=CANDIDATE
+DEBUG | VIB=0.0050 g | PGA=0.0046 g | TH=0.0398 g | STA/LTA=0.44 | AMP=0 | ONSET=0 | STATE=CANDIDATE
+
+VALIDATION RESULT
+Active ratio:       0.01
+Second-half active: 0
+Strong hits:        0
+Direction changes:  0
+Max quiet gap:      119 samples
+Peak vibration:     0.0761 g
+Peak PGA:           0.0243 g
+Threshold:          0.0398 g
+FALSE TRIGGER - DISCARDED
+
+DEBUG | VIB=0.0077 g | PGA=0.0052 g | TH=0.0398 g | STA/LTA=0.00 | AMP=0 | ONSET=0 | STATE=NORMAL
+DEBUG | VIB=0.0072 g | PGA=0.0041 g | TH=0.0398 g | STA/LTA=0.76 | AMP=0 | ONSET=0 | STATE=NORMAL
+DEBUG | VIB=0.0022 g | PGA=0.0010 g | TH=0.0398 g | STA/LTA=0.80 | AMP=0 | ONSET=0 | STATE=NORMAL
+DEBUG | VIB=0.0059 g | PGA=0.0009 g | TH=0.0398 g | STA/LTA=0.57 | AMP=0 | ONSET=0 | STATE=NORMAL
+DEBUG | VIB=0.0018 g | PGA=0.0009 g | TH=0.0398 g | STA/LTA=0.86 | AMP=0 | ONSET=0 | STATE=NORMAL
+DEBUG | VIB=0.0090 g | PGA=0.0089 g | TH=0.0398 g | STA/LTA=2.00 | AMP=0 | ONSET=0 | STATE=NORMAL
+
+CANDIDATE EVENT
+Validating for 1200 ms...
+
+DEBUG | VIB=0.1273 g | PGA=0.1271 g | TH=0.0398 g | STA/LTA=0.12 | AMP=1 | ONSET=0 | STATE=CANDIDATE
+
+VALIDATION RESULT
+Active ratio:       1.00
+Second-half active: 60
+Strong hits:        120
+Direction changes:  3
+Max quiet gap:      0 samples
+Peak vibration:     2.6971 g
+Peak PGA:           2.6883 g
+Threshold:          0.0398 g
+FALSE TRIGGER - DISCARDED
+
+DEBUG | VIB=0.0830 g | PGA=0.0828 g | TH=0.0398 g | STA/LTA=0.00 | AMP=1 | ONSET=0 | STATE=NORMAL
+DEBUG | VIB=0.0443 g | PGA=0.0440 g | TH=0.0398 g | STA/LTA=0.72 | AMP=1 | ONSET=0 | STATE=NORMAL
+DEBUG | VIB=0.0290 g | PGA=0.0289 g | TH=0.0398 g | STA/LTA=0.71 | AMP=0 | ONSET=0 | STATE=NORMAL
+DEBUG | VIB=0.0120 g | PGA=0.0119 g | TH=0.0398 g | STA/LTA=0.87 | AMP=0 | ONSET=0 | STATE=NORMAL
+
+CANDIDATE EVENT
+Validating for 1200 ms...
+
+DEBUG | VIB=1.9527 g | PGA=1.9524 g | TH=0.0398 g | STA/LTA=1.14 | AMP=1 | ONSET=0 | STATE=CANDIDATE
+
+VALIDATION RESULT
+Active ratio:       1.00
+Second-half active: 60
+Strong hits:        120
+Direction changes:  10
+Max quiet gap:      0 samples
+Peak vibration:     2.7983 g
+Peak PGA:           2.7983 g
+Threshold:          0.0398 g
+EARTHQUAKE CONFIRMED
+
+################################
+EARTHQUAKE CONFIRMED
+SEQUENCE: 1
+BUZZER: QUEUED
+ESP-NOW EVENT_START: SENT
+################################
+
+DEBUG | VIB=0.1191 g | PGA=0.1188 g | TH=0.0398 g | STA/LTA=0.13 | AMP=1 | ONSET=0 | STATE=EVENT
+DEBUG | VIB=0.0916 g | PGA=0.0912 g | TH=0.0398 g | STA/LTA=0.72 | AMP=1 | ONSET=0 | STATE=EVENT
+DEBUG | VIB=0.0530 g | PGA=0.0530 g | TH=0.0398 g | STA/LTA=0.76 | AMP=1 | ONSET=0 | STATE=EVENT
+DEBUG | VIB=0.0365 g | PGA=0.0345 g | TH=0.0398 g | STA/LTA=0.74 | AMP=0 | ONSET=0 | STATE=EVENT
+DEBUG | VIB=0.0196 g | PGA=0.0193 g | TH=0.0398 g | STA/LTA=0.76 | AMP=0 | ONSET=0 | STATE=EVENT
+================================
+EARTHQUAKE DETECTED
+================================
+LEVEL:            VERY STRONG
+PEAK PGA:         2.7983 g
+PEAK VIBRATION:   2.7983 g
+RMS VIBRATION:    0.8279 g
+DURATION:         6.00 s
+MAGNITUDE EST:    9.9
+INTENSITY EST:    VIII
+SEQUENCE:         1
+WAVEFORM:         SENT
+EVENT FINAL:      SENT
+================================
+
+DEBUG | VIB=0.0131 g | PGA=0.0129 g | TH=0.0398 g | STA/LTA=0.00 | AMP=0 | ONSET=0 | STATE=NORMAL
+DEBUG | VIB=1.0961 g | PGA=1.0960 g | TH=0.0398 g | STA/LTA=1.27 | AMP=1 | ONSET=0 | STATE=NORMAL
+DEBUG | VIB=0.1922 g | PGA=0.1920 g | TH=0.0398 g | STA/LTA=0.12 | AMP=1 | ONSET=0 | STATE=NORMAL
+DEBUG | VIB=0.1224 g | PGA=0.1222 g | TH=0.0398 g | STA/LTA=0.75 | AMP=1 | ONSET=0 | STATE=NORMAL
+DEBUG | VIB=0.0718 g | PGA=0.0718 g | TH=0.0398 g | STA/LTA=0.74 | AMP=1 | ONSET=0 | STATE=NORMAL
+DEBUG | VIB=0.0400 g | PGA=0.0400 g | TH=0.0398 g | STA/LTA=0.74 | AMP=1 | ONSET=0 | STATE=NORMAL
+DEBUG | VIB=0.0270 g | PGA=0.0269 g | TH=0.0398 g | STA/LTA=0.74 | AMP=0 | ONSET=0 | STATE=NORMAL
+DEBUG | VIB=0.0175 g | PGA=0.0164 g | TH=0.0398 g | STA/LTA=0.76 | AMP=0 | ONSET=0 | STATE=NORMAL
+DEBUG | VIB=0.0112 g | PGA=0.0111 g | TH=0.0398 g | STA/LTA=0.86 | AMP=0 | ONSET=0 | STATE=NORMAL
+DEBUG | VIB=2.5306 g | PGA=2.5304 g | TH=0.0398 g | STA/LTA=1.28 | AMP=1 | ONSET=0 | STATE=NORMAL
+DEBUG | VIB=0.1567 g | PGA=0.1565 g | TH=0.0398 g | STA/LTA=0.09 | AMP=1 | ONSET=0 | STATE=NORMAL
+DEBUG | VIB=0.1002 g | PGA=0.0999 g | TH=0.0398 g | STA/LTA=0.74 | AMP=1 | ONSET=0 | STATE=NORMAL
+DEBUG | VIB=0.0618 g | PGA=0.0613 g | TH=0.0398 g | STA/LTA=0.74 | AMP=1 | ONSET=0 | STATE=NORMAL
+DEBUG | VIB=0.0349 g | PGA=0.0348 g | TH=0.0398 g | STA/LTA=0.72 | AMP=0 | ONSET=0 | STATE=NORMAL
+DEBUG | VIB=0.0249 g | PGA=0.0242 g | TH=0.0398 g | STA/LTA=0.78 | AMP=0 | ONSET=0 | STATE=NORMAL
+DEBUG | VIB=0.0151 g | PGA=0.0070 g | TH=0.0398 g | STA/LTA=0.91 | AMP=0 | ONSET=0 | STATE=NORMAL
+DEBUG | VIB=0.0107 g | PGA=0.0105 g | TH=0.0398 g | STA/LTA=0.71 | AMP=0 | ONSET=0 | STATE=NORMAL
+DEBUG | VIB=0.0047 g | PGA=0.0042 g | TH=0.0398 g | STA/LTA=0.95 | AMP=0 | ONSET=0 | STATE=NORMAL
+DEBUG | VIB=0.0028 g | PGA=0.0021 g | TH=0.0398 g | STA/LTA=0.71 | AMP=0 | ONSET=0 | STATE=NORMAL
+DEBUG | VIB=0.0025 g | PGA=0.0014 g | TH=0.0398 g | STA/LTA=0.66 | AMP=0 | ONSET=0 | STATE=NORMAL
+DEBUG | VIB=0.0051 g | PGA=0.0047 g | TH=0.0398 g | STA/LTA=1.50 | AMP=0 | ONSET=0 | STATE=NORMAL
+DEBUG | VIB=0.0035 g | PGA=0.0030 g | TH=0.0398 g | STA/LTA=0.65 | AMP=0 | ONSET=0 | STATE=NORMAL
+DEBUG | VIB=0.0091 g | PGA=0.0067 g | TH=0.0398 g | STA/LTA=1.17 | AMP=0 | ONSET=0 | STATE=NORMAL
+DEBUG | VIB=0.0026 g | PGA=0.0014 g | TH=0.0398 g | STA/LTA=0.69 | AMP=0 | ONSET=0 | STATE=NORMAL
+DEBUG | VIB=0.0047 g | PGA=0.0043 g | TH=0.0398 g | STA/LTA=0.77 | AMP=0 | ONSET=0 | STATE=NORMAL
+DEBUG | VIB=0.0116 g | PGA=0.0063 g | TH=0.0398 g | STA/LTA=1.40 | AMP=0 | ONSET=0 | STATE=NORMAL
+DEBUG | VIB=0.0042 g | PGA=0.0037 g | TH=0.0398 g | STA/LTA=0.71 | AMP=0 | ONSET=0 | STATE=NORMAL
+DEBUG | VIB=0.0053 g | PGA=0.0050 g | TH=0.0398 g | STA/LTA=1.24 | AMP=0 | ONSET=0 | STATE=NORMAL
+DEBUG | VIB=0.0025 g | PGA=0.0015 g | TH=0.0398 g | STA/LTA=0.69 | AMP=0 | ONSET=0 | STATE=NORMAL
+DEBUG | VIB=0.0043 g | PGA=0.0040 g | TH=0.0398 g | STA/LTA=0.93 | AMP=0 | ONSET=0 | STATE=NORMAL
+DEBUG | VIB=0.0042 g | PGA=0.0036 g | TH=0.0398 g | STA/LTA=0.64 | AMP=0 | ONSET=0 | STATE=NORMAL
+
+CANDIDATE EVENT
+Validating for 1200 ms...
+
+DEBUG | VIB=2.0019 g | PGA=1.9994 g | TH=0.0398 g | STA/LTA=1.48 | AMP=1 | ONSET=0 | STATE=CANDIDATE
+
+VALIDATION RESULT
+Active ratio:       1.00
+Second-half active: 60
+Strong hits:        120
+Direction changes:  4
+Max quiet gap:      0 samples
+Peak vibration:     2.8034 g
+Peak PGA:           2.8026 g
+Threshold:          0.0398 g
+EARTHQUAKE CONFIRMED
+
+################################
+EARTHQUAKE CONFIRMED
+SEQUENCE: 2
+BUZZER: QUEUED
+ESP-NOW EVENT_START: SENT
+################################
+
+DEBUG | VIB=0.2561 g | PGA=0.2561 g | TH=0.0398 g | STA/LTA=0.14 | AMP=1 | ONSET=0 | STATE=EVENT
+DEBUG | VIB=0.1827 g | PGA=0.1822 g | TH=0.0398 g | STA/LTA=0.74 | AMP=1 | ONSET=0 | STATE=EVENT
+DEBUG | VIB=0.1092 g | PGA=0.1092 g | TH=0.0398 g | STA/LTA=0.75 | AMP=1 | ONSET=0 | STATE=EVENT
+DEBUG | VIB=0.0667 g | PGA=0.0661 g | TH=0.0398 g | STA/LTA=0.74 | AMP=1 | ONSET=0 | STATE=EVENT
+DEBUG | VIB=0.0385 g | PGA=0.0383 g | TH=0.0398 g | STA/LTA=0.73 | AMP=0 | ONSET=0 | STATE=EVENT
+================================
+EARTHQUAKE DETECTED
+================================
+LEVEL:            VERY STRONG
+PEAK PGA:         2.8026 g
+PEAK VIBRATION:   2.8034 g
+RMS VIBRATION:    1.0130 g
+DURATION:         6.00 s
+MAGNITUDE EST:    9.9
+INTENSITY EST:    VIII
+SEQUENCE:         2
+WAVEFORM:         SENT
+EVENT FINAL:      SENT
+================================
+
+DEBUG | VIB=0.0225 g | PGA=0.0223 g | TH=0.0398 g | STA/LTA=0.00 | AMP=0 | ONSET=0 | STATE=NORMAL
+DEBUG | VIB=0.0172 g | PGA=0.0170 g | TH=0.0398 g | STA/LTA=0.79 | AMP=0 | ONSET=0 | STATE=NORMAL
+DEBUG | VIB=0.0121 g | PGA=0.0118 g | TH=0.0398 g | STA/LTA=0.83 | AMP=0 | ONSET=0 | STATE=NORMAL
+DEBUG | VIB=0.0039 g | PGA=0.0036 g | TH=0.0398 g | STA/LTA=0.68 | AMP=0 | ONSET=0 | STATE=NORMAL
+DEBUG | VIB=1.1559 g | PGA=1.1555 g | TH=0.0398 g | STA/LTA=4.96 | AMP=1 | ONSET=1 | STATE=NORMAL
+DEBUG | VIB=1.8080 g | PGA=1.8078 g | TH=0.0398 g | STA/LTA=0.93 | AMP=1 | ONSET=0 | STATE=NORMAL
+DEBUG | VIB=0.1748 g | PGA=0.1729 g | TH=0.0398 g | STA/LTA=0.13 | AMP=1 | ONSET=0 | STATE=NORMAL
+DEBUG | VIB=0.1119 g | PGA=0.1103 g | TH=0.0398 g | STA/LTA=0.75 | AMP=1 | ONSET=0 | STATE=NORMAL
+DEBUG | VIB=0.0667 g | PGA=0.0662 g | TH=0.0398 g | STA/LTA=0.74 | AMP=1 | ONSET=0 | STATE=NORMAL
+DEBUG | VIB=0.3655 g | PGA=0.3652 g | TH=0.0398 g | STA/LTA=1.81 | AMP=1 | ONSET=0 | STATE=NORMAL
+DEBUG | VIB=0.0897 g | PGA=0.0896 g | TH=0.0398 g | STA/LTA=0.11 | AMP=1 | ONSET=0 | STATE=NORMAL
+DEBUG | VIB=0.0567 g | PGA=0.0567 g | TH=0.0398 g | STA/LTA=0.73 | AMP=1 | ONSET=0 | STATE=NORMAL
+DEBUG | VIB=0.0373 g | PGA=0.0373 g | TH=0.0398 g | STA/LTA=0.79 | AMP=0 | ONSET=0 | STATE=NORMAL
+DEBUG | VIB=0.0198 g | PGA=0.0198 g | TH=0.0398 g | STA/LTA=0.73 | AMP=0 | ONSET=0 | STATE=NORMAL
+DEBUG | VIB=0.0122 g | PGA=0.0108 g | TH=0.0398 g | STA/LTA=0.75 | AMP=0 | ONSET=0 | STATE=NORMAL
+
+CANDIDATE EVENT
+Validating for 1200 ms...
+
+DEBUG | VIB=1.0201 g | PGA=1.0194 g | TH=0.0398 g | STA/LTA=2.48 | AMP=1 | ONSET=0 | STATE=CANDIDATE
+
+VALIDATION RESULT
+Active ratio:       1.00
+Second-half active: 60
+Strong hits:        120
+Direction changes:  4
+Max quiet gap:      0 samples
+Peak vibration:     2.8451 g
+Peak PGA:           2.8433 g
+Threshold:          0.0398 g
+EARTHQUAKE CONFIRMED
+
+################################
+EARTHQUAKE CONFIRMED
+SEQUENCE: 3
+BUZZER: QUEUED
+ESP-NOW EVENT_START: SENT
+################################
+
+DEBUG | VIB=0.6195 g | PGA=0.6151 g | TH=0.0398 g | STA/LTA=0.51 | AMP=1 | ONSET=0 | STATE=EVENT
+DEBUG | VIB=0.1948 g | PGA=0.1930 g | TH=0.0398 g | STA/LTA=0.41 | AMP=1 | ONSET=0 | STATE=EVENT
+DEBUG | VIB=0.0735 g | PGA=0.0735 g | TH=0.0398 g | STA/LTA=0.73 | AMP=1 | ONSET=0 | STATE=EVENT
+DEBUG | VIB=0.0466 g | PGA=0.0464 g | TH=0.0398 g | STA/LTA=0.75 | AMP=1 | ONSET=0 | STATE=EVENT
+DEBUG | VIB=0.0363 g | PGA=0.0330 g | TH=0.0398 g | STA/LTA=0.74 | AMP=0 | ONSET=0 | STATE=EVENT
+================================
+EARTHQUAKE DETECTED
+================================
+LEVEL:            VERY STRONG
+PEAK PGA:         2.8433 g
+PEAK VIBRATION:   2.8451 g
+RMS VIBRATION:    0.8271 g
+DURATION:         6.00 s
+MAGNITUDE EST:    9.9
+INTENSITY EST:    VIII
+SEQUENCE:         3
+WAVEFORM:         SENT
+EVENT FINAL:      SENT
+================================
+
+DEBUG | VIB=0.0176 g | PGA=0.0168 g | TH=0.0398 g | STA/LTA=0.00 | AMP=0 | ONSET=0 | STATE=NORMAL
+DEBUG | VIB=0.0180 g | PGA=0.0171 g | TH=0.0398 g | STA/LTA=1.05 | AMP=0 | ONSET=0 | STATE=NORMAL
+DEBUG | VIB=0.0069 g | PGA=0.0067 g | TH=0.0398 g | STA/LTA=0.70 | AMP=0 | ONSET=0 | STATE=NORMAL
+DEBUG | VIB=0.0027 g | PGA=0.0020 g | TH=0.0398 g | STA/LTA=0.90 | AMP=0 | ONSET=0 | STATE=NORMAL
+DEBUG | VIB=0.0115 g | PGA=0.0060 g | TH=0.0398 g | STA/LTA=0.98 | AMP=0 | ONSET=0 | STATE=NORMAL
+DEBUG | VIB=0.0038 g | PGA=0.0034 g | TH=0.0398 g | STA/LTA=0.55 | AMP=0 | ONSET=0 | STATE=NORMAL
+DEBUG | VIB=0.0040 g | PGA=0.0033 g | TH=0.0398 g | STA/LTA=1.22 | AMP=0 | ONSET=0 | STATE=NORMAL
+DEBUG | VIB=0.0059 g | PGA=0.0013 g | TH=0.0398 g | STA/LTA=0.54 | AMP=0 | ONSET=0 | STATE=NORMAL
+DEBUG | VIB=0.0022 g | PGA=0.0014 g | TH=0.0398 g | STA/LTA=0.82 | AMP=0 | ONSET=0 | STATE=NORMAL
+DEBUG | VIB=0.0023 g | PGA=0.0016 g | TH=0.0398 g | STA/LTA=0.85 | AMP=0 | ONSET=0 | STATE=NORMAL
+DEBUG | VIB=0.0067 g | PGA=0.0029 g | TH=0.0398 g | STA/LTA=0.61 | AMP=0 | ONSET=0 | STATE=NORMAL
+DEBUG | VIB=0.0081 g | PGA=0.0052 g | TH=0.0398 g | STA/LTA=1.33 | AMP=0 | ONSET=0 | STATE=NORMAL
+DEBUG | VIB=0.0029 g | PGA=0.0017 g | TH=0.0398 g | STA/LTA=0.62 | AMP=0 | ONSET=0 | STATE=NORMAL
+DEBUG | VIB=0.0065 g | PGA=0.0028 g | TH=0.0398 g | STA/LTA=0.97 | AMP=0 | ONSET=0 | STATE=NORMAL
+DEBUG | VIB=0.0082 g | PGA=0.0057 g | TH=0.0398 g | STA/LTA=0.62 | AMP=0 | ONSET=0 | STATE=NORMAL
+DEBUG | VIB=0.0033 g | PGA=0.0027 g | TH=0.0398 g | STA/LTA=0.73 | AMP=0 | ONSET=0 | STATE=NORMAL
+DEBUG | VIB=0.0061 g | PGA=0.0018 g | TH=0.0398 g | STA/LTA=2.06 | AMP=0 | ONSET=0 | STATE=NORMAL
+DEBUG | VIB=0.0030 g | PGA=0.0018 g | TH=0.0398 g | STA/LTA=0.65 | AMP=0 | ONSET=0 | STATE=NORMAL
+DEBUG | VIB=0.0029 g | PGA=0.0017 g | TH=0.0398 g | STA/LTA=0.83 | AMP=0 | ONSET=0 | STATE=NORMAL
+DEBUG | VIB=0.0035 g | PGA=0.0031 g | TH=0.0398 g | STA/LTA=0.82 | AMP=0 | ONSET=0 | STATE=NORMAL
+DEBUG | VIB=0.0024 g | PGA=0.0018 g | TH=0.0398 g | STA/LTA=0.69 | AMP=0 | ONSET=0 | STATE=NORMAL
+DEBUG | VIB=0.0057 g | PGA=0.0053 g | TH=0.0398 g | STA/LTA=1.86 | AMP=0 | ONSET=0 | STATE=NORMAL
+DEBUG | VIB=0.0036 g | PGA=0.0031 g | TH=0.0398 g | STA/LTA=0.59 | AMP=0 | ONSET=0 | STATE=NORMAL
+DEBUG | VIB=0.0068 g | PGA=0.0038 g | TH=0.0398 g | STA/LTA=1.08 | AMP=0 | ONSET=0 | STATE=NORMAL
+DEBUG | VIB=0.0037 g | PGA=0.0031 g | TH=0.0398 g | STA/LTA=0.71 | AMP=0 | ONSET=0 | STATE=NORMAL
+DEBUG | VIB=0.0054 g | PGA=0.0051 g | TH=0.0398 g | STA/LTA=0.78 | AMP=0 | ONSET=0 | STATE=NORMAL
+DEBUG | VIB=0.0103 g | PGA=0.0084 g | TH=0.0398 g | STA/LTA=1.57 | AMP=0 | ONSET=0 | STATE=NORMAL
+DEBUG | VIB=0.0027 g | PGA=0.0018 g | TH=0.0398 g | STA/LTA=0.71 | AMP=0 | ONSET=0 | STATE=NORMAL
+DEBUG | VIB=0.0075 g | PGA=0.0072 g | TH=0.0398 g | STA/LTA=1.12 | AMP=0 | ONSET=0 | STATE=NORMAL
+DEBUG | VIB=0.0036 g | PGA=0.0030 g | TH=0.0398 g | STA/LTA=0.76 | AMP=0 | ONSET=0 | STATE=NORMAL
+DEBUG | VIB=0.0028 g | PGA=0.0017 g | TH=0.0398 g | STA/LTA=0.93 | AMP=0 | ONSET=0 | STATE=NORMAL
+DEBUG | VIB=0.0102 g | PGA=0.0086 g | TH=0.0398 g | STA/LTA=1.32 | AMP=0 | ONSET=0 | STATE=NORMAL
+DEBUG | VIB=0.0067 g | PGA=0.0065 g | TH=0.0398 g | STA/LTA=0.73 | AMP=0 | ONSET=0 | STATE=NORMAL
+DEBUG | VIB=0.0102 g | PGA=0.0038 g | TH=0.0398 g | STA/LTA=1.10 | AMP=0 | ONSET=0 | STATE=NORMAL
+DEBUG | VIB=0.0029 g | PGA=0.0018 g | TH=0.0398 g | STA/LTA=0.75 | AMP=0 | ONSET=0 | STATE=NORMAL
+DEBUG | VIB=0.0036 g | PGA=0.0030 g | TH=0.0398 g | STA/LTA=0.86 | AMP=0 | ONSET=0 | STATE=NORMAL
+DEBUG | VIB=0.0083 g | PGA=0.0059 g | TH=0.0398 g | STA/LTA=0.94 | AMP=0 | ONSET=0 | STATE=NORMAL
+DEBUG | VIB=0.0062 g | PGA=0.0018 g | TH=0.0398 g | STA/LTA=0.69 | AMP=0 | ONSET=0 | STATE=NORMAL
+DEBUG | VIB=0.0064 g | PGA=0.0018 g | TH=0.0398 g | STA/LTA=1.38 | AMP=0 | ONSET=0 | STATE=NORMAL
+DEBUG | VIB=0.0037 g | PGA=0.0030 g | TH=0.0398 g | STA/LTA=0.71 | AMP=0 | ONSET=0 | STATE=NORMAL
+DEBUG | VIB=0.0025 g | PGA=0.0018 g | TH=0.0398 g | STA/LTA=0.92 | AMP=0 | ONSET=0 | STATE=NORMAL
+DEBUG | VIB=0.0041 g | PGA=0.0038 g | TH=0.0398 g | STA/LTA=0.57 | AMP=0 | ONSET=0 | STATE=NORMAL
+DEBUG | VIB=0.0024 g | PGA=0.0019 g | TH=0.0398 g | STA/LTA=0.74 | AMP=0 | ONSET=0 | STATE=NORMAL
+DEBUG | VIB=0.0100 g | PGA=0.0029 g | TH=0.0398 g | STA/LTA=1.54 | AMP=0 | ONSET=0 | STATE=NORMAL
+DEBUG | VIB=0.0035 g | PGA=0.0029 g | TH=0.0398 g | STA/LTA=0.57 | AMP=0 | ONSET=0 | STATE=NORMAL
+DEBUG | VIB=0.0056 g | PGA=0.0052 g | TH=0.0398 g | STA/LTA=1.12 | AMP=0 | ONSET=0 | STATE=NORMAL
+DEBUG | VIB=0.0066 g | PGA=0.0029 g | TH=0.0398 g | STA/LTA=0.69 | AMP=0 | ONSET=0 | STATE=NORMAL
+DEBUG | VIB=0.0034 g | PGA=0.0029 g | TH=0.0398 g | STA/LTA=0.76 | AMP=0 | ONSET=0 | STATE=NORMAL
+DEBUG | VIB=0.0105 g | PGA=0.0029 g | TH=0.0398 g | STA/LTA=1.67 | AMP=0 | ONSET=0 | STATE=NORMAL
+DEBUG | VIB=0.0045 g | PGA=0.0039 g | TH=0.0398 g | STA/LTA=0.71 | AMP=0 | ONSET=0 | STATE=NORMAL
+DEBUG | VIB=0.0069 g | PGA=0.0065 g | TH=0.0398 g | STA/LTA=1.10 | AMP=0 | ONSET=0 | STATE=NORMAL
+DEBUG | VIB=0.0065 g | PGA=0.0033 g | TH=0.0398 g | STA/LTA=0.75 | AMP=0 | ONSET=0 | STATE=NORMAL
+DEBUG | VIB=0.0054 g | PGA=0.0052 g | TH=0.0398 g | STA/LTA=1.01 | AMP=0 | ONSET=0 | STATE=NORMAL
+DEBUG | VIB=0.0117 g | PGA=0.0057 g | TH=0.0398 g | STA/LTA=1.24 | AMP=0 | ONSET=0 | STATE=NORMAL
+DEBUG | VIB=0.0066 g | PGA=0.0019 g | TH=0.0398 g | STA/LTA=0.75 | AMP=0 | ONSET=0 | STATE=NORMAL
+
+CANDIDATE EVENT
+Validating for 1200 ms...
+
+DEBUG | VIB=2.7794 g | PGA=2.7793 g | TH=0.0398 g | STA/LTA=1.09 | AMP=1 | ONSET=0 | STATE=CANDIDATE
+
+VALIDATION RESULT
+Active ratio:       1.00
+Second-half active: 60
+Strong hits:        120
+Direction changes:  5
+Max quiet gap:      0 samples
+Peak vibration:     2.8313 g
+Peak PGA:           2.8255 g
+Threshold:          0.0398 g
+EARTHQUAKE CONFIRMED
+
+################################
+EARTHQUAKE CONFIRMED
+SEQUENCE: 4
+BUZZER: QUEUED
+ESP-NOW EVENT_START: SENT
+################################
+
+DEBUG | VIB=0.1429 g | PGA=0.1427 g | TH=0.0398 g | STA/LTA=0.11 | AMP=1 | ONSET=0 | STATE=EVENT
+DEBUG | VIB=0.0909 g | PGA=0.0904 g | TH=0.0398 g | STA/LTA=0.72 | AMP=1 | ONSET=0 | STATE=EVENT
+DEBUG | VIB=0.0509 g | PGA=0.0508 g | TH=0.0398 g | STA/LTA=0.74 | AMP=1 | ONSET=0 | STATE=EVENT
+DEBUG | VIB=0.0308 g | PGA=0.0308 g | TH=0.0398 g | STA/LTA=0.73 | AMP=0 | ONSET=0 | STATE=EVENT
+DEBUG | VIB=0.0225 g | PGA=0.0165 g | TH=0.0398 g | STA/LTA=0.85 | AMP=0 | ONSET=0 | STATE=EVENT
+================================
+EARTHQUAKE DETECTED
+================================
+LEVEL:            VERY STRONG
+PEAK PGA:         2.8255 g
+PEAK VIBRATION:   2.8313 g
+RMS VIBRATION:    0.8987 g
+DURATION:         6.00 s
+MAGNITUDE EST:    9.9
+INTENSITY EST:    VIII
+SEQUENCE:         4
+WAVEFORM:         SENT
+EVENT FINAL:      SENT
+================================
+
+DEBUG | VIB=0.0140 g | PGA=0.0140 g | TH=0.0398 g | STA/LTA=0.00 | AMP=0 | ONSET=0 | STATE=NORMAL
+DEBUG | VIB=0.0098 g | PGA=0.0095 g | TH=0.0398 g | STA/LTA=0.88 | AMP=0 | ONSET=0 | STATE=NORMAL
+DEBUG | VIB=0.0035 g | PGA=0.0028 g | TH=0.0398 g | STA/LTA=0.60 | AMP=0 | ONSET=0 | STATE=NORMAL
+DEBUG | VIB=0.0022 g | PGA=0.0010 g | TH=0.0398 g | STA/LTA=0.68 | AMP=0 | ONSET=0 | STATE=NORMAL
+DEBUG | VIB=0.0044 g | PGA=0.0040 g | TH=0.0398 g | STA/LTA=1.49 | AMP=0 | ONSET=0 | STATE=NORMAL
+DEBUG | VIB=0.0065 g | PGA=0.0033 g | TH=0.0398 g | STA/LTA=0.72 | AMP=0 | ONSET=0 | STATE=NORMAL
+DEBUG | VIB=0.0105 g | PGA=0.0047 g | TH=0.0398 g | STA/LTA=1.03 | AMP=0 | ONSET=0 | STATE=NORMAL
+DEBUG | VIB=0.0059 g | PGA=0.0027 g | TH=0.0398 g | STA/LTA=0.70 | AMP=0 | ONSET=0 | STATE=NORMAL
+DEBUG | VIB=1.2597 g | PGA=1.2587 g | TH=0.0398 g | STA/LTA=18.09 | AMP=1 | ONSET=1 | STATE=NORMAL
+DEBUG | VIB=0.3458 g | PGA=0.3453 g | TH=0.0398 g | STA/LTA=0.70 | AMP=1 | ONSET=0 | STATE=NORMAL
+DEBUG | VIB=0.5534 g | PGA=0.5531 g | TH=0.0398 g | STA/LTA=0.77 | AMP=1 | ONSET=0 | STATE=NORMAL
+DEBUG | VIB=0.0635 g | PGA=0.0635 g | TH=0.0398 g | STA/LTA=0.18 | AMP=1 | ONSET=0 | STATE=NORMAL
+
+CANDIDATE EVENT
+Validating for 1200 ms...
+
+DEBUG | VIB=1.0989 g | PGA=1.0989 g | TH=0.0398 g | STA/LTA=11.07 | AMP=1 | ONSET=1 | STATE=CANDIDATE
+DEBUG | VIB=1.4145 g | PGA=1.4145 g | TH=0.0398 g | STA/LTA=0.67 | AMP=1 | ONSET=0 | STATE=CANDIDATE
+
+VALIDATION RESULT
+Active ratio:       1.00
+Second-half active: 60
+Strong hits:        120
+Direction changes:  7
+Max quiet gap:      0 samples
+Peak vibration:     2.6123 g
+Peak PGA:           2.6123 g
+Threshold:          0.0398 g
+EARTHQUAKE CONFIRMED
+
+################################
+EARTHQUAKE CONFIRMED
+SEQUENCE: 5
+BUZZER: QUEUED
+ESP-NOW EVENT_START: SENT
+################################
+
+DEBUG | VIB=0.0555 g | PGA=0.0555 g | TH=0.0398 g | STA/LTA=0.17 | AMP=1 | ONSET=0 | STATE=EVENT
+DEBUG | VIB=0.2442 g | PGA=0.2442 g | TH=0.0398 g | STA/LTA=1.99 | AMP=1 | ONSET=0 | STATE=EVENT
+DEBUG | VIB=0.0130 g | PGA=0.0120 g | TH=0.0398 g | STA/LTA=0.38 | AMP=0 | ONSET=0 | STATE=EVENT
+DEBUG | VIB=0.0095 g | PGA=0.0095 g | TH=0.0398 g | STA/LTA=0.64 | AMP=0 | ONSET=0 | STATE=EVENT
+================================
+EARTHQUAKE DETECTED
+================================
+LEVEL:            VERY STRONG
+PEAK PGA:         2.6123 g
+PEAK VIBRATION:   2.6123 g
+RMS VIBRATION:    0.6667 g
+DURATION:         5.90 s
+MAGNITUDE EST:    9.9
+INTENSITY EST:    VIII
+SEQUENCE:         5
+WAVEFORM:         SENT
+EVENT FINAL:      SENT
+================================
+
+DEBUG | VIB=0.0073 g | PGA=0.0055 g | TH=0.0398 g | STA/LTA=0.00 | AMP=0 | ONSET=0 | STATE=NORMAL

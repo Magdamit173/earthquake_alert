@@ -1,0 +1,89 @@
+Command: C:\Espressif\python_env\idf5.5_py3.11_env\Scripts\python.exe C:\Espressif\frameworks\esp-idf-v5.5.5\tools/idf_monitor.py -p com11 -b 115200 --toolchain-prefix riscv32-esp-elf- --target esp32c3 --revision 3 --decode-panic backtrace C:\Magdamit173\UCC\earthquake_alert\build\earthquake_alert.elf C:\Magdamit173\UCC\earthquake_alert\build\bootloader\bootloader.elf --force-color -m 'C:\Espressif\python_env\idf5.5_py3.11_env\Scripts\python.exe' 'C:\Espressif\frameworks\esp-idf-v5.5.5\tools\idf.py' '-p' 'com11'
+ESP-ROM:esp32c3-api1-20210207
+Build:Feb  7 2021
+rst:0x15 (USB_UART_CHIP_RESET),boot:0x5 (DOWNLOAD(USB/UART0/1))
+Saved PC:0x400462e2
+waiting for download
+[0;32mI (503) phy_init: Saving new calibration data due to checksum failure or outdated calibration data, mode(0)[0m
+[0;32mI (513) wifi:mode : sta (10:00:3b:ae:d2:9c)[0m
+[0;32mI (513) wifi:enable tsf[0m
+[0;32mI (513) wifi:Set ps type: 0, coexist: 0[0m
+
+[0;32mI (513) ESPNOW: espnow [version: 2.0] init[0m
+
+================================
+EARTHQUAKE ALERT SLAVE
+================================
+NODE ID:           4
+CHANNEL:           1
+MASTER:            98:F4:AB:3A:62:00
+SAMPLE RATE:       100 Hz
+VALIDATION:        1200 ms
+WAVEFORM RATE:     10 Hz
+WAVEFORM RANGE:    -2 s to +6 s
+BUZZER:            QUEUED
+================================
+
+Keep sensor still during calibration.
+CALIBRATING...
+
+Calibration phase 1: gravity...
+Calibration phase 2: noise...
+
+CALIBRATION COMPLETE
+GRAVITY: X=0.0181 Y=0.0009 Z=-0.9295 g
+NOISE RMS: 0.00649 g
+DETECTION THRESHOLD: 0.03893 g
+READY
+
+DEBUG | VIB=0.0089 g | PGA=0.0062 g | TH=0.0389 g | STA/LTA=0.00 | AMP=0 | ONSET=0 | STATE=NORMAL
+
+CANDIDATE EVENT
+Validating for 1200 ms...
+
+DEBUG | VIB=2.3469 g | PGA=2.3454 g | TH=0.0389 g | STA/LTA=1.25 | AMP=1 | ONSET=0 | STATE=CANDIDATE
+
+VALIDATION RESULT
+Active ratio:       1.00
+Second-half active: 60
+Strong hits:        120
+Direction changes:  8
+Max quiet gap:      0 samples
+Peak vibration:     2.6415 g
+Peak PGA:           2.6392 g
+Threshold:          0.0389 g
+
+################################
+EARTHQUAKE CONFIRMED
+################################
+BUZZER QUEUED: YES
+
+DEBUG | VIB=0.0781 g | PGA=0.0781 g | TH=0.0389 g | STA/LTA=0.08 | AMP=1 | ONSET=0 | STATE=EVENT
+DEBUG | VIB=0.0497 g | PGA=0.0494 g | TH=0.0389 g | STA/LTA=0.66 | AMP=1 | ONSET=0 | STATE=EVENT
+DEBUG | VIB=2.3355 g | PGA=2.3351 g | TH=0.0389 g | STA/LTA=3.01 | AMP=1 | ONSET=1 | STATE=EVENT
+DEBUG | VIB=1.1970 g | PGA=1.1969 g | TH=0.0389 g | STA/LTA=0.78 | AMP=1 | ONSET=0 | STATE=EVENT
+DEBUG | VIB=0.0835 g | PGA=0.0835 g | TH=0.0389 g | STA/LTA=0.11 | AMP=1 | ONSET=0 | STATE=EVENT
+
+================================
+EARTHQUAKE DETECTED
+================================
+LEVEL:            VERY STRONG
+PEAK PGA:         2.6392 g
+PEAK VIBRATION:   2.6415 g
+RMS VIBRATION:    0.9429 g
+DURATION:         6.00 s
+MAGNITUDE EST:    9.9
+INTENSITY EST:    VIII
+SEQUENCE:         1
+================================
+
+EVENT TRANSMISSION COMPLETE
+
+DEBUG | VIB=0.0543 g | PGA=0.0542 g | TH=0.0389 g | STA/LTA=0.00 | AMP=1 | ONSET=0 | STATE=NORMAL
+DEBUG | VIB=0.0370 g | PGA=0.0367 g | TH=0.0389 g | STA/LTA=0.82 | AMP=0 | ONSET=0 | STATE=NORMAL
+DEBUG | VIB=2.0679 g | PGA=2.0677 g | TH=0.0389 g | STA/LTA=1.44 | AMP=1 | ONSET=0 | STATE=NORMAL
+DEBUG | VIB=0.0790 g | PGA=0.0790 g | TH=0.0389 g | STA/LTA=0.07 | AMP=1 | ONSET=0 | STATE=NORMAL
+DEBUG | VIB=0.0504 g | PGA=0.0504 g | TH=0.0389 g | STA/LTA=0.74 | AMP=1 | ONSET=0 | STATE=NORMAL
+DEBUG | VIB=0.0257 g | PGA=0.0253 g | TH=0.0389 g | STA/LTA=0.72 | AMP=0 | ONSET=0 | STATE=NORMAL
+DEBUG | VIB=1.1580 g | PGA=1.1519 g | TH=0.0389 g | STA/LTA=1.60 | AMP=1 | ONSET=0 | STATE=NORMAL
+DEBUG | VIB=1.4539 g | PGA=1.4539 g | TH=0.0389 g | STA/LTA=0.94 | AMP=1 | ONSET=0 | STATE=NORMAL
