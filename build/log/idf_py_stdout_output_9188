@@ -1,0 +1,129 @@
+Command: C:\Espressif\python_env\idf5.5_py3.11_env\Scripts\python.exe C:\Espressif\frameworks\esp-idf-v5.5.5\tools/idf_monitor.py -p COM11 -b 115200 --toolchain-prefix riscv32-esp-elf- --target esp32c3 --revision 3 --decode-panic backtrace C:\Magdamit173\UCC\earthquake_alert\build\earthquake_alert.elf C:\Magdamit173\UCC\earthquake_alert\build\bootloader\bootloader.elf --force-color -m 'C:\Espressif\python_env\idf5.5_py3.11_env\Scripts\python.exe' 'C:\Espressif\frameworks\esp-idf-v5.5.5\tools\idf.py' '-p' 'COM11'
+ESP-ROM:esp32c3-api1-20210207
+Build:Feb  7 2021
+rst:0x15 (USB_UART_CHIP_RESET),boot:0xf (SPI_FAST_FLASH_BOOT)
+Saved PC:0x40386f76
+SPIWP:0xee
+mode:DIO, clock div:1
+load:0x3fcd5820,len:0x155c
+load:0x403cbf10,len:0xc84
+load:0x403ce710,len:0x2fac
+entry 0x403cbf1a
+[0;32mI (24) boot: ESP-IDF v5.5.5 2nd stage bootloader[0m
+[0;32mI (24) boot: compile time Sep 30 2026 15:33:38[0m
+[0;32mI (25) boot: chip revision: v0.4[0m
+[0;32mI (25) boot: efuse block revision: v1.3[0m
+[0;32mI (28) boot.esp32c3: SPI Speed      : 80MHz[0m
+[0;32mI (32) boot.esp32c3: SPI Mode       : DIO[0m
+[0;32mI (36) boot.esp32c3: SPI Flash Size : 2MB[0m
+[0;32mI (39) boot: Enabling RNG early entropy source...[0m
+[0;32mI (44) boot: Partition Table:[0m
+[0;32mI (46) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (53) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
+[0;32mI (59) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
+[0;32mI (66) boot:  2 factory          factory app      00 00 00010000 00100000[0m
+[0;32mI (72) boot: End of partition table[0m
+[0;32mI (76) esp_image: segment 0: paddr=00010020 vaddr=3c080020 size=15814h ( 88084) map[0m
+[0;32mI (97) esp_image: segment 1: paddr=0002583c vaddr=3fc94c00 size=0319ch ( 12700) load[0m
+[0;32mI (100) esp_image: segment 2: paddr=000289e0 vaddr=40380000 size=07638h ( 30264) load[0m
+[0;32mI (107) esp_image: segment 3: paddr=00030020 vaddr=42000020 size=7c530h (509232) map[0m
+[0;32mI (189) esp_image: segment 4: paddr=000ac558 vaddr=40387638 size=0d5ach ( 54700) load[0m
+[0;32mI (200) esp_image: segment 5: paddr=000b9b0c vaddr=50000000 size=00020h (    32) load[0m
+[0;32mI (207) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (207) boot: Disabling RNG early entropy source...[0m
+[0;32mI (218) cpu_start: Unicore app[0m
+[0;32mI (226) cpu_start: GPIO 20 and 21 are used as console UART I/O pins[0m
+[0;32mI (226) cpu_start: Pro cpu start user code[0m
+[0;32mI (226) cpu_start: cpu freq: 160000000 Hz[0m
+[0;32mI (228) app_init: Application information:[0m
+[0;32mI (232) app_init: Project name:     earthquake_alert[0m
+[0;32mI (237) app_init: App version:      1[0m
+[0;32mI (240) app_init: Compile time:     Sep 30 2026 15:30:50[0m
+[0;32mI (245) app_init: ELF file SHA256:  93bec5cf2...[0m
+[0;32mI (249) app_init: ESP-IDF:          v5.5.5[0m
+[0;32mI (253) efuse_init: Min chip rev:     v0.3[0m
+[0;32mI (257) efuse_init: Max chip rev:     v1.99 [0m
+[0;32mI (261) efuse_init: Chip rev:         v0.4[0m
+[0;32mI (265) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (271) heap_init: At 3FC9B750 len 000248B0 (146 KiB): RAM[0m
+[0;32mI (276) heap_init: At 3FCC0000 len 0001C710 (113 KiB): Retention RAM[0m
+[0;32mI (282) heap_init: At 3FCDC710 len 00002950 (10 KiB): Retention RAM[0m
+[0;32mI (288) heap_init: At 50000020 len 00001FC8 (7 KiB): RTCRAM[0m
+[0;32mI (295) spi_flash: detected chip: generic[0m
+[0;32mI (297) spi_flash: flash io: dio[0m
+[0;33mW (300) spi_flash: Detected size(4096k) larger than the size in the binary image header(2048k). Using the size in the binary image header.[0m
+[0;32mI (313) sleep_gpio: Configure to isolate all GPIO pins in sleep state[0m
+[0;32mI (319) sleep_gpio: Enable automatic switching of GPIO sleep configuration[0m
+[0;32mI (326) main_task: Started on CPU0[0m
+[0;32mI (326) main_task: Calling app_main()[0m
+
+EARTHQUAKE DETECTED
+TIME: 83
+MAGNITUDE: 8.2
+INTENSITY: VIII
+ACCELERATION: 1.219 g
+VIBRATION: 0.783 g
+
+
+EARTHQUAKE DETECTED
+TIME: 100
+MAGNITUDE: 8.5
+INTENSITY: VIII
+ACCELERATION: 1.350 g
+VIBRATION: 0.959 g
+
+
+EARTHQUAKE DETECTED
+TIME: 181
+MAGNITUDE: 6.8
+INTENSITY: VIII
+ACCELERATION: 1.001 g
+VIBRATION: 0.329 g
+
+
+EARTHQUAKE DETECTED
+TIME: 194
+MAGNITUDE: 5.9
+INTENSITY: VII
+ACCELERATION: 0.947 g
+VIBRATION: 0.191 g
+
+
+HUB ACK: help is on the way
+
+
+HUB ACK: help is on the way
+
+
+EARTHQUAKE DETECTED
+TIME: 276
+MAGNITUDE: 6.9
+INTENSITY: VIII
+ACCELERATION: 1.013 g
+VIBRATION: 0.358 g
+
+
+HUB ACK: help is on the way
+
+
+EARTHQUAKE DETECTED
+TIME: 292
+MAGNITUDE: 8.2
+INTENSITY: VIII
+ACCELERATION: 1.250 g
+VIBRATION: 0.808 g
+
+
+HUB ACK: help is on the way
+
+
+EARTHQUAKE DETECTED
+TIME: 315
+MAGNITUDE: 7.2
+INTENSITY: VIII
+ACCELERATION: 1.011 g
+VIBRATION: 0.409 g
+
+
+HUB ACK: help is on the way
+

@@ -1,0 +1,216 @@
+Command: C:\Espressif\python_env\idf5.5_py3.11_env\Scripts\python.exe C:\Espressif\frameworks\esp-idf-v5.5.5\tools/idf_monitor.py -p com11 -b 115200 --toolchain-prefix riscv32-esp-elf- --target esp32c3 --revision 3 --decode-panic backtrace C:\Magdamit173\UCC\earthquake_alert\build\earthquake_alert.elf C:\Magdamit173\UCC\earthquake_alert\build\bootloader\bootloader.elf --force-color -m 'C:\Espressif\python_env\idf5.5_py3.11_env\Scripts\python.exe' 'C:\Espressif\frameworks\esp-idf-v5.5.5\tools\idf.py' '-p' 'com11'
+DEBUG | VIB=0.0346 g | TH=0.0728 g | STA/LTA=0.78 | AMP=0 | RATIESP-ROM:esp32c3-api1-20210207
+Build:Feb  7 2021
+rst:0x15 (USB_UART_CHIP_RESET),boot:0xf (SPI_FAST_FLASH_BOOT)
+Saved PC:0x4038435a
+SPIWP:0xee
+mode:DIO, clock div:1
+load:0x3fcd5820,len:0x155c
+load:0x403cbf10,len:0xc84
+load:0x403ce710,len:0x2fac
+entry 0x403cbf1a
+[0;32mI (24) boot: ESP-IDF v5.5.5 2nd stage bootloader[0m
+[0;32mI (24) boot: compile time Sep 30 2026 15:33:38[0m
+[0;32mI (25) boot: chip revision: v0.4[0m
+[0;32mI (25) boot: efuse block revision: v1.3[0m
+[0;32mI (28) boot.esp32c3: SPI Speed      : 80MHz[0m
+[0;32mI (32) boot.esp32c3: SPI Mode       : DIO[0m
+[0;32mI (36) boot.esp32c3: SPI Flash Size : 2MB[0m
+[0;32mI (39) boot: Enabling RNG early entropy source...[0m
+[0;32mI (44) boot: Partition Table:[0m
+[0;32mI (46) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (53) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
+[0;32mI (59) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
+[0;32mI (66) boot:  2 factory          factory app      00 00 00010000 00100000[0m
+[0;32mI (72) boot: End of partition table[0m
+[0;32mI (76) esp_image: segment 0: paddr=00010020 vaddr=3c0a0020 size=19974h (104820) map[0m
+[0;32mI (100) esp_image: segment 1: paddr=0002999c vaddr=3fc94e00 size=031ach ( 12716) load[0m
+[0;32mI (102) esp_image: segment 2: paddr=0002cb50 vaddr=40380000 size=034c8h ( 13512) load[0m
+[0;32mI (106) esp_image: segment 3: paddr=00030020 vaddr=42000020 size=93090h (602256) map[0m
+[0;32mI (207) esp_image: segment 4: paddr=000c30b8 vaddr=403834c8 size=11834h ( 71732) load[0m
+[0;32mI (221) esp_image: segment 5: paddr=000d48f4 vaddr=50000000 size=00020h (    32) load[0m
+[0;32mI (228) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (228) boot: Disabling RNG early entropy source...[0m
+[0;32mI (238) cpu_start: Unicore app[0m
+[0;32mI (247) cpu_start: GPIO 20 and 21 are used as console UART I/O pins[0m
+[0;32mI (247) cpu_start: Pro cpu start user code[0m
+[0;32mI (247) cpu_start: cpu freq: 160000000 Hz[0m
+[0;32mI (249) app_init: Application information:[0m
+[0;32mI (253) app_init: Project name:     earthquake_alert[0m
+[0;32mI (257) app_init: App version:      1[0m
+[0;32mI (261) app_init: Compile time:     Sep 30 2026 15:30:50[0m
+[0;32mI (266) app_init: ELF file SHA256:  be7bfac1b...[0m
+[0;32mI (270) app_init: ESP-IDF:          v5.5.5[0m
+[0;32mI (274) efuse_init: Min chip rev:     v0.3[0m
+[0;32mI (278) efuse_init: Max chip rev:     v1.99 [0m
+[0;32mI (282) efuse_init: Chip rev:         v0.4[0m
+[0;32mI (286) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (292) heap_init: At 3FC9C550 len 00023AB0 (142 KiB): RAM[0m
+[0;32mI (297) heap_init: At 3FCC0000 len 0001C710 (113 KiB): Retention RAM[0m
+[0;32mI (303) heap_init: At 3FCDC710 len 00002950 (10 KiB): Retention RAM[0m
+[0;32mI (309) heap_init: At 50000020 len 00001FC8 (7 KiB): RTCRAM[0m
+[0;32mI (315) spi_flash: detected chip: generic[0m
+[0;32mI (318) spi_flash: flash io: dio[0m
+[0;33mW (321) spi_flash: Detected size(4096k) larger than the size in the binary image header(2048k). Using the size in the binary image header.[0m
+[0;32mI (334) sleep_gpio: Configure to isolate all GPIO pins in sleep state[0m
+[0;32mI (340) sleep_gpio: Enable automatic switching of GPIO sleep configuration[0m
+[0;32mI (346) main_task: Started on CPU0[0m
+[0;32mI (346) main_task: Calling app_main()[0m
+
+================================
+EARTHQUAKE ALERT SLAVE
+================================
+NODE ID:          4
+ESP-NOW CHANNEL:  1
+MASTER MAC:       98:F4:AB:3A:62:00
+SAMPLE RATE:      100 Hz
+VALIDATION:       1200 ms
+WAVEFORM RATE:    10 Hz
+WAVEFORM:         -2 s to +6 s
+================================
+
+Keep the sensor still.
+CALIBRATING...
+
+Calibration phase 1: gravity...
+Calibration phase 2: noise...
+
+CALIBRATION COMPLETE
+GRAVITY: X=0.0186 Y=-0.0695 Z=-0.9279 g
+NOISE RMS: 0.00663 g
+DETECTION THRESHOLD: 0.03980 g
+READY
+
+DEBUG | VIB=0.0031 g | TH=0.0398 g | STA/LTA=0.00 | AMP=0 | RATIO=0 | STATE=NORMAL
+DEBUG | VIB=0.0044 g | TH=0.0398 g | STA/LTA=0.00 | AMP=0 | RATIO=0 | STATE=NORMAL
+DEBUG | VIB=0.0067 g | TH=0.0398 g | STA/LTA=1.02 | AMP=0 | RATIO=0 | STATE=NORMAL
+
+CANDIDATE EVENT
+Validating for 1200 ms...
+
+DEBUG | VIB=1.9976 g | TH=0.0398 g | STA/LTA=1.80 | AMP=1 | RATIO=0 | STATE=CANDIDATE
+
+VALIDATION RESULT
+Active ratio:       0.29
+Second-half active: 0
+Strong hits:        111
+Max quiet gap:      83 samples
+Peak vibration:     2.4569 g
+Threshold:          0.0398 g
+FALSE TRIGGER - DISCARDED
+
+DEBUG | VIB=1.6821 g | TH=0.0398 g | STA/LTA=0.00 | AMP=1 | RATIO=0 | STATE=NORMAL
+DEBUG | VIB=0.5353 g | TH=0.0398 g | STA/LTA=0.45 | AMP=1 | RATIO=0 | STATE=NORMAL
+DEBUG | VIB=0.4762 g | TH=0.0398 g | STA/LTA=1.00 | AMP=1 | RATIO=0 | STATE=NORMAL
+DEBUG | VIB=2.1543 g | TH=0.0398 g | STA/LTA=1.14 | AMP=1 | RATIO=0 | STATE=NORMAL
+DEBUG | VIB=2.0643 g | TH=0.0398 g | STA/LTA=0.97 | AMP=1 | RATIO=0 | STATE=NORMAL
+DEBUG | VIB=3.2866 g | TH=0.0398 g | STA/LTA=0.79 | AMP=1 | RATIO=0 | STATE=NORMAL
+DEBUG | VIB=1.5309 g | TH=0.0398 g | STA/LTA=1.14 | AMP=1 | RATIO=0 | STATE=NORMAL
+DEBUG | VIB=3.0866 g | TH=0.0398 g | STA/LTA=0.99 | AMP=1 | RATIO=0 | STATE=NORMAL
+DEBUG | VIB=3.4460 g | TH=0.0398 g | STA/LTA=0.99 | AMP=1 | RATIO=0 | STATE=NORMAL
+DEBUG | VIB=1.9496 g | TH=0.0398 g | STA/LTA=0.96 | AMP=1 | RATIO=0 | STATE=NORMAL
+DEBUG | VIB=3.7281 g | TH=0.0398 g | STA/LTA=1.10 | AMP=1 | RATIO=0 | STATE=NORMAL
+DEBUG | VIB=3.4015 g | TH=0.0398 g | STA/LTA=0.99 | AMP=1 | RATIO=0 | STATE=NORMAL
+DEBUG | VIB=2.3098 g | TH=0.0398 g | STA/LTA=0.99 | AMP=1 | RATIO=0 | STATE=NORMAL
+DEBUG | VIB=2.8818 g | TH=0.0398 g | STA/LTA=1.00 | AMP=1 | RATIO=0 | STATE=NORMAL
+DEBUG | VIB=3.5210 g | TH=0.0398 g | STA/LTA=1.07 | AMP=1 | RATIO=0 | STATE=NORMAL
+DEBUG | VIB=1.5963 g | TH=0.0398 g | STA/LTA=1.03 | AMP=1 | RATIO=0 | STATE=NORMAL
+DEBUG | VIB=1.6666 g | TH=0.0398 g | STA/LTA=1.02 | AMP=1 | RATIO=0 | STATE=NORMAL
+DEBUG | VIB=1.2663 g | TH=0.0398 g | STA/LTA=1.09 | AMP=1 | RATIO=0 | STATE=NORMAL
+DEBUG | VIB=0.0741 g | TH=0.0398 g | STA/LTA=0.14 | AMP=1 | RATIO=0 | STATE=NORMAL
+DEBUG | VIB=0.1533 g | TH=0.0398 g | STA/LTA=0.70 | AMP=1 | RATIO=0 | STATE=NORMAL
+DEBUG | VIB=0.0804 g | TH=0.0398 g | STA/LTA=0.70 | AMP=1 | RATIO=0 | STATE=NORMAL
+
+CANDIDATE EVENT
+Validating for 1200 ms...
+
+DEBUG | VIB=3.7192 g | TH=0.0398 g | STA/LTA=1.42 | AMP=1 | RATIO=0 | STATE=CANDIDATE
+
+VALIDATION RESULT
+Active ratio:       0.24
+Second-half active: 0
+Strong hits:        120
+Max quiet gap:      91 samples
+Peak vibration:     4.0629 g
+Threshold:          0.0398 g
+FALSE TRIGGER - DISCARDED
+
+DEBUG | VIB=0.1734 g | TH=0.0398 g | STA/LTA=0.00 | AMP=1 | RATIO=0 | STATE=NORMAL
+DEBUG | VIB=0.1613 g | TH=0.0398 g | STA/LTA=0.84 | AMP=1 | RATIO=0 | STATE=NORMAL
+DEBUG | VIB=0.2002 g | TH=0.0398 g | STA/LTA=0.64 | AMP=1 | RATIO=0 | STATE=NORMAL
+DEBUG | VIB=0.1245 g | TH=0.0398 g | STA/LTA=0.76 | AMP=1 | RATIO=0 | STATE=NORMAL
+DEBUG | VIB=0.0768 g | TH=0.0398 g | STA/LTA=0.75 | AMP=1 | RATIO=0 | STATE=NORMAL
+DEBUG | VIB=0.0432 g | TH=0.0398 g | STA/LTA=0.74 | AMP=1 | RATIO=0 | STATE=NORMAL
+DEBUG | VIB=0.0248 g | TH=0.0398 g | STA/LTA=0.76 | AMP=0 | RATIO=0 | STATE=NORMAL
+
+CANDIDATE EVENT
+Validating for 1200 ms...
+
+DEBUG | VIB=0.0143 g | TH=0.0398 g | STA/LTA=0.41 | AMP=0 | RATIO=0 | STATE=CANDIDATE
+DEBUG | VIB=0.0158 g | TH=0.0398 g | STA/LTA=0.84 | AMP=0 | RATIO=0 | STATE=CANDIDATE
+
+VALIDATION RESULT
+Active ratio:       0.04
+Second-half active: 0
+Strong hits:        3
+Max quiet gap:      114 samples
+Peak vibration:     0.1315 g
+Threshold:          0.0398 g
+FALSE TRIGGER - DISCARDED
+
+DEBUG | VIB=0.0081 g | TH=0.0398 g | STA/LTA=0.00 | AMP=0 | RATIO=0 | STATE=NORMAL
+DEBUG | VIB=0.0040 g | TH=0.0398 g | STA/LTA=0.91 | AMP=0 | RATIO=0 | STATE=NORMAL
+
+CANDIDATE EVENT
+Validating for 1200 ms...
+
+DEBUG | VIB=0.0044 g | TH=0.0398 g | STA/LTA=0.23 | AMP=0 | RATIO=0 | STATE=CANDIDATE
+
+VALIDATION RESULT
+Active ratio:       0.04
+Second-half active: 0
+Strong hits:        3
+Max quiet gap:      115 samples
+Peak vibration:     0.1523 g
+Threshold:          0.0398 g
+FALSE TRIGGER - DISCARDED
+
+DEBUG | VIB=0.0030 g | TH=0.0398 g | STA/LTA=0.00 | AMP=0 | RATIO=0 | STATE=NORMAL
+DEBUG | VIB=0.0026 g | TH=0.0398 g | STA/LTA=1.03 | AMP=0 | RATIO=0 | STATE=NORMAL
+
+CANDIDATE EVENT
+Validating for 1200 ms...
+
+DEBUG | VIB=3.4009 g | TH=0.0398 g | STA/LTA=1.37 | AMP=1 | RATIO=0 | STATE=CANDIDATE
+
+VALIDATION RESULT
+Active ratio:       0.27
+Second-half active: 0
+Strong hits:        119
+Max quiet gap:      88 samples
+Peak vibration:     4.0890 g
+Threshold:          0.0398 g
+FALSE TRIGGER - DISCARDED
+
+DEBUG | VIB=2.8939 g | TH=0.0398 g | STA/LTA=0.00 | AMP=1 | RATIO=0 | STATE=NORMAL
+DEBUG | VIB=0.7914 g | TH=0.0398 g | STA/LTA=0.28 | AMP=1 | RATIO=0 | STATE=NORMAL
+DEBUG | VIB=0.1647 g | TH=0.0398 g | STA/LTA=0.29 | AMP=1 | RATIO=0 | STATE=NORMAL
+DEBUG | VIB=0.0930 g | TH=0.0398 g | STA/LTA=0.75 | AMP=1 | RATIO=0 | STATE=NORMAL
+DEBUG | VIB=0.0593 g | TH=0.0398 g | STA/LTA=0.74 | AMP=1 | RATIO=0 | STATE=NORMAL
+DEBUG | VIB=0.0279 g | TH=0.0398 g | STA/LTA=0.76 | AMP=0 | RATIO=0 | STATE=NORMAL
+DEBUG | VIB=0.0234 g | TH=0.0398 g | STA/LTA=0.79 | AMP=0 | RATIO=0 | STATE=NORMAL
+DEBUG | VIB=0.0179 g | TH=0.0398 g | STA/LTA=0.70 | AMP=0 | RATIO=0 | STATE=NORMAL
+DEBUG | VIB=0.0157 g | TH=0.0398 g | STA/LTA=1.20 | AMP=0 | RATIO=0 | STATE=NORMAL
+DEBUG | VIB=0.0033 g | TH=0.0398 g | STA/LTA=0.56 | AMP=0 | RATIO=0 | STATE=NORMAL
+DEBUG | VIB=0.0027 g | TH=0.0398 g | STA/LTA=0.76 | AMP=0 | RATIO=0 | STATE=NORMAL
+DEBUG | VIB=0.0138 g | TH=0.0398 g | STA/LTA=1.44 | AMP=0 | RATIO=0 | STATE=NORMAL
+DEBUG | VIB=0.0039 g | TH=0.0398 g | STA/LTA=0.75 | AMP=0 | RATIO=0 | STATE=NORMAL
+DEBUG | VIB=0.0071 g | TH=0.0398 g | STA/LTA=0.88 | AMP=0 | RATIO=0 | STATE=NORMAL
+DEBUG | VIB=0.0094 g | TH=0.0398 g | STA/LTA=0.72 | AMP=0 | RATIO=0 | STATE=NORMAL
+DEBUG | VIB=0.0023 g | TH=0.0398 g | STA/LTA=0.62 | AMP=0 | RATIO=0 | STATE=NORMAL
+DEBUG | VIB=0.0082 g | TH=0.0398 g | STA/LTA=1.10 | AMP=0 | RATIO=0 | STATE=NORMAL
+DEBUG | VIB=0.0048 g | TH=0.0398 g | STA/LTA=0.80 | AMP=0 | RATIO=0 | STATE=NORMAL
+DEBUG | VIB=0.0024 g | TH=0.0398 g | STA/LTA=0.61 | AMP=0 | RATIO=0 | STATE=NORMAL
+DEBUG | VIB=0.0070 g | TH=0.0398 g | STA/LTA=1.46 | AMP=0 | RATIO=0 | STATE=NORMAL
+DEBUG | VIB=0.0049 g | TH=0.0398 g | STA/LTA=0.62 | AMP=0 | RATIO=0 | STATE=NORMAL
+DEBUG | VIB=0.0063 g | TH=0.0398 g | STA/LTA=0.97 | AMP=0 | RATIO=0 | STATE=NORMAL

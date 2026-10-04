@@ -1,110 +1,209 @@
 #include <stdio.h>
 #include <stdint.h>
 #include <stdbool.h>
-#include <math.h>
 #include <string.h>
-#include <time.h>
-#include <sys/time.h>
+#include <math.h>
 
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
-#include "freertos/event_groups.h"
 
 #include "esp_log.h"
 #include "esp_err.h"
 #include "esp_timer.h"
-
 #include "esp_wifi.h"
-#include "esp_event.h"
-#include "esp_netif.h"
-#include "esp_netif_sntp.h"
 #include "esp_now.h"
+#include "esp_netif.h"
+#include "esp_event.h"
 #include "nvs_flash.h"
 
 #include "driver/i2c_master.h"
 #include "driver/gpio.h"
 
-#define I2C_SDA_GPIO            4
-#define I2C_SCL_GPIO            5
-#define BUZZER_GPIO             10
+#define I2C_SDA_GPIO                 4
+#define I2C_SCL_GPIO                 5
+#define BUZZER_GPIO                  10
 
-#define WIFI_SSID               "FREE WIFI"
-#define WIFI_PASSWORD           "11111111"
+#define ADXL345_ADDRESS              0x53
+#define ADXL345_REG_DEVID            0x00
+#define ADXL345_REG_BWRATE           0x2C
+#define ADXL345_REG_DATAFMT          0x31
+#define ADXL345_REG_POWERCTL         0x2D
+#define ADXL345_REG_DATAX0           0x32
+#define ADXL345_DEVICE_ID            0xE5
 
-#define ADXL345_ADDRESS         0x53
-#define ADXL345_REG_DEVID       0x00
-#define ADXL345_REG_BWRATE      0x2C
-#define ADXL345_REG_DATAFMT     0x31
-#define ADXL345_REG_POWERCTL    0x2D
-#define ADXL345_REG_DATAX0      0x32
-#define ADXL345_DEVICE_ID       0xE5
+#define SAMPLE_RATE_HZ               100
+#define SAMPLE_PERIOD_MS             10
 
-#define SAMPLE_RATE_HZ          100
-#define SAMPLE_PERIOD_MS        10
-#define CALIBRATION_SECONDS     5
+#define CALIBRATION_SECONDS          5
+#define CALIBRATION_SAMPLES          \
+    (CALIBRATION_SECONDS * SAMPLE_RATE_HZ)
 
-#define FILTER_ALPHA            0.01f
+#define GRAVITY_ALPHA                0.005f
 
-#define EARTHQUAKE_THRESHOLD_G  0.08f
-#define REQUIRED_HITS           8
-#define HIT_WINDOW              10
+#define STA_SAMPLES                  10
+#define LTA_SAMPLES                  100
+#define DETECTOR_HISTORY_SAMPLES     \
+    (STA_SAMPLES + LTA_SAMPLES)
 
-#define EVENT_ANALYSIS_MS       3000
-#define EVENT_COOLDOWN_MS       10000
+#define STA_LTA_TRIGGER              3.0f
 
-#define ASSUMED_SOURCE_DISTANCE_KM 10.0f
+#define MIN_DYNAMIC_G                0.025f
+#define NOISE_MULTIPLIER             6.0f
 
-#define ADXL345_G_PER_LSB       0.0039f
+#define VALIDATION_MS                1200
+#define VALIDATION_SAMPLES           \
+    (VALIDATION_MS / SAMPLE_PERIOD_MS)
 
-/* ---- Hub link config ---- */
-#ifndef NODE_ID
-#define NODE_ID                 4          /* unique, 1..7 */
-#endif
-#define NODE_LAT                14.676000f
-#define NODE_LNG                121.043700f
-#define ESPNOW_CHANNEL          1          /* must equal hub WIFI_CHANNEL */
-#define HAZARD_NONE             0
-#define HAZARD_EARTHQUAKE       5
-#define HEARTBEAT_MS            1000
-#define ALERT_HOLD_MS           30000
+#define VALIDATION_MIN_ACTIVE_RATIO  0.35f
+#define VALIDATION_MIN_SECOND_ACTIVE 10
+
+#define VALIDATION_MIN_STRONG_HITS   3
+#define VALIDATION_STRONG_MULTIPLIER 2.0f
+
+#define VALIDATION_MIN_DIRECTION_CHANGES 4
+
+#define VALIDATION_MAX_QUIET_SAMPLES 40
+
+#define VALIDATION_MIN_PEAK_MULTIPLIER 1.5f
+
+#define EVENT_COOLDOWN_MS            10000
+
+#define WAVEFORM_RATE_HZ             10
+#define WAVEFORM_DECIMATION          \
+    (SAMPLE_RATE_HZ / WAVEFORM_RATE_HZ)
+
+#define WAVEFORM_PRE_SECONDS         2
+#define WAVEFORM_POST_SECONDS        6
+
+#define WAVEFORM_PRE_SAMPLES         \
+    (WAVEFORM_PRE_SECONDS * WAVEFORM_RATE_HZ)
+
+#define WAVEFORM_POST_SAMPLES        \
+    (WAVEFORM_POST_SECONDS * WAVEFORM_RATE_HZ)
+
+#define WAVEFORM_TOTAL_SAMPLES       \
+    (WAVEFORM_PRE_SAMPLES + WAVEFORM_POST_SAMPLES)
+
+#define ASSUMED_SOURCE_DISTANCE_KM   10.0f
+
+#define ADXL345_G_PER_LSB            0.0039f
+
+#define ESPNOW_CHANNEL               1
+
+#define PACKET_VERSION               1
+
+#define MSG_EVENT_START              1
+#define MSG_WAVEFORM                 2
+#define MSG_EVENT_FINAL              3
+
+#define LEVEL_MILD                   1
+#define LEVEL_MODERATE               2
+#define LEVEL_STRONG                 3
+#define LEVEL_VERY_STRONG            4
+
+#define NODE_ID                      4
 
 typedef struct {
-    int   nodeID;
-    float locationLat;
-    float locationLng;
-    int   hazardType;
-    int   severityLevel;
-} disaster_message_t;
+    uint8_t version;
+    uint8_t type;
+    uint8_t node_id;
+    uint8_t level;
+    uint8_t intensity;
+    uint8_t reserved;
+    uint16_t sequence;
 
-typedef struct { int nodeID; } ack_message_t;
+    float peak_acceleration_g;
+    float peak_vibration_g;
+    float rms_vibration_g;
+    float duration_s;
+    float magnitude_est;
+} event_packet_t;
 
-_Static_assert(sizeof(disaster_message_t) == 20, "struct must match hub layout");
+typedef struct {
+    uint8_t version;
+    uint8_t type;
+    uint8_t node_id;
+    uint8_t reserved1;
+    uint8_t sample_count;
+    uint8_t reserved2;
+    uint16_t sequence;
 
-static const uint8_t bcast_addr[6] = {0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF};
-static volatile bool hub_acked = false;
-static volatile bool wifi_reconnect_enabled = true;
-static bool sntp_started = false;
+    int16_t samples[WAVEFORM_TOTAL_SAMPLES];
+} waveform_packet_t;
+
+_Static_assert(
+    sizeof(event_packet_t) <= ESP_NOW_MAX_DATA_LEN,
+    "event packet too large"
+);
+
+_Static_assert(
+    sizeof(waveform_packet_t) <= ESP_NOW_MAX_DATA_LEN,
+    "waveform packet too large"
+);
+
+static const uint8_t master_mac[6] = {
+    0x98, 0xF4, 0xAB,
+    0x3A, 0x62, 0x00
+};
 
 static i2c_master_bus_handle_t i2c_bus;
 static i2c_master_dev_handle_t adxl_device;
 
-static float lowpass_x;
-static float lowpass_y;
-static float lowpass_z;
+static float gravity_x = 0.0f;
+static float gravity_y = 0.0f;
+static float gravity_z = 0.0f;
 
-static EventGroupHandle_t wifi_event_group;
+static float noise_rms = 0.0f;
 
-#define WIFI_CONNECTED_BIT BIT0
+static float detector_history[
+    DETECTOR_HISTORY_SAMPLES
+];
 
-static esp_err_t adxl_write_register(uint8_t reg, uint8_t value)
+static int detector_index = 0;
+static int detector_count = 0;
+static float detector_sum = 0.0f;
+
+static float prebuffer[
+    WAVEFORM_PRE_SAMPLES
+];
+
+static int prebuffer_index = 0;
+static int prebuffer_count = 0;
+
+static uint16_t event_sequence = 0;
+
+static esp_err_t adxl_write_register(
+    uint8_t reg,
+    uint8_t value
+)
 {
-    uint8_t data[2] = {reg, value};
-    return i2c_master_transmit(adxl_device, data, sizeof(data), 1000);
+    uint8_t data[2] = {
+        reg,
+        value
+    };
+
+    return i2c_master_transmit(
+        adxl_device,
+        data,
+        sizeof(data),
+        1000
+    );
 }
 
-static esp_err_t adxl_read_register(uint8_t reg, uint8_t *data, size_t length)
+static esp_err_t adxl_read_register(
+    uint8_t reg,
+    uint8_t *data,
+    size_t length
+)
 {
-    return i2c_master_transmit_receive(adxl_device, &reg, 1, data, length, 1000);
+    return i2c_master_transmit_receive(
+        adxl_device,
+        &reg,
+        1,
+        data,
+        length,
+        1000
+    );
 }
 
 static bool i2c_init(void)
@@ -118,7 +217,15 @@ static bool i2c_init(void)
         .flags.enable_internal_pullup = true
     };
 
-    if (i2c_new_master_bus(&bus_config, &i2c_bus) != ESP_OK) return false;
+    if (
+        i2c_new_master_bus(
+            &bus_config,
+            &i2c_bus
+        ) != ESP_OK
+    )
+    {
+        return false;
+    }
 
     i2c_device_config_t device_config = {
         .dev_addr_length = I2C_ADDR_BIT_LEN_7,
@@ -126,406 +233,1936 @@ static bool i2c_init(void)
         .scl_speed_hz = 100000
     };
 
-    return i2c_master_bus_add_device(i2c_bus, &device_config, &adxl_device) == ESP_OK;
+    return i2c_master_bus_add_device(
+        i2c_bus,
+        &device_config,
+        &adxl_device
+    ) == ESP_OK;
 }
 
 static bool adxl_init(void)
 {
     uint8_t device_id = 0;
 
-    if (adxl_read_register(ADXL345_REG_DEVID, &device_id, 1) != ESP_OK) return false;
-    if (device_id != ADXL345_DEVICE_ID) return false;
-    if (adxl_write_register(ADXL345_REG_DATAFMT, 0x08) != ESP_OK) return false;
-    if (adxl_write_register(ADXL345_REG_BWRATE, 0x0A) != ESP_OK) return false;
-    if (adxl_write_register(ADXL345_REG_POWERCTL, 0x08) != ESP_OK) return false;
+    if (
+        adxl_read_register(
+            ADXL345_REG_DEVID,
+            &device_id,
+            1
+        ) != ESP_OK
+    )
+    {
+        return false;
+    }
+
+    if (
+        device_id !=
+        ADXL345_DEVICE_ID
+    )
+    {
+        return false;
+    }
+
+    if (
+        adxl_write_register(
+            ADXL345_REG_DATAFMT,
+            0x08
+        ) != ESP_OK
+    )
+    {
+        return false;
+    }
+
+    if (
+        adxl_write_register(
+            ADXL345_REG_BWRATE,
+            0x0A
+        ) != ESP_OK
+    )
+    {
+        return false;
+    }
+
+    if (
+        adxl_write_register(
+            ADXL345_REG_POWERCTL,
+            0x08
+        ) != ESP_OK
+    )
+    {
+        return false;
+    }
 
     return true;
 }
 
-static esp_err_t adxl_read_raw(int16_t *x, int16_t *y, int16_t *z)
+static bool adxl_read_g(
+    float *x,
+    float *y,
+    float *z
+)
 {
     uint8_t data[6];
-    esp_err_t err = adxl_read_register(ADXL345_REG_DATAX0, data, 6);
-    if (err != ESP_OK) return err;
 
-    *x = (int16_t)(((uint16_t)data[1] << 8) | data[0]);
-    *y = (int16_t)(((uint16_t)data[3] << 8) | data[2]);
-    *z = (int16_t)(((uint16_t)data[5] << 8) | data[4]);
+    if (
+        adxl_read_register(
+            ADXL345_REG_DATAX0,
+            data,
+            6
+        ) != ESP_OK
+    )
+    {
+        return false;
+    }
 
-    return ESP_OK;
+    int16_t raw_x =
+        (int16_t)(
+            ((uint16_t)data[1] << 8) |
+            data[0]
+        );
+
+    int16_t raw_y =
+        (int16_t)(
+            ((uint16_t)data[3] << 8) |
+            data[2]
+        );
+
+    int16_t raw_z =
+        (int16_t)(
+            ((uint16_t)data[5] << 8) |
+            data[4]
+        );
+
+    *x =
+        raw_x *
+        ADXL345_G_PER_LSB;
+
+    *y =
+        raw_y *
+        ADXL345_G_PER_LSB;
+
+    *z =
+        raw_z *
+        ADXL345_G_PER_LSB;
+
+    return true;
 }
 
 static bool buzzer_init(void)
 {
     gpio_config_t config = {
-        .pin_bit_mask = (1ULL << BUZZER_GPIO),
-        .mode = GPIO_MODE_OUTPUT,
-        .pull_up_en = GPIO_PULLUP_DISABLE,
-        .pull_down_en = GPIO_PULLDOWN_DISABLE,
-        .intr_type = GPIO_INTR_DISABLE
+        .pin_bit_mask =
+            1ULL << BUZZER_GPIO,
+
+        .mode =
+            GPIO_MODE_OUTPUT,
+
+        .pull_up_en =
+            GPIO_PULLUP_DISABLE,
+
+        .pull_down_en =
+            GPIO_PULLDOWN_DISABLE,
+
+        .intr_type =
+            GPIO_INTR_DISABLE
     };
 
-    if (gpio_config(&config) != ESP_OK) return false;
-    gpio_set_level(BUZZER_GPIO, 0);
+    if (
+        gpio_config(
+            &config
+        ) != ESP_OK
+    )
+    {
+        return false;
+    }
+
+    gpio_set_level(
+        BUZZER_GPIO,
+        0
+    );
+
     return true;
 }
 
-static void buzzer_on(void)  { gpio_set_level(BUZZER_GPIO, 1); }
-static void buzzer_off(void) { gpio_set_level(BUZZER_GPIO, 0); }
-
-static void wifi_event_handler(void *arg, esp_event_base_t event_base,
-                               int32_t event_id, void *event_data)
+static void buzzer_on(void)
 {
-    if (event_base == WIFI_EVENT && event_id == WIFI_EVENT_STA_START) {
-        esp_wifi_connect();
-    }
-
-    if (event_base == WIFI_EVENT && event_id == WIFI_EVENT_STA_DISCONNECTED) {
-        xEventGroupClearBits(wifi_event_group, WIFI_CONNECTED_BIT);
-        if (wifi_reconnect_enabled) esp_wifi_connect();
-    }
-
-    if (event_base == IP_EVENT && event_id == IP_EVENT_STA_GOT_IP) {
-        xEventGroupSetBits(wifi_event_group, WIFI_CONNECTED_BIT);
-    }
+    gpio_set_level(
+        BUZZER_GPIO,
+        1
+    );
 }
 
-/* Starts the Wi-Fi driver in STA mode and tries to join the router. Returns true if the driver started. */
-static bool wifi_start(bool *connected)
+static void buzzer_off(void)
 {
-    *connected = false;
-
-    wifi_event_group = xEventGroupCreate();
-    if (wifi_event_group == NULL) return false;
-
-    esp_err_t err = esp_netif_init();
-    if (err != ESP_OK && err != ESP_ERR_INVALID_STATE) return false;
-
-    err = esp_event_loop_create_default();
-    if (err != ESP_OK && err != ESP_ERR_INVALID_STATE) return false;
-
-    if (esp_netif_create_default_wifi_sta() == NULL) return false;
-
-    wifi_init_config_t init_cfg = WIFI_INIT_CONFIG_DEFAULT();
-    if (esp_wifi_init(&init_cfg) != ESP_OK) return false;
-
-    if (esp_event_handler_instance_register(WIFI_EVENT, ESP_EVENT_ANY_ID,
-                                            &wifi_event_handler, NULL, NULL) != ESP_OK) return false;
-    if (esp_event_handler_instance_register(IP_EVENT, IP_EVENT_STA_GOT_IP,
-                                            &wifi_event_handler, NULL, NULL) != ESP_OK) return false;
-
-    wifi_config_t wifi_config = {0};
-    strncpy((char *)wifi_config.sta.ssid, WIFI_SSID, sizeof(wifi_config.sta.ssid) - 1);
-    strncpy((char *)wifi_config.sta.password, WIFI_PASSWORD, sizeof(wifi_config.sta.password) - 1);
-    wifi_config.sta.threshold.authmode = WIFI_AUTH_WPA2_PSK;
-    wifi_config.sta.pmf_cfg.capable = true;
-    wifi_config.sta.pmf_cfg.required = false;
-
-    if (esp_wifi_set_mode(WIFI_MODE_STA) != ESP_OK) return false;
-    if (esp_wifi_set_config(WIFI_IF_STA, &wifi_config) != ESP_OK) return false;
-    if (esp_wifi_start() != ESP_OK) return false;
-
-    EventBits_t bits = xEventGroupWaitBits(wifi_event_group, WIFI_CONNECTED_BIT,
-                                           pdFALSE, pdTRUE, pdMS_TO_TICKS(15000));
-    *connected = (bits & WIFI_CONNECTED_BIT) != 0;
-    return true;
+    gpio_set_level(
+        BUZZER_GPIO,
+        0
+    );
 }
 
-/* Best effort. A failure only leaves the printed timestamp unsynced. */
-static bool time_sync(void)
+static bool espnow_init(void)
 {
-    esp_sntp_config_t sntp_config = ESP_NETIF_SNTP_DEFAULT_CONFIG("pool.ntp.org");
+    wifi_init_config_t wifi_config =
+        WIFI_INIT_CONFIG_DEFAULT();
 
-    if (esp_netif_sntp_init(&sntp_config) != ESP_OK) return false;
-    sntp_started = true;
-
-    if (esp_netif_sntp_sync_wait(pdMS_TO_TICKS(15000)) != ESP_OK) return false;
-
-    return time(NULL) >= 1700000000;
-}
-
-static void espnow_recv_cb(const esp_now_recv_info_t *info, const uint8_t *data, int len)
-{
-    if (len != (int)sizeof(ack_message_t)) return;
-    ack_message_t a;
-    memcpy(&a, data, sizeof(a));
-    if (a.nodeID == NODE_ID) hub_acked = true;
-}
-
-static bool espnow_start(void)
-{
-    if (sntp_started) {
-        esp_netif_sntp_deinit();
-        sntp_started = false;
+    if (
+        esp_wifi_init(
+            &wifi_config
+        ) != ESP_OK
+    )
+    {
+        return false;
     }
 
-    wifi_reconnect_enabled = false;
-    esp_wifi_disconnect();
-    vTaskDelay(pdMS_TO_TICKS(500));
+    if (
+        esp_wifi_set_mode(
+            WIFI_MODE_STA
+        ) != ESP_OK
+    )
+    {
+        return false;
+    }
 
-    esp_wifi_set_ps(WIFI_PS_NONE);
+    if (
+        esp_wifi_start()
+        != ESP_OK
+    )
+    {
+        return false;
+    }
 
-    if (esp_wifi_set_channel(ESPNOW_CHANNEL, WIFI_SECOND_CHAN_NONE) != ESP_OK) return false;
+    if (
+        esp_wifi_set_ps(
+            WIFI_PS_NONE
+        ) != ESP_OK
+    )
+    {
+        return false;
+    }
 
-    uint8_t primary;
-    wifi_second_chan_t second;
-    if (esp_wifi_get_channel(&primary, &second) != ESP_OK || primary != ESPNOW_CHANNEL) return false;
+    if (
+        esp_wifi_set_channel(
+            ESPNOW_CHANNEL,
+            WIFI_SECOND_CHAN_NONE
+        ) != ESP_OK
+    )
+    {
+        return false;
+    }
 
-    if (esp_now_init() != ESP_OK) return false;
-    if (esp_now_register_recv_cb(espnow_recv_cb) != ESP_OK) return false;
+    if (
+        esp_now_init()
+        != ESP_OK
+    )
+    {
+        return false;
+    }
 
     esp_now_peer_info_t peer = {0};
-    memcpy(peer.peer_addr, bcast_addr, 6);
-    peer.channel = 0;                 /* 0 = use the current channel */
-    peer.ifidx = WIFI_IF_STA;
-    peer.encrypt = false;
 
-    return esp_now_add_peer(&peer) == ESP_OK;
+    memcpy(
+        peer.peer_addr,
+        master_mac,
+        6
+    );
+
+    peer.channel =
+        ESPNOW_CHANNEL;
+
+    peer.ifidx =
+        WIFI_IF_STA;
+
+    peer.encrypt =
+        false;
+
+    if (
+        esp_now_add_peer(
+            &peer
+        ) != ESP_OK
+    )
+    {
+        return false;
+    }
+
+    return true;
 }
 
-static void hub_send(int hazard, int severity)
+static bool send_packet(
+    const uint8_t *data,
+    size_t length
+)
 {
-    disaster_message_t m = {
-        .nodeID = NODE_ID,
-        .locationLat = NODE_LAT,
-        .locationLng = NODE_LNG,
-        .hazardType = hazard,
-        .severityLevel = severity
-    };
-    esp_now_send(bcast_addr, (const uint8_t *)&m, sizeof(m));
+    esp_err_t result =
+        esp_now_send(
+            master_mac,
+            data,
+            length
+        );
+
+    if (
+        result != ESP_OK
+    )
+    {
+        printf(
+            "ESP-NOW SEND ERROR: %s\n",
+            esp_err_to_name(result)
+        );
+
+        return false;
+    }
+
+    return true;
 }
 
-static int severity_from_mmi(int mmi)
+static void update_gravity(
+    float ax,
+    float ay,
+    float az
+)
 {
-    if (mmi >= 8) return 3;
-    if (mmi >= 6) return 2;
-    return 1;
+    gravity_x +=
+        GRAVITY_ALPHA *
+        (ax - gravity_x);
+
+    gravity_y +=
+        GRAVITY_ALPHA *
+        (ay - gravity_y);
+
+    gravity_z +=
+        GRAVITY_ALPHA *
+        (az - gravity_z);
+}
+
+static void get_dynamic_acceleration(
+    float ax,
+    float ay,
+    float az,
+    float *dx,
+    float *dy,
+    float *dz
+)
+{
+    *dx =
+        ax - gravity_x;
+
+    *dy =
+        ay - gravity_y;
+
+    *dz =
+        az - gravity_z;
+}
+
+static float vector_magnitude(
+    float x,
+    float y,
+    float z
+)
+{
+    return sqrtf(
+        x * x +
+        y * y +
+        z * z
+    );
+}
+
+static float horizontal_magnitude(
+    float x,
+    float y
+)
+{
+    return sqrtf(
+        x * x +
+        y * y
+    );
+}
+
+static void detector_reset(void)
+{
+    memset(
+        detector_history,
+        0,
+        sizeof(detector_history)
+    );
+
+    detector_index = 0;
+    detector_count = 0;
+    detector_sum = 0.0f;
+}
+
+static float detector_update(
+    float vibration
+)
+{
+    float squared =
+        vibration *
+        vibration;
+
+    detector_sum -=
+        detector_history[
+            detector_index
+        ];
+
+    detector_history[
+        detector_index
+    ] = squared;
+
+    detector_sum +=
+        squared;
+
+    detector_index++;
+
+    if (
+        detector_index >=
+        DETECTOR_HISTORY_SAMPLES
+    )
+    {
+        detector_index = 0;
+    }
+
+    if (
+        detector_count <
+        DETECTOR_HISTORY_SAMPLES
+    )
+    {
+        detector_count++;
+    }
+
+    if (
+        detector_count <
+        DETECTOR_HISTORY_SAMPLES
+    )
+    {
+        return 0.0f;
+    }
+
+    int newest =
+        detector_index - 1;
+
+    if (
+        newest < 0
+    )
+    {
+        newest =
+            DETECTOR_HISTORY_SAMPLES - 1;
+    }
+
+    float sta_sum = 0.0f;
+
+    for (
+        int i = 0;
+        i < STA_SAMPLES;
+        i++
+    )
+    {
+        int index =
+            newest - i;
+
+        while (
+            index < 0
+        )
+        {
+            index +=
+                DETECTOR_HISTORY_SAMPLES;
+        }
+
+        sta_sum +=
+            detector_history[index];
+    }
+
+    float lta_sum =
+        detector_sum -
+        sta_sum;
+
+    float sta_rms =
+        sqrtf(
+            sta_sum /
+            STA_SAMPLES
+        );
+
+    float lta_rms =
+        sqrtf(
+            lta_sum /
+            LTA_SAMPLES
+        );
+
+    if (
+        lta_rms <
+        0.000001f
+    )
+    {
+        return 0.0f;
+    }
+
+    return sta_rms /
+           lta_rms;
+}
+
+static void prebuffer_add(
+    float vibration
+)
+{
+    prebuffer[
+        prebuffer_index
+    ] = vibration;
+
+    prebuffer_index++;
+
+    if (
+        prebuffer_index >=
+        WAVEFORM_PRE_SAMPLES
+    )
+    {
+        prebuffer_index = 0;
+    }
+
+    if (
+        prebuffer_count <
+        WAVEFORM_PRE_SAMPLES
+    )
+    {
+        prebuffer_count++;
+    }
+}
+
+static void prebuffer_copy(
+    float *destination
+)
+{
+    int start =
+        prebuffer_index;
+
+    for (
+        int i = 0;
+        i < WAVEFORM_PRE_SAMPLES;
+        i++
+    )
+    {
+        destination[i] =
+            prebuffer[
+                (start + i) %
+                WAVEFORM_PRE_SAMPLES
+            ];
+    }
+}
+
+static float get_detection_threshold(void)
+{
+    float threshold =
+        noise_rms *
+        NOISE_MULTIPLIER;
+
+    if (
+        threshold <
+        MIN_DYNAMIC_G
+    )
+    {
+        threshold =
+            MIN_DYNAMIC_G;
+    }
+
+    return threshold;
+}
+
+static int get_level(
+    float pga_g
+)
+{
+    if (
+        pga_g >=
+        0.30f
+    )
+    {
+        return LEVEL_VERY_STRONG;
+    }
+
+    if (
+        pga_g >=
+        0.15f
+    )
+    {
+        return LEVEL_STRONG;
+    }
+
+    if (
+        pga_g >=
+        0.05f
+    )
+    {
+        return LEVEL_MODERATE;
+    }
+
+    return LEVEL_MILD;
+}
+
+static const char *level_string(
+    int level
+)
+{
+    switch (
+        level
+    )
+    {
+        case LEVEL_MILD:
+            return "MILD";
+
+        case LEVEL_MODERATE:
+            return "MODERATE";
+
+        case LEVEL_STRONG:
+            return "STRONG";
+
+        case LEVEL_VERY_STRONG:
+            return "VERY STRONG";
+
+        default:
+            return "UNKNOWN";
+    }
+}
+
+static float estimate_magnitude(
+    float pga_g
+)
+{
+    if (
+        pga_g <=
+        0.000001f
+    )
+    {
+        return 0.0f;
+    }
+
+    float magnitude =
+        (
+            logf(pga_g) +
+            logf(
+                ASSUMED_SOURCE_DISTANCE_KM +
+                7.28f
+            ) +
+            2.501f
+        ) /
+        0.623f;
+
+    if (
+        magnitude <
+        0.0f
+    )
+    {
+        magnitude =
+            0.0f;
+    }
+
+    if (
+        magnitude >
+        9.9f
+    )
+    {
+        magnitude =
+            9.9f;
+    }
+
+    return magnitude;
+}
+
+static int estimate_intensity(
+    float pga_g
+)
+{
+    if (
+        pga_g <=
+        0.0f
+    )
+    {
+        return 0;
+    }
+
+    float pga_percent_g =
+        pga_g *
+        100.0f;
+
+    float intensity =
+        3.66f *
+        log10f(
+            pga_percent_g
+        ) +
+        1.99f;
+
+    int value =
+        (int)lroundf(
+            intensity
+        );
+
+    if (
+        value < 1
+    )
+    {
+        value = 1;
+    }
+
+    if (
+        value > 8
+    )
+    {
+        value = 8;
+    }
+
+    return value;
+}
+
+static const char *intensity_string(
+    int intensity
+)
+{
+    switch (
+        intensity
+    )
+    {
+        case 1:
+            return "I";
+
+        case 2:
+            return "II";
+
+        case 3:
+            return "III";
+
+        case 4:
+            return "IV";
+
+        case 5:
+            return "V";
+
+        case 6:
+            return "VI";
+
+        case 7:
+            return "VII";
+
+        case 8:
+            return "VIII";
+
+        default:
+            return "UNKNOWN";
+    }
 }
 
 static bool calibrate_sensor(void)
 {
-    const int samples = CALIBRATION_SECONDS * SAMPLE_RATE_HZ;
-    float sum_x = 0.0f, sum_y = 0.0f, sum_z = 0.0f;
+    float sum_x = 0.0f;
+    float sum_y = 0.0f;
+    float sum_z = 0.0f;
 
-    for (int i = 0; i < samples; i++) {
-        int16_t rx, ry, rz;
-        if (adxl_read_raw(&rx, &ry, &rz) != ESP_OK) return false;
+    for (
+        int i = 0;
+        i < CALIBRATION_SAMPLES;
+        i++
+    )
+    {
+        float ax;
+        float ay;
+        float az;
 
-        sum_x += rx * ADXL345_G_PER_LSB;
-        sum_y += ry * ADXL345_G_PER_LSB;
-        sum_z += rz * ADXL345_G_PER_LSB;
+        if (
+            !adxl_read_g(
+                &ax,
+                &ay,
+                &az
+            )
+        )
+        {
+            return false;
+        }
 
-        vTaskDelay(pdMS_TO_TICKS(SAMPLE_PERIOD_MS));
+        sum_x += ax;
+        sum_y += ay;
+        sum_z += az;
+
+        vTaskDelay(
+            pdMS_TO_TICKS(
+                SAMPLE_PERIOD_MS
+            )
+        );
     }
 
-    lowpass_x = sum_x / samples;
-    lowpass_y = sum_y / samples;
-    lowpass_z = sum_z / samples;
+    gravity_x =
+        sum_x /
+        CALIBRATION_SAMPLES;
+
+    gravity_y =
+        sum_y /
+        CALIBRATION_SAMPLES;
+
+    gravity_z =
+        sum_z /
+        CALIBRATION_SAMPLES;
+
+    float noise_sum =
+        0.0f;
+
+    for (
+        int i = 0;
+        i < CALIBRATION_SAMPLES;
+        i++
+    )
+    {
+        float ax;
+        float ay;
+        float az;
+
+        if (
+            !adxl_read_g(
+                &ax,
+                &ay,
+                &az
+            )
+        )
+        {
+            return false;
+        }
+
+        float dx =
+            ax - gravity_x;
+
+        float dy =
+            ay - gravity_y;
+
+        float dz =
+            az - gravity_z;
+
+        float motion =
+            vector_magnitude(
+                dx,
+                dy,
+                dz
+            );
+
+        noise_sum +=
+            motion *
+            motion;
+
+        vTaskDelay(
+            pdMS_TO_TICKS(
+                SAMPLE_PERIOD_MS
+            )
+        );
+    }
+
+    noise_rms =
+        sqrtf(
+            noise_sum /
+            CALIBRATION_SAMPLES
+        );
+
+    detector_reset();
+
+    memset(
+        prebuffer,
+        0,
+        sizeof(prebuffer)
+    );
+
+    prebuffer_index =
+        0;
+
+    prebuffer_count =
+        0;
+
     return true;
 }
 
-static float calculate_vibration(float ax, float ay, float az)
+static void send_event_start(
+    uint16_t sequence,
+    float trigger_pga
+)
 {
-    lowpass_x += FILTER_ALPHA * (ax - lowpass_x);
-    lowpass_y += FILTER_ALPHA * (ay - lowpass_y);
-    lowpass_z += FILTER_ALPHA * (az - lowpass_z);
+    event_packet_t packet = {
+        .version =
+            PACKET_VERSION,
 
-    float dx = ax - lowpass_x;
-    float dy = ay - lowpass_y;
-    float dz = az - lowpass_z;
+        .type =
+            MSG_EVENT_START,
 
-    return sqrtf(dx * dx + dy * dy + dz * dz);
+        .node_id =
+            NODE_ID,
+
+        .level =
+            LEVEL_MILD,
+
+        .intensity =
+            0,
+
+        .reserved =
+            0,
+
+        .sequence =
+            sequence,
+
+        .peak_acceleration_g =
+            trigger_pga,
+
+        .peak_vibration_g =
+            0.0f,
+
+        .rms_vibration_g =
+            0.0f,
+
+        .duration_s =
+            0.0f,
+
+        .magnitude_est =
+            0.0f
+    };
+
+    send_packet(
+        (const uint8_t *)&packet,
+        sizeof(packet)
+    );
 }
 
-static bool earthquake_detected(float vibration)
+static void send_waveform(
+    uint16_t sequence,
+    const float *waveform
+)
 {
-    static int hit_count = 0;
-    static int sample_count = 0;
+    waveform_packet_t packet = {
+        .version =
+            PACKET_VERSION,
 
-    sample_count++;
-    if (vibration >= EARTHQUAKE_THRESHOLD_G) hit_count++;
+        .type =
+            MSG_WAVEFORM,
 
-    if (sample_count >= HIT_WINDOW) {
-        bool detected = hit_count >= REQUIRED_HITS;
-        sample_count = 0;
-        hit_count = 0;
-        return detected;
+        .node_id =
+            NODE_ID,
+
+        .reserved1 =
+            0,
+
+        .sample_count =
+            WAVEFORM_TOTAL_SAMPLES,
+
+        .reserved2 =
+            0,
+
+        .sequence =
+            sequence
+    };
+
+    for (
+        int i = 0;
+        i < WAVEFORM_TOTAL_SAMPLES;
+        i++
+    )
+    {
+        float scaled =
+            waveform[i] *
+            1000.0f;
+
+        if (
+            scaled >
+            32767.0f
+        )
+        {
+            scaled =
+                32767.0f;
+        }
+
+        if (
+            scaled <
+            -32768.0f
+        )
+        {
+            scaled =
+                -32768.0f;
+        }
+
+        packet.samples[i] =
+            (int16_t)lroundf(
+                scaled
+            );
     }
 
-    return false;
+    send_packet(
+        (const uint8_t *)&packet,
+        sizeof(packet)
+    );
 }
 
-static float estimate_magnitude(float pga_g)
+static void send_event_final(
+    uint16_t sequence,
+    float peak_pga,
+    float peak_vibration,
+    float rms_vibration,
+    float duration
+)
 {
-    if (pga_g <= 0.000001f) return 0.0f;
+    int level =
+        get_level(
+            peak_pga
+        );
 
-    float magnitude = (logf(pga_g) + logf(ASSUMED_SOURCE_DISTANCE_KM + 7.28f) + 2.501f) / 0.623f;
+    int intensity =
+        estimate_intensity(
+            peak_pga
+        );
 
-    if (magnitude < 0.0f) magnitude = 0.0f;
-    if (magnitude > 9.9f) magnitude = 9.9f;
-    return magnitude;
-}
+    float magnitude =
+        estimate_magnitude(
+            peak_pga
+        );
 
-static int estimate_intensity(float pga_g)
-{
-    if (pga_g <= 0.0f) return 0;
+    event_packet_t packet = {
+        .version =
+            PACKET_VERSION,
 
-    float intensity = 3.66f * log10f(pga_g * 100.0f) + 1.99f;
-    int mmi = (int)lroundf(intensity);
+        .type =
+            MSG_EVENT_FINAL,
 
-    if (mmi < 5) mmi = 5;
-    if (mmi > 8) mmi = 8;
-    return mmi;
-}
+        .node_id =
+            NODE_ID,
 
-static const char *mmi_string(int intensity)
-{
-    switch (intensity) {
-        case 1:  return "I";
-        case 2:  return "II";
-        case 3:  return "III";
-        case 4:  return "IV";
-        case 5:  return "V";
-        case 6:  return "VI";
-        case 7:  return "VII";
-        case 8:  return "VIII";
-        case 9:  return "IX";
-        case 10: return "X";
-        default: return "UNKNOWN";
-    }
+        .level =
+            level,
+
+        .intensity =
+            intensity,
+
+        .reserved =
+            0,
+
+        .sequence =
+            sequence,
+
+        .peak_acceleration_g =
+            peak_pga,
+
+        .peak_vibration_g =
+            peak_vibration,
+
+        .rms_vibration_g =
+            rms_vibration,
+
+        .duration_s =
+            duration,
+
+        .magnitude_est =
+            magnitude
+    };
+
+    send_packet(
+        (const uint8_t *)&packet,
+        sizeof(packet)
+    );
 }
 
 static void halt(void)
 {
-    while (1) vTaskDelay(pdMS_TO_TICKS(1000));
+    while (1)
+    {
+        vTaskDelay(
+            pdMS_TO_TICKS(
+                1000
+            )
+        );
+    }
 }
 
 void app_main(void)
 {
-    esp_log_level_set("*", ESP_LOG_NONE);
+    esp_log_level_set(
+        "*",
+        ESP_LOG_NONE
+    );
 
-    esp_err_t nvs_err = nvs_flash_init();
-    if (nvs_err == ESP_ERR_NVS_NO_FREE_PAGES || nvs_err == ESP_ERR_NVS_NEW_VERSION_FOUND) {
-        nvs_flash_erase();
+    esp_err_t nvs_err =
         nvs_flash_init();
+
+    if (
+        nvs_err ==
+        ESP_ERR_NVS_NO_FREE_PAGES ||
+        nvs_err ==
+        ESP_ERR_NVS_NEW_VERSION_FOUND
+    )
+    {
+        ESP_ERROR_CHECK(
+            nvs_flash_erase()
+        );
+
+        ESP_ERROR_CHECK(
+            nvs_flash_init()
+        );
     }
 
-    if (!i2c_init())    halt();
-    if (!buzzer_init()) halt();
-    if (!adxl_init())   halt();
+    if (
+        esp_netif_init()
+        != ESP_OK
+    )
+    {
+        halt();
+    }
 
-    bool connected = false;
-    if (!wifi_start(&connected)) halt();
-    if (connected) time_sync();
-    if (!espnow_start()) halt();
+    esp_err_t event_err =
+        esp_event_loop_create_default();
 
-    if (!calibrate_sensor()) halt();
+    if (
+        event_err != ESP_OK &&
+        event_err != ESP_ERR_INVALID_STATE
+    )
+    {
+        halt();
+    }
 
-    int64_t last_event_time_us = -EVENT_COOLDOWN_MS * 1000LL;
-    bool event_active = false;
-    int64_t event_start_us = 0;
-    time_t event_epoch = 0;
+    if (
+        !i2c_init()
+    )
+    {
+        printf(
+            "I2C INIT FAILED\n"
+        );
 
-    float peak_vibration = 0.0f;
-    float peak_acceleration = 0.0f;
-    float peak_pga = 0.0f;
+        halt();
+    }
 
-    int alert_severity = 0;
-    int64_t alert_until_us = 0;
-    int64_t last_hb_us = 0;
-    bool ack_reported = false;
+    if (
+        !adxl_init()
+    )
+    {
+        printf(
+            "ADXL345 INIT FAILED\n"
+        );
 
-    while (1) {
-        int64_t now_us = esp_timer_get_time();
+        halt();
+    }
 
-        if (alert_severity && now_us > alert_until_us) alert_severity = 0;
+    if (
+        !buzzer_init()
+    )
+    {
+        printf(
+            "BUZZER INIT FAILED\n"
+        );
 
-        if (now_us - last_hb_us >= HEARTBEAT_MS * 1000LL) {
-            hub_send(alert_severity ? HAZARD_EARTHQUAKE : HAZARD_NONE, alert_severity);
-            last_hb_us = now_us;
-        }
+        halt();
+    }
 
-        if (hub_acked && !ack_reported) {
-            printf("\nHUB ACK: help is on the way\n\n");
-            ack_reported = true;
-        }
+    if (
+        !espnow_init()
+    )
+    {
+        printf(
+            "ESP-NOW INIT FAILED\n"
+        );
 
-        int16_t raw_x, raw_y, raw_z;
+        halt();
+    }
 
-        if (adxl_read_raw(&raw_x, &raw_y, &raw_z) != ESP_OK) {
-            vTaskDelay(pdMS_TO_TICKS(SAMPLE_PERIOD_MS));
+    printf(
+        "\n"
+        "================================\n"
+        "EARTHQUAKE ALERT SLAVE\n"
+        "================================\n"
+        "NODE ID:           %d\n"
+        "CHANNEL:           %d\n"
+        "MASTER:            %02X:%02X:%02X:%02X:%02X:%02X\n"
+        "SAMPLE RATE:       %d Hz\n"
+        "VALIDATION:        %d ms\n"
+        "WAVEFORM RATE:     %d Hz\n"
+        "WAVEFORM RANGE:    -%d s to +%d s\n"
+        "================================\n\n",
+        NODE_ID,
+        ESPNOW_CHANNEL,
+        master_mac[0],
+        master_mac[1],
+        master_mac[2],
+        master_mac[3],
+        master_mac[4],
+        master_mac[5],
+        SAMPLE_RATE_HZ,
+        VALIDATION_MS,
+        WAVEFORM_RATE_HZ,
+        WAVEFORM_PRE_SECONDS,
+        WAVEFORM_POST_SECONDS
+    );
+
+    printf(
+        "Keep sensor still during calibration.\n"
+    );
+
+    printf(
+        "CALIBRATING...\n"
+    );
+
+    if (
+        !calibrate_sensor()
+    )
+    {
+        printf(
+            "CALIBRATION FAILED\n"
+        );
+
+        halt();
+    }
+
+    float detection_threshold =
+        get_detection_threshold();
+
+    printf(
+        "\n"
+        "CALIBRATION COMPLETE\n"
+        "GRAVITY: X=%.4f Y=%.4f Z=%.4f g\n"
+        "NOISE RMS: %.5f g\n"
+        "DETECTION THRESHOLD: %.5f g\n"
+        "READY\n\n",
+        gravity_x,
+        gravity_y,
+        gravity_z,
+        noise_rms,
+        detection_threshold
+    );
+
+    bool candidate_active =
+        false;
+
+    bool event_active =
+        false;
+
+    int candidate_samples =
+        0;
+
+    int candidate_active_count =
+        0;
+
+    int candidate_second_active =
+        0;
+
+    int candidate_strong_hits =
+        0;
+
+    int candidate_quiet_count =
+        0;
+
+    int candidate_max_quiet =
+        0;
+
+    int candidate_direction_changes =
+        0;
+
+    float candidate_peak_vibration =
+        0.0f;
+
+    float candidate_peak_pga =
+        0.0f;
+
+    float previous_dx =
+        0.0f;
+
+    float previous_dy =
+        0.0f;
+
+    float previous_dz =
+        0.0f;
+
+    bool previous_direction_valid =
+        false;
+
+    int64_t candidate_start_us =
+        0;
+
+    int64_t event_start_us =
+        0;
+
+    int64_t last_event_us =
+        -EVENT_COOLDOWN_MS *
+        1000LL;
+
+    float waveform[
+        WAVEFORM_TOTAL_SAMPLES
+    ];
+
+    int waveform_count =
+        0;
+
+    int waveform_divider =
+        0;
+
+    uint16_t current_sequence =
+        0;
+
+    float peak_pga =
+        0.0f;
+
+    float peak_vibration =
+        0.0f;
+
+    float rms_sum_squared =
+        0.0f;
+
+    uint32_t rms_samples =
+        0;
+
+    int64_t debug_timer_us =
+        0;
+
+    while (1)
+    {
+        int64_t now_us =
+            esp_timer_get_time();
+
+        float ax;
+        float ay;
+        float az;
+
+        if (
+            !adxl_read_g(
+                &ax,
+                &ay,
+                &az
+            )
+        )
+        {
+            vTaskDelay(
+                pdMS_TO_TICKS(
+                    SAMPLE_PERIOD_MS
+                )
+            );
+
             continue;
         }
 
-        float ax = raw_x * ADXL345_G_PER_LSB;
-        float ay = raw_y * ADXL345_G_PER_LSB;
-        float az = raw_z * ADXL345_G_PER_LSB;
+        float dx;
+        float dy;
+        float dz;
 
-        float vibration = calculate_vibration(ax, ay, az);
-        float total_acceleration = sqrtf(ax * ax + ay * ay + az * az);
+        get_dynamic_acceleration(
+            ax,
+            ay,
+            az,
+            &dx,
+            &dy,
+            &dz
+        );
 
-        if (!event_active) {
-            if (earthquake_detected(vibration) &&
-                (now_us - last_event_time_us) >= EVENT_COOLDOWN_MS * 1000LL) {
+        float vibration =
+            vector_magnitude(
+                dx,
+                dy,
+                dz
+            );
 
-                event_active = true;
-                event_start_us = now_us;
-                event_epoch = time(NULL);
+        float pga =
+            horizontal_magnitude(
+                dx,
+                dy
+            );
 
-                peak_vibration = vibration;
-                peak_acceleration = total_acceleration;
-                peak_pga = vibration;
+        float sta_lta =
+            detector_update(
+                vibration
+            );
+
+        float current_threshold =
+            get_detection_threshold();
+
+        bool amplitude_trigger =
+            vibration >=
+            current_threshold;
+
+        bool onset_trigger =
+            amplitude_trigger &&
+            sta_lta >=
+            STA_LTA_TRIGGER;
+
+        if (
+            now_us -
+            debug_timer_us >=
+            1000000LL
+        )
+        {
+            printf(
+                "DEBUG | VIB=%.4f g | PGA=%.4f g | TH=%.4f g | STA/LTA=%.2f | AMP=%d | ONSET=%d | STATE=%s\n",
+                vibration,
+                pga,
+                current_threshold,
+                sta_lta,
+                amplitude_trigger,
+                onset_trigger,
+                candidate_active ?
+                    "CANDIDATE" :
+                    event_active ?
+                    "EVENT" :
+                    "NORMAL"
+            );
+
+            debug_timer_us =
+                now_us;
+        }
+
+        waveform_divider++;
+
+        bool waveform_sample_due =
+            false;
+
+        if (
+            waveform_divider >=
+            WAVEFORM_DECIMATION
+        )
+        {
+            waveform_divider = 0;
+            waveform_sample_due = true;
+        }
+
+        if (
+            !candidate_active &&
+            !event_active
+        )
+        {
+            prebuffer_add(
+                vibration
+            );
+        }
+
+        if (
+            !candidate_active &&
+            !event_active
+        )
+        {
+            if (
+                onset_trigger &&
+                now_us -
+                last_event_us >=
+                EVENT_COOLDOWN_MS *
+                1000LL &&
+                prebuffer_count >=
+                WAVEFORM_PRE_SAMPLES
+            )
+            {
+                candidate_active =
+                    true;
+
+                candidate_samples =
+                    0;
+
+                candidate_active_count =
+                    0;
+
+                candidate_second_active =
+                    0;
+
+                candidate_strong_hits =
+                    0;
+
+                candidate_quiet_count =
+                    0;
+
+                candidate_max_quiet =
+                    0;
+
+                candidate_direction_changes =
+                    0;
+
+                candidate_peak_vibration =
+                    vibration;
+
+                candidate_peak_pga =
+                    pga;
+
+                candidate_start_us =
+                    now_us;
+
+                previous_dx =
+                    dx;
+
+                previous_dy =
+                    dy;
+
+                previous_dz =
+                    dz;
+
+                previous_direction_valid =
+                    true;
+
+                prebuffer_copy(
+                    waveform
+                );
+
+                waveform_count =
+                    WAVEFORM_PRE_SAMPLES;
+
+                waveform_divider =
+                    0;
+
+                printf(
+                    "\n"
+                    "CANDIDATE EVENT\n"
+                    "Validating for %d ms...\n\n",
+                    VALIDATION_MS
+                );
+            }
+        }
+
+        if (
+            candidate_active
+        )
+        {
+            candidate_samples++;
+
+            if (
+                amplitude_trigger
+            )
+            {
+                candidate_active_count++;
+                candidate_quiet_count = 0;
+            }
+            else
+            {
+                candidate_quiet_count++;
+
+                if (
+                    candidate_quiet_count >
+                    candidate_max_quiet
+                )
+                {
+                    candidate_max_quiet =
+                        candidate_quiet_count;
+                }
+            }
+
+            if (
+                candidate_samples >
+                VALIDATION_SAMPLES / 2
+            )
+            {
+                if (
+                    amplitude_trigger
+                )
+                {
+                    candidate_second_active++;
+                }
+            }
+
+            if (
+                vibration >
+                candidate_peak_vibration
+            )
+            {
+                candidate_peak_vibration =
+                    vibration;
+            }
+
+            if (
+                pga >
+                candidate_peak_pga
+            )
+            {
+                candidate_peak_pga =
+                    pga;
+            }
+
+            if (
+                vibration >=
+                current_threshold *
+                VALIDATION_STRONG_MULTIPLIER
+            )
+            {
+                candidate_strong_hits++;
+            }
+
+            if (
+                previous_direction_valid
+            )
+            {
+                float dot =
+                    dx * previous_dx +
+                    dy * previous_dy +
+                    dz * previous_dz;
+
+                float current_mag =
+                    vector_magnitude(
+                        dx,
+                        dy,
+                        dz
+                    );
+
+                float previous_mag =
+                    vector_magnitude(
+                        previous_dx,
+                        previous_dy,
+                        previous_dz
+                    );
+
+                if (
+                    current_mag >=
+                    current_threshold &&
+                    previous_mag >=
+                    current_threshold &&
+                    dot < 0.0f
+                )
+                {
+                    candidate_direction_changes++;
+                }
+            }
+
+            previous_dx =
+                dx;
+
+            previous_dy =
+                dy;
+
+            previous_dz =
+                dz;
+
+            previous_direction_valid =
+                true;
+
+            if (
+                waveform_sample_due &&
+                waveform_count <
+                WAVEFORM_TOTAL_SAMPLES
+            )
+            {
+                waveform[
+                    waveform_count
+                ] = vibration;
+
+                waveform_count++;
+            }
+
+            if (
+                candidate_samples >=
+                VALIDATION_SAMPLES
+            )
+            {
+                float active_ratio =
+                    (
+                        float
+                    )candidate_active_count /
+                    VALIDATION_SAMPLES;
+
+                bool enough_activity =
+                    active_ratio >=
+                    VALIDATION_MIN_ACTIVE_RATIO;
+
+                bool activity_continues =
+                    candidate_second_active >=
+                    VALIDATION_MIN_SECOND_ACTIVE;
+
+                bool multiple_strong_samples =
+                    candidate_strong_hits >=
+                    VALIDATION_MIN_STRONG_HITS;
+
+                bool direction_is_dynamic =
+                    candidate_direction_changes >=
+                    VALIDATION_MIN_DIRECTION_CHANGES;
+
+                bool quiet_gap_ok =
+                    candidate_max_quiet <=
+                    VALIDATION_MAX_QUIET_SAMPLES;
+
+                bool large_enough =
+                    candidate_peak_vibration >=
+                    current_threshold *
+                    VALIDATION_MIN_PEAK_MULTIPLIER;
+
+                bool confirmed =
+                    enough_activity &&
+                    activity_continues &&
+                    multiple_strong_samples &&
+                    direction_is_dynamic &&
+                    quiet_gap_ok &&
+                    large_enough;
+
+                printf(
+                    "\n"
+                    "VALIDATION RESULT\n"
+                    "Active ratio:       %.2f\n"
+                    "Second-half active: %d\n"
+                    "Strong hits:        %d\n"
+                    "Direction changes:  %d\n"
+                    "Max quiet gap:      %d samples\n"
+                    "Peak vibration:     %.4f g\n"
+                    "Peak PGA:           %.4f g\n"
+                    "Threshold:          %.4f g\n",
+                    active_ratio,
+                    candidate_second_active,
+                    candidate_strong_hits,
+                    candidate_direction_changes,
+                    candidate_max_quiet,
+                    candidate_peak_vibration,
+                    candidate_peak_pga,
+                    current_threshold
+                );
+
+                if (
+                    !confirmed
+                )
+                {
+                    printf(
+                        "FALSE TRIGGER - DISCARDED\n\n"
+                    );
+
+                    candidate_active =
+                        false;
+
+                    waveform_count =
+                        0;
+
+                    waveform_divider =
+                        0;
+
+                    candidate_samples =
+                        0;
+
+                    candidate_active_count =
+                        0;
+
+                    candidate_second_active =
+                        0;
+
+                    candidate_strong_hits =
+                        0;
+
+                    candidate_quiet_count =
+                        0;
+
+                    candidate_max_quiet =
+                        0;
+
+                    candidate_direction_changes =
+                        0;
+
+                    candidate_peak_vibration =
+                        0.0f;
+
+                    candidate_peak_pga =
+                        0.0f;
+
+                    previous_direction_valid =
+                        false;
+
+                    detector_reset();
+
+                    continue;
+                }
+
+                event_active =
+                    true;
+
+                candidate_active =
+                    false;
+
+                event_start_us =
+                    candidate_start_us;
+
+                current_sequence =
+                    ++event_sequence;
+
+                peak_pga =
+                    candidate_peak_pga;
+
+                peak_vibration =
+                    candidate_peak_vibration;
+
+                rms_sum_squared =
+                    candidate_peak_vibration *
+                    candidate_peak_vibration;
+
+                rms_samples =
+                    1;
 
                 buzzer_on();
 
-                alert_severity = 2;
-                alert_until_us = now_us + (EVENT_ANALYSIS_MS + ALERT_HOLD_MS) * 1000LL;
-                hub_acked = false;
-                ack_reported = false;
-                hub_send(HAZARD_EARTHQUAKE, alert_severity);
-                last_hb_us = now_us;
+                printf(
+                    "\n"
+                    "################################\n"
+                    "EARTHQUAKE CONFIRMED\n"
+                    "################################\n\n"
+                );
+
+                send_event_start(
+                    current_sequence,
+                    candidate_peak_pga
+                );
             }
         }
 
-        if (event_active) {
-            if (vibration > peak_vibration) peak_vibration = vibration;
-            if (total_acceleration > peak_acceleration) peak_acceleration = total_acceleration;
-            if (vibration > peak_pga) peak_pga = vibration;
+        if (
+            event_active
+        )
+        {
+            if (
+                pga >
+                peak_pga
+            )
+            {
+                peak_pga =
+                    pga;
+            }
 
-            if (now_us - event_start_us >= EVENT_ANALYSIS_MS * 1000LL) {
-                float magnitude = estimate_magnitude(peak_pga);
-                int intensity = estimate_intensity(peak_pga);
+            if (
+                vibration >
+                peak_vibration
+            )
+            {
+                peak_vibration =
+                    vibration;
+            }
 
-                printf("\n"
-                       "EARTHQUAKE DETECTED\n"
-                       "TIME: %lld\n"
-                       "MAGNITUDE: %.1f\n"
-                       "INTENSITY: %s\n"
-                       "ACCELERATION: %.3f g\n"
-                       "VIBRATION: %.3f g\n"
-                       "\n",
-                       (long long)event_epoch,
-                       magnitude,
-                       mmi_string(intensity),
-                       peak_acceleration,
-                       peak_vibration);
+            rms_sum_squared +=
+                vibration *
+                vibration;
+
+            rms_samples++;
+
+            if (
+                waveform_sample_due &&
+                waveform_count <
+                WAVEFORM_TOTAL_SAMPLES
+            )
+            {
+                waveform[
+                    waveform_count
+                ] = vibration;
+
+                waveform_count++;
+            }
+
+            if (
+                waveform_count >=
+                WAVEFORM_TOTAL_SAMPLES
+            )
+            {
+                float rms_vibration =
+                    sqrtf(
+                        rms_sum_squared /
+                        (
+                            rms_samples >
+                            0
+                            ?
+                            rms_samples
+                            :
+                            1
+                        )
+                    );
+
+                float duration =
+                    (
+                        now_us -
+                        event_start_us
+                    ) /
+                    1000000.0f;
+
+                int level =
+                    get_level(
+                        peak_pga
+                    );
+
+                int intensity =
+                    estimate_intensity(
+                        peak_pga
+                    );
+
+                float magnitude =
+                    estimate_magnitude(
+                        peak_pga
+                    );
+
+                printf(
+                    "\n"
+                    "================================\n"
+                    "EARTHQUAKE DETECTED\n"
+                    "================================\n"
+                    "LEVEL:            %s\n"
+                    "PEAK PGA:         %.4f g\n"
+                    "PEAK VIBRATION:   %.4f g\n"
+                    "RMS VIBRATION:    %.4f g\n"
+                    "DURATION:         %.2f s\n"
+                    "MAGNITUDE EST:    %.1f\n"
+                    "INTENSITY EST:    %s\n"
+                    "SEQUENCE:         %u\n"
+                    "================================\n\n",
+                    level_string(
+                        level
+                    ),
+                    peak_pga,
+                    peak_vibration,
+                    rms_vibration,
+                    duration,
+                    magnitude,
+                    intensity_string(
+                        intensity
+                    ),
+                    current_sequence
+                );
 
                 buzzer_off();
 
-                alert_severity = severity_from_mmi(intensity);
-                alert_until_us = now_us + ALERT_HOLD_MS * 1000LL;
-                hub_send(HAZARD_EARTHQUAKE, alert_severity);
-                last_hb_us = now_us;
+                vTaskDelay(
+                    pdMS_TO_TICKS(50)
+                );
 
-                event_active = false;
-                last_event_time_us = now_us;
+                send_waveform(
+                    current_sequence,
+                    waveform
+                );
 
-                peak_vibration = 0.0f;
-                peak_acceleration = 0.0f;
-                peak_pga = 0.0f;
+                vTaskDelay(
+                    pdMS_TO_TICKS(50)
+                );
+
+                send_event_final(
+                    current_sequence,
+                    peak_pga,
+                    peak_vibration,
+                    rms_vibration,
+                    duration
+                );
+
+                printf(
+                    "EVENT TRANSMISSION COMPLETE\n\n"
+                );
+
+                event_active =
+                    false;
+
+                last_event_us =
+                    now_us;
+
+                waveform_count =
+                    0;
+
+                waveform_divider =
+                    0;
+
+                peak_pga =
+                    0.0f;
+
+                peak_vibration =
+                    0.0f;
+
+                rms_sum_squared =
+                    0.0f;
+
+                rms_samples =
+                    0;
+
+                previous_direction_valid =
+                    false;
+
+                detector_reset();
+
+                detection_threshold =
+                    get_detection_threshold();
             }
         }
 
-        vTaskDelay(pdMS_TO_TICKS(SAMPLE_PERIOD_MS));
+        update_gravity(
+            ax,
+            ay,
+            az
+        );
+
+        vTaskDelay(
+            pdMS_TO_TICKS(
+                SAMPLE_PERIOD_MS
+            )
+        );
     }
 }
