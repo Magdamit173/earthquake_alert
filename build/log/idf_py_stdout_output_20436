@@ -1,0 +1,1949 @@
+Command: C:\Espressif\python_env\idf5.5_py3.11_env\Scripts\python.exe C:\Espressif\frameworks\esp-idf-v5.5.5\tools/idf_monitor.py -p COM11 -b 115200 --toolchain-prefix riscv32-esp-elf- --target esp32c3 --revision 3 --decode-panic backtrace C:\Magdamit173\UCC\earthquake_alert\build\earthquake_alert.elf C:\Magdamit173\UCC\earthquake_alert\build\bootloader\bootloader.elf --force-color -m 'C:\Espressif\python_env\idf5.5_py3.11_env\Scripts\python.exe' 'C:\Espressif\frameworks\esp-idf-v5.5.5\tools\idf.py' '-p' 'COM11' '-b' '115200'
+ESP-ROM:esp32c3-api1-20210207
+Build:Feb  7 2021
+rst:0x15 (USB_UART_CHIP_RESET),boot:0xd (SPI_FAST_FLASH_BOOT)
+Saved PC:0x4038435a
+SPIWP:0xee
+mode:DIO, clock div:1
+load:0x3fcd5820,len:0x155c
+load:0x403cbf10,len:0xc84
+load:0x403ce710,len:0x2fac
+entry 0x403cbf1a
+[0;32mI (24) boot: ESP-IDF v5.5.5 2nd stage bootloader[0m
+[0;32mI (24) boot: compile time Sep 30 2026 15:33:38[0m
+[0;32mI (25) boot: chip revision: v0.4[0m
+[0;32mI (25) boot: efuse block revision: v1.3[0m
+[0;32mI (28) boot.esp32c3: SPI Speed      : 80MHz[0m
+[0;32mI (32) boot.esp32c3: SPI Mode       : DIO[0m
+[0;32mI (36) boot.esp32c3: SPI Flash Size : 2MB[0m
+[0;32mI (39) boot: Enabling RNG early entropy source...[0m
+[0;32mI (44) boot: Partition Table:[0m
+[0;32mI (46) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (53) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
+[0;32mI (59) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
+[0;32mI (66) boot:  2 factory          factory app      00 00 00010000 00100000[0m
+[0;32mI (72) boot: End of partition table[0m
+[0;32mI (76) esp_image: segment 0: paddr=00010020 vaddr=3c0a0020 size=1a21ch (107036) map[0m
+[0;32mI (100) esp_image: segment 1: paddr=0002a244 vaddr=3fc95000 size=031ach ( 12716) load[0m
+[0;32mI (103) esp_image: segment 2: paddr=0002d3f8 vaddr=40380000 size=02c20h ( 11296) load[0m
+[0;32mI (106) esp_image: segment 3: paddr=00030020 vaddr=42000020 size=95938h (612664) map[0m
+[0;32mI (209) esp_image: segment 4: paddr=000c5960 vaddr=40382c20 size=123a8h ( 74664) load[0m
+[0;32mI (223) esp_image: segment 5: paddr=000d7d10 vaddr=50000000 size=00020h (    32) load[0m
+[0;32mI (230) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (230) boot: Disabling RNG early entropy source...[0m
+[0;32mI (241) cpu_start: Unicore app[0m
+[0;32mI (249) cpu_start: GPIO 20 and 21 are used as console UART I/O pins[0m
+[0;32mI (250) cpu_start: Pro cpu start user code[0m
+[0;32mI (250) cpu_start: cpu freq: 160000000 Hz[0m
+[0;32mI (251) app_init: Application information:[0m
+[0;32mI (255) app_init: Project name:     earthquake_alert[0m
+[0;32mI (260) app_init: App version:      1[0m
+[0;32mI (263) app_init: Compile time:     Sep 30 2026 15:30:50[0m
+[0;32mI (268) app_init: ELF file SHA256:  ade0dcc8c...[0m
+[0;32mI (273) app_init: ESP-IDF:          v5.5.5[0m
+[0;32mI (276) efuse_init: Min chip rev:     v0.3[0m
+[0;32mI (280) efuse_init: Max chip rev:     v1.99 [0m
+[0;32mI (284) efuse_init: Chip rev:         v0.4[0m
+[0;32mI (288) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (294) heap_init: At 3FC9C640 len 000239C0 (142 KiB): RAM[0m
+[0;32mI (300) heap_init: At 3FCC0000 len 0001C710 (113 KiB): Retention RAM[0m
+[0;32mI (306) heap_init: At 3FCDC710 len 00002950 (10 KiB): Retention RAM[0m
+[0;32mI (312) heap_init: At 50000020 len 00001FC8 (7 KiB): RTCRAM[0m
+[0;32mI (318) spi_flash: detected chip: generic[0m
+[0;32mI (321) spi_flash: flash io: dio[0m
+[0;33mW (324) spi_flash: Detected size(4096k) larger than the size in the binary image header(2048k). Using the size in the binary image header.[0m
+[0;32mI (336) sleep_gpio: Configure to isolate all GPIO pins in sleep state[0m
+[0;32mI (342) sleep_gpio: Enable automatic switching of GPIO sleep configuration[0m
+[0;32mI (349) main_task: Started on CPU0[0m
+[0;32mI (349) main_task: Calling app_main()[0m
+
+================================
+EARTHQUAKE ALERT SLAVE
+================================
+NODE ID:           4
+CHANNEL:           1
+ESP-NOW VERSION:   v2
+MASTER:            98:F4:AB:3A:62:00
+SAMPLE RATE:       100 Hz
+CAPTURE RATE:      10 Hz
+CAPTURE SPAN:      5 s (2 s pre + 3 s post)
+LOW-PASS:          15.0 Hz
+================================
+CALIBRATION COMPLETE
+GRAVITY:           X=0.0113 Y=-0.0835 Z=-0.9308 g
+VERTICAL AXIS:     2
+NOISE RMS:         0.00647 g
+DETECTION THRESH:  0.03236 g
+MAGNITUDE DISTANCE: 10.0 km assumed
+INTENSITY:         instrumental MMI-like estimate
+READY
+
+DEBUG | NORMAL | VIB=0.0041 g | PGA H/V=0.0034/0.0024 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0025 g | PGA H/V=0.0020/0.0015 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0159 g | PGA H/V=0.0141/0.0073 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+
+CANDIDATE EVENT
+Validating for 600 ms...
+
+
+VALIDATION RESULT
+Active ratio:       0.75
+Strong hits:        1
+Peak acceleration:  0.0658 g
+Peak H PGA:         0.0490 g
+Peak V PGA:         0.0000 g
+Threshold:          0.0324 g
+FALSE TRIGGER - DISCARDED
+
+DEBUG | NORMAL | VIB=0.0087 g | PGA H/V=0.0081/0.0032 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0042 g | PGA H/V=0.0027/0.0032 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0049 g | PGA H/V=0.0043/0.0023 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0065 g | PGA H/V=0.0052/0.0040 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0011 g | PGA H/V=0.0010/0.0005 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0074 g | PGA H/V=0.0073/0.0014 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0044 g | PGA H/V=0.0027/0.0034 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0038 g | PGA H/V=0.0036/0.0014 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0041 g | PGA H/V=0.0035/0.0022 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0035 g | PGA H/V=0.0030/0.0018 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0019 g | PGA H/V=0.0005/0.0018 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0064 g | PGA H/V=0.0062/0.0013 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0072 g | PGA H/V=0.0069/0.0020 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0041 g | PGA H/V=0.0040/0.0008 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0011 g | PGA H/V=0.0007/0.0009 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0045 g | PGA H/V=0.0042/0.0017 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0039 g | PGA H/V=0.0034/0.0020 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0025 g | PGA H/V=0.0024/0.0007 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0045 g | PGA H/V=0.0038/0.0024 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0029 g | PGA H/V=0.0025/0.0015 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0050 g | PGA H/V=0.0049/0.0011 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0077 g | PGA H/V=0.0077/0.0009 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0014 g | PGA H/V=0.0010/0.0011 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0091 g | PGA H/V=0.0084/0.0034 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0063 g | PGA H/V=0.0052/0.0036 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0056 g | PGA H/V=0.0049/0.0026 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0157 g | PGA H/V=0.0155/0.0026 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0101 g | PGA H/V=0.0101/0.0006 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0078 g | PGA H/V=0.0036/0.0069 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0139 g | PGA H/V=0.0132/0.0043 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0036 g | PGA H/V=0.0030/0.0021 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0064 g | PGA H/V=0.0063/0.0013 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0042 g | PGA H/V=0.0037/0.0020 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0033 g | PGA H/V=0.0033/0.0003 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0051 g | PGA H/V=0.0051/0.0006 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0105 g | PGA H/V=0.0099/0.0033 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0063 g | PGA H/V=0.0062/0.0010 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0135 g | PGA H/V=0.0135/0.0015 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0089 g | PGA H/V=0.0089/0.0007 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0063 g | PGA H/V=0.0059/0.0020 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0064 g | PGA H/V=0.0059/0.0023 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0027 g | PGA H/V=0.0024/0.0012 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0073 g | PGA H/V=0.0073/0.0004 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0083 g | PGA H/V=0.0067/0.0048 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0126 g | PGA H/V=0.0126/0.0002 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0081 g | PGA H/V=0.0081/0.0003 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0061 g | PGA H/V=0.0052/0.0032 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0027 g | PGA H/V=0.0025/0.0011 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+
+CANDIDATE EVENT
+Validating for 600 ms...
+
+DEBUG | CANDIDATE | VIB=0.0059 g | PGA H/V=0.0059/0.0002 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+        candidate: samples=30 active=14 strong=0 peak=0.0337 g
+
+VALIDATION RESULT
+Active ratio:       0.23
+Strong hits:        0
+Peak acceleration:  0.0337 g
+Peak H PGA:         0.0327 g
+Peak V PGA:         0.0000 g
+Threshold:          0.0324 g
+FALSE TRIGGER - DISCARDED
+
+DEBUG | NORMAL | VIB=0.0085 g | PGA H/V=0.0066/0.0053 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0019 g | PGA H/V=0.0010/0.0016 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0049 g | PGA H/V=0.0021/0.0044 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0039 g | PGA H/V=0.0032/0.0021 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+
+CANDIDATE EVENT
+Validating for 600 ms...
+
+DEBUG | CANDIDATE | VIB=0.0059 g | PGA H/V=0.0059/0.0008 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+        candidate: samples=30 active=16 strong=0 peak=0.0501 g
+
+VALIDATION RESULT
+Active ratio:       0.52
+Strong hits:        0
+Peak acceleration:  0.0501 g
+Peak H PGA:         0.0496 g
+Peak V PGA:         0.0000 g
+Threshold:          0.0324 g
+FALSE TRIGGER - DISCARDED
+
+DEBUG | NORMAL | VIB=0.0076 g | PGA H/V=0.0060/0.0048 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0068 g | PGA H/V=0.0065/0.0018 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0029 g | PGA H/V=0.0028/0.0008 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0077 g | PGA H/V=0.0062/0.0045 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0088 g | PGA H/V=0.0086/0.0018 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0077 g | PGA H/V=0.0071/0.0030 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0057 g | PGA H/V=0.0057/0.0003 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0032 g | PGA H/V=0.0027/0.0016 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0040 g | PGA H/V=0.0038/0.0011 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0038 g | PGA H/V=0.0015/0.0035 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0036 g | PGA H/V=0.0024/0.0027 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0038 g | PGA H/V=0.0030/0.0022 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0049 g | PGA H/V=0.0030/0.0039 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0033 g | PGA H/V=0.0030/0.0015 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0120 g | PGA H/V=0.0119/0.0015 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0057 g | PGA H/V=0.0053/0.0022 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+
+CANDIDATE EVENT
+Validating for 600 ms...
+
+DEBUG | CANDIDATE | VIB=0.0084 g | PGA H/V=0.0072/0.0043 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+        candidate: samples=10 active=6 strong=0 peak=0.0379 g
+
+VALIDATION RESULT
+Active ratio:       0.48
+Strong hits:        0
+Peak acceleration:  0.0379 g
+Peak H PGA:         0.0375 g
+Peak V PGA:         0.0000 g
+Threshold:          0.0324 g
+FALSE TRIGGER - DISCARDED
+
+DEBUG | NORMAL | VIB=0.0198 g | PGA H/V=0.0197/0.0012 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+
+CANDIDATE EVENT
+Validating for 600 ms...
+
+DEBUG | CANDIDATE | VIB=0.0151 g | PGA H/V=0.0150/0.0012 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+        candidate: samples=50 active=7 strong=2 peak=0.0799 g
+
+VALIDATION RESULT
+Active ratio:       0.20
+Strong hits:        2
+Peak acceleration:  0.0799 g
+Peak H PGA:         0.0305 g
+Peak V PGA:         0.0000 g
+Threshold:          0.0324 g
+FALSE TRIGGER - DISCARDED
+
+DEBUG | NORMAL | VIB=0.0040 g | PGA H/V=0.0040/0.0002 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0049 g | PGA H/V=0.0039/0.0029 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0009 g | PGA H/V=0.0009/0.0001 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0070 g | PGA H/V=0.0070/0.0010 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+
+CANDIDATE EVENT
+Validating for 600 ms...
+
+
+VALIDATION RESULT
+Active ratio:       0.30
+Strong hits:        1
+Peak acceleration:  0.0748 g
+Peak H PGA:         0.0748 g
+Peak V PGA:         0.0000 g
+Threshold:          0.0324 g
+FALSE TRIGGER - DISCARDED
+
+DEBUG | NORMAL | VIB=0.0037 g | PGA H/V=0.0037/0.0002 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0039 g | PGA H/V=0.0004/0.0039 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0035 g | PGA H/V=0.0009/0.0033 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0078 g | PGA H/V=0.0078/0.0004 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0132 g | PGA H/V=0.0131/0.0016 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0093 g | PGA H/V=0.0093/0.0004 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0051 g | PGA H/V=0.0049/0.0013 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0038 g | PGA H/V=0.0032/0.0020 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0031 g | PGA H/V=0.0031/0.0002 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0048 g | PGA H/V=0.0045/0.0017 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0025 g | PGA H/V=0.0024/0.0002 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0055 g | PGA H/V=0.0050/0.0023 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0066 g | PGA H/V=0.0058/0.0030 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0015 g | PGA H/V=0.0011/0.0010 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+
+CANDIDATE EVENT
+Validating for 600 ms...
+
+DEBUG | CANDIDATE | VIB=0.0071 g | PGA H/V=0.0068/0.0021 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+        candidate: samples=40 active=29 strong=2 peak=0.0913 g
+
+VALIDATION RESULT
+Active ratio:       0.48
+Strong hits:        2
+Peak acceleration:  0.0913 g
+Peak H PGA:         0.0908 g
+Peak V PGA:         0.0000 g
+Threshold:          0.0324 g
+EARTHQUAKE CONFIRMED
+
+================================
+EARTHQUAKE DETECTED
+================================
+NODE ID:           4
+SEQUENCE:          1
+LEVEL:             UNKNOWN
+INTENSITY:         UNKNOWN
+PEAK ACCEL:        0.0000 g
+PEAK H PGA:        0.0000 g
+PEAK V PGA:        0.0000 g
+PEAK H PGV:        0.000 cm/s
+PEAK V PGV:        0.000 cm/s
+RMS VIBRATION:     0.0000 g
+CAV:               0.0000 g*s
+DURATION:           0.000 s
+DOMINANT FREQ:     0.0 Hz
+MAGNITUDE EST:     0.00
+DISTANCE ASSUMED:  10.0 km
+JSON:              DROPPED
+================================
+
+DEBUG | CAPTURE | VIB=0.0068 g | PGA H/V=0.0064/0.0024 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | CAPTURE | VIB=0.0039 g | PGA H/V=0.0012/0.0037 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | CAPTURE | VIB=0.0081 g | PGA H/V=0.0044/0.0068 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+================================
+EARTHQUAKE DETECTED
+================================
+NODE ID:           4
+SEQUENCE:          1
+LEVEL:             MODERATE
+INTENSITY:         V
+PEAK ACCEL:        0.0913 g
+PEAK H PGA:        0.0908 g
+PEAK V PGA:        0.0198 g
+PEAK H PGV:        2.127 cm/s
+PEAK V PGV:        3.367 cm/s
+RMS VIBRATION:     0.0125 g
+CAV:               0.0464 g*s
+DURATION:           1.570 s
+DOMINANT FREQ:     2.5 Hz
+MAGNITUDE EST:     4.74
+DISTANCE ASSUMED:  10.0 km
+JSON:              QUEUED
+================================
+
+DEBUG | NORMAL | VIB=0.0056 g | PGA H/V=0.0048/0.0029 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0032 g | PGA H/V=0.0028/0.0014 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0026 g | PGA H/V=0.0017/0.0020 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0032 g | PGA H/V=0.0018/0.0027 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0030 g | PGA H/V=0.0027/0.0013 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0043 g | PGA H/V=0.0024/0.0035 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0043 g | PGA H/V=0.0029/0.0031 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0038 g | PGA H/V=0.0023/0.0030 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0046 g | PGA H/V=0.0015/0.0043 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0046 g | PGA H/V=0.0044/0.0014 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0028 g | PGA H/V=0.0022/0.0018 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0039 g | PGA H/V=0.0033/0.0021 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0043 g | PGA H/V=0.0025/0.0034 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0029 g | PGA H/V=0.0026/0.0014 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0025 g | PGA H/V=0.0014/0.0021 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0041 g | PGA H/V=0.0036/0.0019 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0043 g | PGA H/V=0.0018/0.0040 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0041 g | PGA H/V=0.0027/0.0031 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0041 g | PGA H/V=0.0031/0.0027 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0040 g | PGA H/V=0.0012/0.0038 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0037 g | PGA H/V=0.0037/0.0000 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0040 g | PGA H/V=0.0029/0.0027 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0027 g | PGA H/V=0.0012/0.0024 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0041 g | PGA H/V=0.0039/0.0012 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0059 g | PGA H/V=0.0026/0.0053 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0015 g | PGA H/V=0.0010/0.0011 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0054 g | PGA H/V=0.0026/0.0047 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0030 g | PGA H/V=0.0015/0.0026 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0048 g | PGA H/V=0.0029/0.0038 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0053 g | PGA H/V=0.0049/0.0022 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0039 g | PGA H/V=0.0033/0.0021 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0070 g | PGA H/V=0.0067/0.0019 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0044 g | PGA H/V=0.0039/0.0020 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0046 g | PGA H/V=0.0028/0.0037 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0194 g | PGA H/V=0.0194/0.0006 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0057 g | PGA H/V=0.0046/0.0032 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0025 g | PGA H/V=0.0024/0.0009 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0047 g | PGA H/V=0.0031/0.0035 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0043 g | PGA H/V=0.0025/0.0035 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0056 g | PGA H/V=0.0035/0.0043 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0026 g | PGA H/V=0.0024/0.0009 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0075 g | PGA H/V=0.0046/0.0060 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0026 g | PGA H/V=0.0025/0.0008 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0029 g | PGA H/V=0.0028/0.0008 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+
+CANDIDATE EVENT
+Validating for 600 ms...
+
+DEBUG | CANDIDATE | VIB=0.1116 g | PGA H/V=0.1115/0.0052 g | TH=0.0324 g | AMP=1 | ONSET=1 | TX ok/fail/drop=1/0/0 | I2C fails=0
+        candidate: samples=10 active=10 strong=10 peak=0.4179 g
+
+VALIDATION RESULT
+Active ratio:       1.00
+Strong hits:        56
+Peak acceleration:  0.4179 g
+Peak H PGA:         0.4155 g
+Peak V PGA:         0.0000 g
+Threshold:          0.0324 g
+EARTHQUAKE CONFIRMED
+
+================================
+EARTHQUAKE DETECTED
+================================
+NODE ID:           4
+SEQUENCE:          2
+LEVEL:             UNKNOWN
+INTENSITY:         UNKNOWN
+PEAK ACCEL:        0.0000 g
+PEAK H PGA:        0.0000 g
+PEAK V PGA:        0.0000 g
+PEAK H PGV:        0.000 cm/s
+PEAK V PGV:        0.000 cm/s
+RMS VIBRATION:     0.0000 g
+CAV:               0.0000 g*s
+DURATION:           0.000 s
+DOMINANT FREQ:     0.0 Hz
+MAGNITUDE EST:     0.00
+DISTANCE ASSUMED:  10.0 km
+JSON:              DROPPED
+================================
+
+DEBUG | CAPTURE | VIB=0.0537 g | PGA H/V=0.0518/0.0144 g | TH=0.0324 g | AMP=1 | ONSET=1 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | CAPTURE | VIB=0.4486 g | PGA H/V=0.3119/0.3225 g | TH=0.0324 g | AMP=1 | ONSET=1 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | CAPTURE | VIB=0.9328 g | PGA H/V=0.7997/0.4801 g | TH=0.0324 g | AMP=1 | ONSET=1 | TX ok/fail/drop=1/0/0 | I2C fails=0
+================================
+EARTHQUAKE DETECTED
+================================
+NODE ID:           4
+SEQUENCE:          2
+LEVEL:             VERY STRONG
+INTENSITY:         VIII
+PEAK ACCEL:        1.8484 g
+PEAK H PGA:        1.8449 g
+PEAK V PGA:        0.7419 g
+PEAK H PGV:        391.105 cm/s
+PEAK V PGV:        175.840 cm/s
+RMS VIBRATION:     0.4952 g
+CAV:               1.4037 g*s
+DURATION:           3.590 s
+DOMINANT FREQ:     0.5 Hz
+MAGNITUDE EST:     9.57
+DISTANCE ASSUMED:  10.0 km
+JSON:              QUEUED
+================================
+
+DEBUG | NORMAL | VIB=0.4160 g | PGA H/V=0.4051/0.0949 g | TH=0.0324 g | AMP=1 | ONSET=1 | TX ok/fail/drop=2/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.3495 g | PGA H/V=0.3399/0.0812 g | TH=0.0324 g | AMP=1 | ONSET=1 | TX ok/fail/drop=2/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.7751 g | PGA H/V=0.7740/0.0403 g | TH=0.0324 g | AMP=1 | ONSET=1 | TX ok/fail/drop=2/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.9329 g | PGA H/V=0.9302/0.0708 g | TH=0.0324 g | AMP=1 | ONSET=1 | TX ok/fail/drop=2/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=1.0351 g | PGA H/V=1.0324/0.0738 g | TH=0.0324 g | AMP=1 | ONSET=1 | TX ok/fail/drop=2/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.8142 g | PGA H/V=0.8130/0.0449 g | TH=0.0324 g | AMP=1 | ONSET=1 | TX ok/fail/drop=2/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=1.1051 g | PGA H/V=1.1031/0.0667 g | TH=0.0324 g | AMP=1 | ONSET=1 | TX ok/fail/drop=2/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.6682 g | PGA H/V=0.6673/0.0347 g | TH=0.0324 g | AMP=1 | ONSET=1 | TX ok/fail/drop=2/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0106 g | PGA H/V=0.0096/0.0045 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=2/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0110 g | PGA H/V=0.0105/0.0034 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=2/0/0 | I2C fails=0
+
+CANDIDATE EVENT
+Validating for 600 ms...
+
+DEBUG | CANDIDATE | VIB=0.0098 g | PGA H/V=0.0087/0.0045 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=2/0/0 | I2C fails=0
+        candidate: samples=50 active=2 strong=0 peak=0.0328 g
+
+VALIDATION RESULT
+Active ratio:       0.03
+Strong hits:        0
+Peak acceleration:  0.0328 g
+Peak H PGA:         0.0321 g
+Peak V PGA:         0.0000 g
+Threshold:          0.0324 g
+FALSE TRIGGER - DISCARDED
+
+
+CANDIDATE EVENT
+Validating for 600 ms...
+
+DEBUG | CANDIDATE | VIB=1.3353 g | PGA H/V=1.3309/0.1082 g | TH=0.0324 g | AMP=1 | ONSET=1 | TX ok/fail/drop=2/0/0 | I2C fails=0
+        candidate: samples=40 active=40 strong=40 peak=1.8926 g
+
+VALIDATION RESULT
+Active ratio:       1.00
+Strong hits:        60
+Peak acceleration:  2.4076 g
+Peak H PGA:         2.4032 g
+Peak V PGA:         0.0000 g
+Threshold:          0.0324 g
+EARTHQUAKE CONFIRMED
+
+================================
+EARTHQUAKE DETECTED
+================================
+NODE ID:           4
+SEQUENCE:          3
+LEVEL:             UNKNOWN
+INTENSITY:         UNKNOWN
+PEAK ACCEL:        0.0000 g
+PEAK H PGA:        0.0000 g
+PEAK V PGA:        0.0000 g
+PEAK H PGV:        0.000 cm/s
+PEAK V PGV:        0.000 cm/s
+RMS VIBRATION:     0.0000 g
+CAV:               0.0000 g*s
+DURATION:           0.000 s
+DOMINANT FREQ:     0.0 Hz
+MAGNITUDE EST:     0.00
+DISTANCE ASSUMED:  10.0 km
+JSON:              DROPPED
+================================
+
+DEBUG | CAPTURE | VIB=1.3188 g | PGA H/V=1.3171/0.0666 g | TH=0.0324 g | AMP=1 | ONSET=1 | TX ok/fail/drop=2/0/0 | I2C fails=0
+DEBUG | CAPTURE | VIB=0.5278 g | PGA H/V=0.5257/0.0478 g | TH=0.0324 g | AMP=1 | ONSET=1 | TX ok/fail/drop=2/0/0 | I2C fails=0
+DEBUG | CAPTURE | VIB=0.0080 g | PGA H/V=0.0077/0.0021 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=2/0/0 | I2C fails=0
+================================
+EARTHQUAKE DETECTED
+================================
+NODE ID:           4
+SEQUENCE:          3
+LEVEL:             VERY STRONG
+INTENSITY:         VIII
+PEAK ACCEL:        2.4076 g
+PEAK H PGA:        2.4032 g
+PEAK V PGA:        0.1738 g
+PEAK H PGV:        184.558 cm/s
+PEAK V PGV:        9.276 cm/s
+RMS VIBRATION:     0.7882 g
+CAV:               2.5238 g*s
+DURATION:           2.890 s
+DOMINANT FREQ:     2.0 Hz
+MAGNITUDE EST:     9.90
+DISTANCE ASSUMED:  10.0 km
+JSON:              QUEUED
+================================
+
+DEBUG | NORMAL | VIB=0.0110 g | PGA H/V=0.0110/0.0010 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=3/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0095 g | PGA H/V=0.0095/0.0003 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=3/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0115 g | PGA H/V=0.0108/0.0042 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=3/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0092 g | PGA H/V=0.0089/0.0023 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=3/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0103 g | PGA H/V=0.0096/0.0037 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=3/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0079 g | PGA H/V=0.0076/0.0024 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=3/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0107 g | PGA H/V=0.0098/0.0044 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=3/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0096 g | PGA H/V=0.0094/0.0020 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=3/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0112 g | PGA H/V=0.0109/0.0025 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=3/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0105 g | PGA H/V=0.0105/0.0014 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=3/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0095 g | PGA H/V=0.0094/0.0014 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=3/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0077 g | PGA H/V=0.0075/0.0017 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=3/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0118 g | PGA H/V=0.0112/0.0036 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=3/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0080 g | PGA H/V=0.0074/0.0029 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=3/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0106 g | PGA H/V=0.0106/0.0009 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=3/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0058 g | PGA H/V=0.0058/0.0009 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=3/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0077 g | PGA H/V=0.0074/0.0023 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=3/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0085 g | PGA H/V=0.0085/0.0005 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=3/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0093 g | PGA H/V=0.0086/0.0035 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=3/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0081 g | PGA H/V=0.0081/0.0006 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=3/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0091 g | PGA H/V=0.0080/0.0043 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=3/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0104 g | PGA H/V=0.0098/0.0036 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=3/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0087 g | PGA H/V=0.0073/0.0047 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=3/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0092 g | PGA H/V=0.0079/0.0048 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=3/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0091 g | PGA H/V=0.0076/0.0050 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=3/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0088 g | PGA H/V=0.0087/0.0009 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=3/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0105 g | PGA H/V=0.0100/0.0031 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=3/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0081 g | PGA H/V=0.0068/0.0045 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=3/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0097 g | PGA H/V=0.0094/0.0024 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=3/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0073 g | PGA H/V=0.0069/0.0023 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=3/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0077 g | PGA H/V=0.0077/0.0008 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=3/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0111 g | PGA H/V=0.0094/0.0059 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=3/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0082 g | PGA H/V=0.0079/0.0023 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=3/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0085 g | PGA H/V=0.0076/0.0038 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=3/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0072 g | PGA H/V=0.0069/0.0022 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=3/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0098 g | PGA H/V=0.0076/0.0062 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=3/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0088 g | PGA H/V=0.0087/0.0015 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=3/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0087 g | PGA H/V=0.0086/0.0015 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=3/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0118 g | PGA H/V=0.0109/0.0045 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=3/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0093 g | PGA H/V=0.0093/0.0006 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=3/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0094 g | PGA H/V=0.0088/0.0034 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=3/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0083 g | PGA H/V=0.0082/0.0012 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=3/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0076 g | PGA H/V=0.0076/0.0004 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=3/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0097 g | PGA H/V=0.0094/0.0026 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=3/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0082 g | PGA H/V=0.0081/0.0015 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=3/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0100 g | PGA H/V=0.0083/0.0057 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=3/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0094 g | PGA H/V=0.0093/0.0014 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=3/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0096 g | PGA H/V=0.0095/0.0012 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=3/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0101 g | PGA H/V=0.0083/0.0057 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=3/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0100 g | PGA H/V=0.0095/0.0031 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=3/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0084 g | PGA H/V=0.0084/0.0007 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=3/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0082 g | PGA H/V=0.0074/0.0034 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=3/0/0 | I2C fails=0
+
+CANDIDATE EVENT
+Validating for 600 ms...
+
+DEBUG | CANDIDATE | VIB=0.0183 g | PGA H/V=0.0171/0.0063 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=3/0/0 | I2C fails=0
+        candidate: samples=20 active=16 strong=0 peak=0.0537 g
+
+VALIDATION RESULT
+Active ratio:       0.60
+Strong hits:        0
+Peak acceleration:  0.0537 g
+Peak H PGA:         0.0521 g
+Peak V PGA:         0.0000 g
+Threshold:          0.0324 g
+FALSE TRIGGER - DISCARDED
+
+DEBUG | NORMAL | VIB=0.0112 g | PGA H/V=0.0111/0.0015 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=3/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0105 g | PGA H/V=0.0102/0.0024 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=3/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0087 g | PGA H/V=0.0085/0.0021 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=3/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0103 g | PGA H/V=0.0094/0.0042 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=3/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0218 g | PGA H/V=0.0178/0.0125 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=3/0/0 | I2C fails=0
+
+CANDIDATE EVENT
+Validating for 600 ms...
+
+
+VALIDATION RESULT
+Active ratio:       1.00
+Strong hits:        56
+Peak acceleration:  0.5346 g
+Peak H PGA:         0.3362 g
+Peak V PGA:         0.0000 g
+Threshold:          0.0324 g
+EARTHQUAKE CONFIRMED
+
+================================
+EARTHQUAKE DETECTED
+================================
+NODE ID:           4
+SEQUENCE:          4
+LEVEL:             UNKNOWN
+INTENSITY:         UNKNOWN
+PEAK ACCEL:        0.0000 g
+PEAK H PGA:        0.0000 g
+PEAK V PGA:        0.0000 g
+PEAK H PGV:        0.000 cm/s
+PEAK V PGV:        0.000 cm/s
+RMS VIBRATION:     0.0000 g
+CAV:               0.0000 g*s
+DURATION:           0.000 s
+DOMINANT FREQ:     0.0 Hz
+MAGNITUDE EST:     0.00
+DISTANCE ASSUMED:  10.0 km
+JSON:              DROPPED
+================================
+
+DEBUG | CAPTURE | VIB=0.0136 g | PGA H/V=0.0133/0.0028 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=3/0/0 | I2C fails=0
+DEBUG | CAPTURE | VIB=0.0120 g | PGA H/V=0.0119/0.0015 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=3/0/0 | I2C fails=0
+DEBUG | CAPTURE | VIB=0.0125 g | PGA H/V=0.0104/0.0069 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=3/0/0 | I2C fails=0
+================================
+EARTHQUAKE DETECTED
+================================
+NODE ID:           4
+SEQUENCE:          4
+LEVEL:             VERY STRONG
+INTENSITY:         VIII
+PEAK ACCEL:        0.5346 g
+PEAK H PGA:        0.3362 g
+PEAK V PGA:        0.0202 g
+PEAK H PGV:        55.794 cm/s
+PEAK V PGV:        29.742 cm/s
+RMS VIBRATION:     0.0850 g
+CAV:               0.1972 g*s
+DURATION:           1.680 s
+DOMINANT FREQ:     0.5 Hz
+MAGNITUDE EST:     6.84
+DISTANCE ASSUMED:  10.0 km
+JSON:              QUEUED
+================================
+
+DEBUG | NORMAL | VIB=0.0095 g | PGA H/V=0.0093/0.0017 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=4/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0108 g | PGA H/V=0.0108/0.0002 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=4/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.5801 g | PGA H/V=0.5797/0.0205 g | TH=0.0324 g | AMP=1 | ONSET=1 | TX ok/fail/drop=4/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0119 g | PGA H/V=0.0118/0.0016 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=4/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.2642 g | PGA H/V=0.2634/0.0198 g | TH=0.0324 g | AMP=1 | ONSET=1 | TX ok/fail/drop=4/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=1.2676 g | PGA H/V=1.2656/0.0707 g | TH=0.0324 g | AMP=1 | ONSET=1 | TX ok/fail/drop=4/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0105 g | PGA H/V=0.0099/0.0033 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=4/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=1.1687 g | PGA H/V=1.1345/0.2805 g | TH=0.0324 g | AMP=1 | ONSET=1 | TX ok/fail/drop=4/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.2394 g | PGA H/V=0.2388/0.0166 g | TH=0.0324 g | AMP=1 | ONSET=1 | TX ok/fail/drop=4/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.5929 g | PGA H/V=0.5519/0.2168 g | TH=0.0324 g | AMP=1 | ONSET=1 | TX ok/fail/drop=4/0/0 | I2C fails=0
+
+CANDIDATE EVENT
+Validating for 600 ms...
+
+DEBUG | CANDIDATE | VIB=0.6795 g | PGA H/V=0.6557/0.1783 g | TH=0.0324 g | AMP=1 | ONSET=1 | TX ok/fail/drop=4/0/0 | I2C fails=0
+        candidate: samples=50 active=50 strong=50 peak=1.3802 g
+
+VALIDATION RESULT
+Active ratio:       1.00
+Strong hits:        60
+Peak acceleration:  1.3802 g
+Peak H PGA:         0.8833 g
+Peak V PGA:         0.0000 g
+Threshold:          0.0324 g
+EARTHQUAKE CONFIRMED
+
+================================
+EARTHQUAKE DETECTED
+================================
+NODE ID:           4
+SEQUENCE:          5
+LEVEL:             UNKNOWN
+INTENSITY:         UNKNOWN
+PEAK ACCEL:        0.0000 g
+PEAK H PGA:        0.0000 g
+PEAK V PGA:        0.0000 g
+PEAK H PGV:        0.000 cm/s
+PEAK V PGV:        0.000 cm/s
+RMS VIBRATION:     0.0000 g
+CAV:               0.0000 g*s
+DURATION:           0.000 s
+DOMINANT FREQ:     0.0 Hz
+MAGNITUDE EST:     0.00
+DISTANCE ASSUMED:  10.0 km
+JSON:              DROPPED
+================================
+
+DEBUG | CAPTURE | VIB=0.3469 g | PGA H/V=0.3430/0.0518 g | TH=0.0324 g | AMP=1 | ONSET=1 | TX ok/fail/drop=4/0/0 | I2C fails=0
+DEBUG | CAPTURE | VIB=0.0135 g | PGA H/V=0.0135/0.0003 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=4/0/0 | I2C fails=0
+DEBUG | CAPTURE | VIB=0.5195 g | PGA H/V=0.5183/0.0358 g | TH=0.0324 g | AMP=1 | ONSET=1 | TX ok/fail/drop=4/0/0 | I2C fails=0
+================================
+EARTHQUAKE DETECTED
+================================
+NODE ID:           4
+SEQUENCE:          5
+LEVEL:             VERY STRONG
+INTENSITY:         VIII
+PEAK ACCEL:        1.4048 g
+PEAK H PGA:        1.4029 g
+PEAK V PGA:        0.8086 g
+PEAK H PGV:        466.248 cm/s
+PEAK V PGV:        201.479 cm/s
+RMS VIBRATION:     0.4819 g
+CAV:               1.5902 g*s
+DURATION:           3.590 s
+DOMINANT FREQ:     1.0 Hz
+MAGNITUDE EST:     9.13
+DISTANCE ASSUMED:  10.0 km
+JSON:              QUEUED
+================================
+
+DEBUG | NORMAL | VIB=0.1261 g | PGA H/V=0.1137/0.0547 g | TH=0.0324 g | AMP=1 | ONSET=1 | TX ok/fail/drop=5/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0118 g | PGA H/V=0.0111/0.0038 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=5/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0182 g | PGA H/V=0.0182/0.0011 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=5/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0073 g | PGA H/V=0.0072/0.0015 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=5/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0168 g | PGA H/V=0.0167/0.0006 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=5/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=1.1917 g | PGA H/V=1.1894/0.0749 g | TH=0.0324 g | AMP=1 | ONSET=1 | TX ok/fail/drop=5/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.8644 g | PGA H/V=0.8634/0.0425 g | TH=0.0324 g | AMP=1 | ONSET=1 | TX ok/fail/drop=5/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0178 g | PGA H/V=0.0173/0.0042 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=5/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0191 g | PGA H/V=0.0184/0.0052 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=5/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.1432 g | PGA H/V=0.1432/0.0012 g | TH=0.0324 g | AMP=1 | ONSET=1 | TX ok/fail/drop=5/0/0 | I2C fails=0
+
+CANDIDATE EVENT
+Validating for 600 ms...
+
+
+VALIDATION RESULT
+Active ratio:       1.00
+Strong hits:        60
+Peak acceleration:  2.1375 g
+Peak H PGA:         2.1333 g
+Peak V PGA:         0.0000 g
+Threshold:          0.0324 g
+EARTHQUAKE CONFIRMED
+
+================================
+EARTHQUAKE DETECTED
+================================
+NODE ID:           4
+SEQUENCE:          6
+LEVEL:             UNKNOWN
+INTENSITY:         UNKNOWN
+PEAK ACCEL:        0.0000 g
+PEAK H PGA:        0.0000 g
+PEAK V PGA:        0.0000 g
+PEAK H PGV:        0.000 cm/s
+PEAK V PGV:        0.000 cm/s
+RMS VIBRATION:     0.0000 g
+CAV:               0.0000 g*s
+DURATION:           0.000 s
+DOMINANT FREQ:     0.0 Hz
+MAGNITUDE EST:     0.00
+DISTANCE ASSUMED:  10.0 km
+JSON:              DROPPED
+================================
+
+DEBUG | CAPTURE | VIB=1.2853 g | PGA H/V=1.2835/0.0672 g | TH=0.0324 g | AMP=1 | ONSET=1 | TX ok/fail/drop=5/0/0 | I2C fails=0
+DEBUG | CAPTURE | VIB=1.0703 g | PGA H/V=1.0683/0.0649 g | TH=0.0324 g | AMP=1 | ONSET=1 | TX ok/fail/drop=5/0/0 | I2C fails=0
+DEBUG | CAPTURE | VIB=0.7884 g | PGA H/V=0.7878/0.0295 g | TH=0.0324 g | AMP=1 | ONSET=1 | TX ok/fail/drop=5/0/0 | I2C fails=0
+================================
+EARTHQUAKE DETECTED
+================================
+NODE ID:           4
+SEQUENCE:          6
+LEVEL:             VERY STRONG
+INTENSITY:         VIII
+PEAK ACCEL:        2.2079 g
+PEAK H PGA:        2.2035 g
+PEAK V PGA:        0.2213 g
+PEAK H PGV:        221.697 cm/s
+PEAK V PGV:        14.289 cm/s
+RMS VIBRATION:     1.0234 g
+CAV:               4.0293 g*s
+DURATION:           3.590 s
+DOMINANT FREQ:     3.5 Hz
+MAGNITUDE EST:     9.86
+DISTANCE ASSUMED:  10.0 km
+JSON:              QUEUED
+================================
+
+DEBUG | NORMAL | VIB=0.9426 g | PGA H/V=0.9409/0.0557 g | TH=0.0324 g | AMP=1 | ONSET=1 | TX ok/fail/drop=6/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.5726 g | PGA H/V=0.5719/0.0279 g | TH=0.0324 g | AMP=1 | ONSET=1 | TX ok/fail/drop=6/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.1369 g | PGA H/V=0.1366/0.0095 g | TH=0.0324 g | AMP=1 | ONSET=1 | TX ok/fail/drop=6/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0126 g | PGA H/V=0.0113/0.0056 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=6/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0147 g | PGA H/V=0.0138/0.0051 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=6/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0138 g | PGA H/V=0.0135/0.0030 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=6/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0186 g | PGA H/V=0.0165/0.0086 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=6/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.6041 g | PGA H/V=0.6041/0.0013 g | TH=0.0324 g | AMP=1 | ONSET=1 | TX ok/fail/drop=6/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.9072 g | PGA H/V=0.9065/0.0372 g | TH=0.0324 g | AMP=1 | ONSET=1 | TX ok/fail/drop=6/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0054 g | PGA H/V=0.0054/0.0006 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=6/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0127 g | PGA H/V=0.0121/0.0041 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=6/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0190 g | PGA H/V=0.0180/0.0059 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=6/0/0 | I2C fails=0
+
+CANDIDATE EVENT
+Validating for 600 ms...
+
+DEBUG | CANDIDATE | VIB=0.1796 g | PGA H/V=0.1795/0.0065 g | TH=0.0324 g | AMP=1 | ONSET=1 | TX ok/fail/drop=6/0/0 | I2C fails=0
+        candidate: samples=40 active=29 strong=25 peak=0.5279 g
+
+VALIDATION RESULT
+Active ratio:       0.82
+Strong hits:        33
+Peak acceleration:  0.5279 g
+Peak H PGA:         0.5279 g
+Peak V PGA:         0.0000 g
+Threshold:          0.0324 g
+EARTHQUAKE CONFIRMED
+
+================================
+EARTHQUAKE DETECTED
+================================
+NODE ID:           4
+SEQUENCE:          7
+LEVEL:             UNKNOWN
+INTENSITY:         UNKNOWN
+PEAK ACCEL:        0.0000 g
+PEAK H PGA:        0.0000 g
+PEAK V PGA:        0.0000 g
+PEAK H PGV:        0.000 cm/s
+PEAK V PGV:        0.000 cm/s
+RMS VIBRATION:     0.0000 g
+CAV:               0.0000 g*s
+DURATION:           0.000 s
+DOMINANT FREQ:     0.0 Hz
+MAGNITUDE EST:     0.00
+DISTANCE ASSUMED:  10.0 km
+JSON:              DROPPED
+================================
+
+DEBUG | CAPTURE | VIB=0.0135 g | PGA H/V=0.0121/0.0060 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=6/0/0 | I2C fails=0
+DEBUG | CAPTURE | VIB=0.1370 g | PGA H/V=0.1368/0.0081 g | TH=0.0324 g | AMP=1 | ONSET=1 | TX ok/fail/drop=6/0/0 | I2C fails=0
+DEBUG | CAPTURE | VIB=0.0301 g | PGA H/V=0.0294/0.0064 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=6/0/0 | I2C fails=0
+================================
+EARTHQUAKE DETECTED
+================================
+NODE ID:           4
+SEQUENCE:          7
+LEVEL:             VERY STRONG
+INTENSITY:         VIII
+PEAK ACCEL:        0.6269 g
+PEAK H PGA:        0.6264 g
+PEAK V PGA:        0.0492 g
+PEAK H PGV:        58.097 cm/s
+PEAK V PGV:        2.554 cm/s
+RMS VIBRATION:     0.1093 g
+CAV:               0.3836 g*s
+DURATION:           3.500 s
+DOMINANT FREQ:     0.5 Hz
+MAGNITUDE EST:     7.84
+DISTANCE ASSUMED:  10.0 km
+JSON:              QUEUED
+================================
+
+DEBUG | NORMAL | VIB=0.0134 g | PGA H/V=0.0122/0.0057 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=7/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0147 g | PGA H/V=0.0145/0.0026 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=7/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0139 g | PGA H/V=0.0135/0.0034 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=7/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0131 g | PGA H/V=0.0104/0.0079 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=7/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0136 g | PGA H/V=0.0128/0.0048 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=7/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0151 g | PGA H/V=0.0148/0.0029 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=7/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0150 g | PGA H/V=0.0144/0.0041 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=7/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0175 g | PGA H/V=0.0172/0.0031 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=7/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0176 g | PGA H/V=0.0159/0.0074 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=7/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0151 g | PGA H/V=0.0135/0.0068 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=7/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0125 g | PGA H/V=0.0113/0.0053 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=7/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0160 g | PGA H/V=0.0122/0.0105 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=7/0/0 | I2C fails=0
+
+CANDIDATE EVENT
+Validating for 600 ms...
+
+DEBUG | CANDIDATE | VIB=0.6657 g | PGA H/V=0.6652/0.0259 g | TH=0.0324 g | AMP=1 | ONSET=1 | TX ok/fail/drop=7/0/0 | I2C fails=0
+        candidate: samples=30 active=30 strong=30 peak=1.0740 g
+
+VALIDATION RESULT
+Active ratio:       1.00
+Strong hits:        60
+Peak acceleration:  1.0740 g
+Peak H PGA:         1.0738 g
+Peak V PGA:         0.0000 g
+Threshold:          0.0324 g
+EARTHQUAKE CONFIRMED
+
+================================
+EARTHQUAKE DETECTED
+================================
+NODE ID:           4
+SEQUENCE:          8
+LEVEL:             UNKNOWN
+INTENSITY:         UNKNOWN
+PEAK ACCEL:        0.0000 g
+PEAK H PGA:        0.0000 g
+PEAK V PGA:        0.0000 g
+PEAK H PGV:        0.000 cm/s
+PEAK V PGV:        0.000 cm/s
+RMS VIBRATION:     0.0000 g
+CAV:               0.0000 g*s
+DURATION:           0.000 s
+DOMINANT FREQ:     0.0 Hz
+MAGNITUDE EST:     0.00
+DISTANCE ASSUMED:  10.0 km
+JSON:              DROPPED
+================================
+
+DEBUG | CAPTURE | VIB=0.2832 g | PGA H/V=0.2763/0.0623 g | TH=0.0324 g | AMP=1 | ONSET=1 | TX ok/fail/drop=7/0/0 | I2C fails=0
+DEBUG | CAPTURE | VIB=0.0435 g | PGA H/V=0.0435/0.0000 g | TH=0.0324 g | AMP=1 | ONSET=1 | TX ok/fail/drop=7/0/0 | I2C fails=0
+DEBUG | CAPTURE | VIB=0.0695 g | PGA H/V=0.0694/0.0035 g | TH=0.0324 g | AMP=1 | ONSET=0 | TX ok/fail/drop=7/0/0 | I2C fails=0
+================================
+EARTHQUAKE DETECTED
+================================
+NODE ID:           4
+SEQUENCE:          8
+LEVEL:             VERY STRONG
+INTENSITY:         VIII
+PEAK ACCEL:        1.0926 g
+PEAK H PGA:        1.0784 g
+PEAK V PGA:        0.4096 g
+PEAK H PGV:        251.075 cm/s
+PEAK V PGV:        58.109 cm/s
+RMS VIBRATION:     0.2530 g
+CAV:               0.8240 g*s
+DURATION:           3.590 s
+DOMINANT FREQ:     0.5 Hz
+MAGNITUDE EST:     8.71
+DISTANCE ASSUMED:  10.0 km
+JSON:              QUEUED
+================================
+
+DEBUG | NORMAL | VIB=0.0240 g | PGA H/V=0.0235/0.0052 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=8/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.2988 g | PGA H/V=0.2962/0.0389 g | TH=0.0324 g | AMP=1 | ONSET=1 | TX ok/fail/drop=8/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.6883 g | PGA H/V=0.6872/0.0385 g | TH=0.0324 g | AMP=1 | ONSET=1 | TX ok/fail/drop=8/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.3958 g | PGA H/V=0.3445/0.1949 g | TH=0.0324 g | AMP=1 | ONSET=1 | TX ok/fail/drop=8/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.3136 g | PGA H/V=0.3134/0.0123 g | TH=0.0324 g | AMP=1 | ONSET=1 | TX ok/fail/drop=8/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0327 g | PGA H/V=0.0325/0.0036 g | TH=0.0324 g | AMP=1 | ONSET=1 | TX ok/fail/drop=8/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0422 g | PGA H/V=0.0422/0.0012 g | TH=0.0324 g | AMP=1 | ONSET=0 | TX ok/fail/drop=8/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.2611 g | PGA H/V=0.2610/0.0078 g | TH=0.0324 g | AMP=1 | ONSET=1 | TX ok/fail/drop=8/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0771 g | PGA H/V=0.0765/0.0095 g | TH=0.0324 g | AMP=1 | ONSET=1 | TX ok/fail/drop=8/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.2924 g | PGA H/V=0.2919/0.0160 g | TH=0.0324 g | AMP=1 | ONSET=1 | TX ok/fail/drop=8/0/0 | I2C fails=0
+
+CANDIDATE EVENT
+Validating for 600 ms...
+
+
+VALIDATION RESULT
+Active ratio:       0.93
+Strong hits:        30
+Peak acceleration:  0.6484 g
+Peak H PGA:         0.6472 g
+Peak V PGA:         0.0000 g
+Threshold:          0.0324 g
+EARTHQUAKE CONFIRMED
+
+================================
+EARTHQUAKE DETECTED
+================================
+NODE ID:           4
+SEQUENCE:          9
+LEVEL:             UNKNOWN
+INTENSITY:         UNKNOWN
+PEAK ACCEL:        0.0000 g
+PEAK H PGA:        0.0000 g
+PEAK V PGA:        0.0000 g
+PEAK H PGV:        0.000 cm/s
+PEAK V PGV:        0.000 cm/s
+RMS VIBRATION:     0.0000 g
+CAV:               0.0000 g*s
+DURATION:           0.000 s
+DOMINANT FREQ:     0.0 Hz
+MAGNITUDE EST:     0.00
+DISTANCE ASSUMED:  10.0 km
+JSON:              DROPPED
+================================
+
+DEBUG | CAPTURE | VIB=0.1544 g | PGA H/V=0.1063/0.1120 g | TH=0.0324 g | AMP=1 | ONSET=1 | TX ok/fail/drop=8/0/0 | I2C fails=0
+DEBUG | CAPTURE | VIB=0.0176 g | PGA H/V=0.0163/0.0067 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=8/0/0 | I2C fails=0
+DEBUG | CAPTURE | VIB=0.0373 g | PGA H/V=0.0370/0.0043 g | TH=0.0324 g | AMP=1 | ONSET=1 | TX ok/fail/drop=8/0/0 | I2C fails=0
+================================
+EARTHQUAKE DETECTED
+================================
+NODE ID:           4
+SEQUENCE:          9
+LEVEL:             VERY STRONG
+INTENSITY:         VIII
+PEAK ACCEL:        0.6484 g
+PEAK H PGA:        0.6472 g
+PEAK V PGA:        0.1195 g
+PEAK H PGV:        55.820 cm/s
+PEAK V PGV:        8.308 cm/s
+RMS VIBRATION:     0.2071 g
+CAV:               0.2500 g*s
+DURATION:           3.590 s
+DOMINANT FREQ:     2.0 Hz
+MAGNITUDE EST:     7.89
+DISTANCE ASSUMED:  10.0 km
+JSON:              QUEUED
+================================
+
+DEBUG | NORMAL | VIB=0.0490 g | PGA H/V=0.0484/0.0077 g | TH=0.0324 g | AMP=1 | ONSET=1 | TX ok/fail/drop=9/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0290 g | PGA H/V=0.0282/0.0064 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=9/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0349 g | PGA H/V=0.0349/0.0003 g | TH=0.0324 g | AMP=1 | ONSET=0 | TX ok/fail/drop=9/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0786 g | PGA H/V=0.0783/0.0062 g | TH=0.0324 g | AMP=1 | ONSET=1 | TX ok/fail/drop=9/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0855 g | PGA H/V=0.0854/0.0025 g | TH=0.0324 g | AMP=1 | ONSET=1 | TX ok/fail/drop=9/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0785 g | PGA H/V=0.0773/0.0133 g | TH=0.0324 g | AMP=1 | ONSET=1 | TX ok/fail/drop=9/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0133 g | PGA H/V=0.0117/0.0063 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=9/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0060 g | PGA H/V=0.0011/0.0059 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=9/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0317 g | PGA H/V=0.0317/0.0005 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=9/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0138 g | PGA H/V=0.0137/0.0020 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=9/0/0 | I2C fails=0
+
+CANDIDATE EVENT
+Validating for 600 ms...
+
+DEBUG | CANDIDATE | VIB=0.0072 g | PGA H/V=0.0057/0.0044 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=9/0/0 | I2C fails=0
+        candidate: samples=30 active=25 strong=15 peak=0.1322 g
+
+VALIDATION RESULT
+Active ratio:       0.88
+Strong hits:        33
+Peak acceleration:  0.1440 g
+Peak H PGA:         0.1439 g
+Peak V PGA:         0.0000 g
+Threshold:          0.0324 g
+EARTHQUAKE CONFIRMED
+
+================================
+EARTHQUAKE DETECTED
+================================
+NODE ID:           4
+SEQUENCE:          10
+LEVEL:             UNKNOWN
+INTENSITY:         UNKNOWN
+PEAK ACCEL:        0.0000 g
+PEAK H PGA:        0.0000 g
+PEAK V PGA:        0.0000 g
+PEAK H PGV:        0.000 cm/s
+PEAK V PGV:        0.000 cm/s
+RMS VIBRATION:     0.0000 g
+CAV:               0.0000 g*s
+DURATION:           0.000 s
+DOMINANT FREQ:     0.0 Hz
+MAGNITUDE EST:     0.00
+DISTANCE ASSUMED:  10.0 km
+JSON:              DROPPED
+================================
+
+DEBUG | CAPTURE | VIB=0.0551 g | PGA H/V=0.0548/0.0056 g | TH=0.0324 g | AMP=1 | ONSET=1 | TX ok/fail/drop=9/0/0 | I2C fails=0
+DEBUG | CAPTURE | VIB=0.0075 g | PGA H/V=0.0039/0.0065 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=9/0/0 | I2C fails=0
+DEBUG | CAPTURE | VIB=0.0183 g | PGA H/V=0.0183/0.0010 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=9/0/0 | I2C fails=0
+================================
+EARTHQUAKE DETECTED
+================================
+NODE ID:           4
+SEQUENCE:          10
+LEVEL:             MODERATE
+INTENSITY:         VI
+PEAK ACCEL:        0.1440 g
+PEAK H PGA:        0.1439 g
+PEAK V PGA:        0.0824 g
+PEAK H PGV:        11.329 cm/s
+PEAK V PGV:        4.914 cm/s
+RMS VIBRATION:     0.0520 g
+CAV:               0.1126 g*s
+DURATION:           2.820 s
+DOMINANT FREQ:     1.0 Hz
+MAGNITUDE EST:     5.48
+DISTANCE ASSUMED:  10.0 km
+JSON:              QUEUED
+================================
+
+DEBUG | NORMAL | VIB=0.0161 g | PGA H/V=0.0161/0.0008 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=10/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0126 g | PGA H/V=0.0125/0.0015 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=10/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0137 g | PGA H/V=0.0127/0.0052 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=10/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0117 g | PGA H/V=0.0115/0.0026 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=10/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0166 g | PGA H/V=0.0154/0.0062 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=10/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0156 g | PGA H/V=0.0155/0.0019 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=10/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0155 g | PGA H/V=0.0155/0.0001 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=10/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0132 g | PGA H/V=0.0131/0.0020 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=10/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0129 g | PGA H/V=0.0124/0.0036 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=10/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0126 g | PGA H/V=0.0109/0.0064 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=10/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0196 g | PGA H/V=0.0188/0.0054 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=10/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0099 g | PGA H/V=0.0097/0.0016 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=10/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0170 g | PGA H/V=0.0167/0.0029 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=10/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0121 g | PGA H/V=0.0118/0.0029 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=10/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0166 g | PGA H/V=0.0166/0.0017 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=10/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0173 g | PGA H/V=0.0166/0.0046 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=10/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0143 g | PGA H/V=0.0134/0.0050 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=10/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0138 g | PGA H/V=0.0127/0.0054 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=10/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0140 g | PGA H/V=0.0131/0.0049 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=10/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0161 g | PGA H/V=0.0146/0.0067 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=10/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0189 g | PGA H/V=0.0186/0.0033 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=10/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0116 g | PGA H/V=0.0085/0.0078 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=10/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0202 g | PGA H/V=0.0201/0.0026 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=10/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0145 g | PGA H/V=0.0130/0.0065 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=10/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0197 g | PGA H/V=0.0196/0.0023 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=10/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0164 g | PGA H/V=0.0163/0.0025 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=10/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0188 g | PGA H/V=0.0169/0.0084 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=10/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0113 g | PGA H/V=0.0106/0.0039 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=10/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0148 g | PGA H/V=0.0142/0.0042 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=10/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0208 g | PGA H/V=0.0207/0.0023 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=10/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0146 g | PGA H/V=0.0145/0.0020 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=10/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0150 g | PGA H/V=0.0150/0.0003 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=10/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0142 g | PGA H/V=0.0141/0.0022 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=10/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0214 g | PGA H/V=0.0211/0.0035 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=10/0/0 | I2C fails=0
+
+CANDIDATE EVENT
+Validating for 600 ms...
+
+
+VALIDATION RESULT
+Active ratio:       0.48
+Strong hits:        0
+Peak acceleration:  0.0347 g
+Peak H PGA:         0.0344 g
+Peak V PGA:         0.0000 g
+Threshold:          0.0324 g
+FALSE TRIGGER - DISCARDED
+
+DEBUG | NORMAL | VIB=0.0133 g | PGA H/V=0.0129/0.0030 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=10/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0207 g | PGA H/V=0.0205/0.0031 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=10/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0107 g | PGA H/V=0.0095/0.0048 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=10/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0073 g | PGA H/V=0.0072/0.0012 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=10/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0175 g | PGA H/V=0.0174/0.0019 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=10/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0160 g | PGA H/V=0.0126/0.0098 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=10/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0193 g | PGA H/V=0.0184/0.0057 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=10/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0140 g | PGA H/V=0.0140/0.0002 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=10/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0147 g | PGA H/V=0.0146/0.0012 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=10/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0353 g | PGA H/V=0.0350/0.0044 g | TH=0.0324 g | AMP=1 | ONSET=0 | TX ok/fail/drop=10/0/0 | I2C fails=0
+
+CANDIDATE EVENT
+Validating for 600 ms...
+
+DEBUG | CANDIDATE | VIB=0.0138 g | PGA H/V=0.0119/0.0070 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=10/0/0 | I2C fails=0
+        candidate: samples=50 active=40 strong=3 peak=0.0837 g
+
+VALIDATION RESULT
+Active ratio:       0.82
+Strong hits:        3
+Peak acceleration:  0.0837 g
+Peak H PGA:         0.0580 g
+Peak V PGA:         0.0000 g
+Threshold:          0.0324 g
+EARTHQUAKE CONFIRMED
+
+================================
+EARTHQUAKE DETECTED
+================================
+NODE ID:           4
+SEQUENCE:          11
+LEVEL:             UNKNOWN
+INTENSITY:         UNKNOWN
+PEAK ACCEL:        0.0000 g
+PEAK H PGA:        0.0000 g
+PEAK V PGA:        0.0000 g
+PEAK H PGV:        0.000 cm/s
+PEAK V PGV:        0.000 cm/s
+RMS VIBRATION:     0.0000 g
+CAV:               0.0000 g*s
+DURATION:           0.000 s
+DOMINANT FREQ:     0.0 Hz
+MAGNITUDE EST:     0.00
+DISTANCE ASSUMED:  10.0 km
+JSON:              DROPPED
+================================
+
+DEBUG | CAPTURE | VIB=0.0375 g | PGA H/V=0.0370/0.0061 g | TH=0.0324 g | AMP=1 | ONSET=0 | TX ok/fail/drop=10/0/0 | I2C fails=0
+DEBUG | CAPTURE | VIB=0.0176 g | PGA H/V=0.0174/0.0028 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=10/0/0 | I2C fails=0
+DEBUG | CAPTURE | VIB=0.0123 g | PGA H/V=0.0099/0.0072 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=10/0/0 | I2C fails=0
+================================
+EARTHQUAKE DETECTED
+================================
+NODE ID:           4
+SEQUENCE:          11
+LEVEL:             MODERATE
+INTENSITY:         VI
+PEAK ACCEL:        0.1021 g
+PEAK H PGA:        0.1011 g
+PEAK V PGA:        0.0473 g
+PEAK H PGV:        19.863 cm/s
+PEAK V PGV:        3.341 cm/s
+RMS VIBRATION:     0.0227 g
+CAV:               0.0814 g*s
+DURATION:           1.640 s
+DOMINANT FREQ:     2.5 Hz
+MAGNITUDE EST:     4.91
+DISTANCE ASSUMED:  10.0 km
+JSON:              QUEUED
+================================
+
+DEBUG | NORMAL | VIB=0.0157 g | PGA H/V=0.0156/0.0009 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=11/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0124 g | PGA H/V=0.0121/0.0027 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=11/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0128 g | PGA H/V=0.0084/0.0096 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=11/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0166 g | PGA H/V=0.0161/0.0039 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=11/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0168 g | PGA H/V=0.0152/0.0070 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=11/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0149 g | PGA H/V=0.0143/0.0040 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=11/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0156 g | PGA H/V=0.0153/0.0027 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=11/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0113 g | PGA H/V=0.0110/0.0026 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=11/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0158 g | PGA H/V=0.0158/0.0004 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=11/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0170 g | PGA H/V=0.0170/0.0002 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=11/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0166 g | PGA H/V=0.0147/0.0076 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=11/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0157 g | PGA H/V=0.0157/0.0002 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=11/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0148 g | PGA H/V=0.0130/0.0071 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=11/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0114 g | PGA H/V=0.0105/0.0043 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=11/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0170 g | PGA H/V=0.0150/0.0079 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=11/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0149 g | PGA H/V=0.0149/0.0005 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=11/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0165 g | PGA H/V=0.0162/0.0031 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=11/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0206 g | PGA H/V=0.0202/0.0043 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=11/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0144 g | PGA H/V=0.0127/0.0068 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=11/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0164 g | PGA H/V=0.0164/0.0012 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=11/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0143 g | PGA H/V=0.0131/0.0056 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=11/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0168 g | PGA H/V=0.0162/0.0043 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=11/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0143 g | PGA H/V=0.0140/0.0033 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=11/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0130 g | PGA H/V=0.0069/0.0110 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=11/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0153 g | PGA H/V=0.0146/0.0044 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=11/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0180 g | PGA H/V=0.0177/0.0031 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=11/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0157 g | PGA H/V=0.0154/0.0029 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=11/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0142 g | PGA H/V=0.0139/0.0028 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=11/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0155 g | PGA H/V=0.0146/0.0052 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=11/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0134 g | PGA H/V=0.0107/0.0080 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=11/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0164 g | PGA H/V=0.0159/0.0042 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=11/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0137 g | PGA H/V=0.0118/0.0068 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=11/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0170 g | PGA H/V=0.0169/0.0018 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=11/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0179 g | PGA H/V=0.0174/0.0044 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=11/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0121 g | PGA H/V=0.0115/0.0038 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=11/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0157 g | PGA H/V=0.0151/0.0043 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=11/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0157 g | PGA H/V=0.0153/0.0037 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=11/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0166 g | PGA H/V=0.0166/0.0005 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=11/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0155 g | PGA H/V=0.0152/0.0029 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=11/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0176 g | PGA H/V=0.0176/0.0003 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=11/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0155 g | PGA H/V=0.0155/0.0002 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=11/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0169 g | PGA H/V=0.0154/0.0070 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=11/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0129 g | PGA H/V=0.0129/0.0002 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=11/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0185 g | PGA H/V=0.0182/0.0030 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=11/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0163 g | PGA H/V=0.0161/0.0021 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=11/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0184 g | PGA H/V=0.0183/0.0007 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=11/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0155 g | PGA H/V=0.0145/0.0055 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=11/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0160 g | PGA H/V=0.0151/0.0053 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=11/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0197 g | PGA H/V=0.0197/0.0001 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=11/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0169 g | PGA H/V=0.0163/0.0042 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=11/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0148 g | PGA H/V=0.0147/0.0014 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=11/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0172 g | PGA H/V=0.0162/0.0060 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=11/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0171 g | PGA H/V=0.0164/0.0050 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=11/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0171 g | PGA H/V=0.0168/0.0031 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=11/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0171 g | PGA H/V=0.0171/0.0003 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=11/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0155 g | PGA H/V=0.0142/0.0063 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=11/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0134 g | PGA H/V=0.0121/0.0056 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=11/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0150 g | PGA H/V=0.0150/0.0004 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=11/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0160 g | PGA H/V=0.0160/0.0003 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=11/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0162 g | PGA H/V=0.0162/0.0000 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=11/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0164 g | PGA H/V=0.0160/0.0034 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=11/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0154 g | PGA H/V=0.0152/0.0024 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=11/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0146 g | PGA H/V=0.0141/0.0039 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=11/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0166 g | PGA H/V=0.0165/0.0017 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=11/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0144 g | PGA H/V=0.0113/0.0090 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=11/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0158 g | PGA H/V=0.0148/0.0056 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=11/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0190 g | PGA H/V=0.0185/0.0042 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=11/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0086 g | PGA H/V=0.0042/0.0076 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=11/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0061 g | PGA H/V=0.0050/0.0035 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=11/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0180 g | PGA H/V=0.0166/0.0067 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=11/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0158 g | PGA H/V=0.0133/0.0086 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=11/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0146 g | PGA H/V=0.0144/0.0025 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=11/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0125 g | PGA H/V=0.0116/0.0047 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=11/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0151 g | PGA H/V=0.0150/0.0024 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=11/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0085 g | PGA H/V=0.0085/0.0000 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=11/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0120 g | PGA H/V=0.0109/0.0050 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=11/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0122 g | PGA H/V=0.0115/0.0039 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=11/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0151 g | PGA H/V=0.0149/0.0021 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=11/0/0 | I2C fails=0
+
+CANDIDATE EVENT
+Validating for 600 ms...
+
+DEBUG | CANDIDATE | VIB=0.0172 g | PGA H/V=0.0171/0.0016 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=11/0/0 | I2C fails=0
+        candidate: samples=50 active=30 strong=0 peak=0.0545 g
+
+VALIDATION RESULT
+Active ratio:       0.58
+Strong hits:        0
+Peak acceleration:  0.0545 g
+Peak H PGA:         0.0543 g
+Peak V PGA:         0.0000 g
+Threshold:          0.0324 g
+FALSE TRIGGER - DISCARDED
+
+DEBUG | NORMAL | VIB=0.0125 g | PGA H/V=0.0125/0.0013 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=11/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0142 g | PGA H/V=0.0129/0.0059 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=11/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0086 g | PGA H/V=0.0083/0.0023 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=11/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0153 g | PGA H/V=0.0144/0.0053 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=11/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0156 g | PGA H/V=0.0155/0.0013 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=11/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0132 g | PGA H/V=0.0132/0.0009 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=11/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0115 g | PGA H/V=0.0108/0.0040 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=11/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0101 g | PGA H/V=0.0065/0.0078 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=11/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0109 g | PGA H/V=0.0105/0.0027 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=11/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0183 g | PGA H/V=0.0181/0.0029 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=11/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0173 g | PGA H/V=0.0172/0.0011 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=11/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0165 g | PGA H/V=0.0164/0.0015 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=11/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0171 g | PGA H/V=0.0166/0.0039 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=11/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0160 g | PGA H/V=0.0155/0.0038 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=11/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0170 g | PGA H/V=0.0167/0.0032 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=11/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0180 g | PGA H/V=0.0130/0.0124 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=11/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0167 g | PGA H/V=0.0163/0.0034 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=11/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0179 g | PGA H/V=0.0177/0.0023 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=11/0/0 | I2C fails=0
+
+CANDIDATE EVENT
+Validating for 600 ms...
+
+DEBUG | CANDIDATE | VIB=0.0174 g | PGA H/V=0.0172/0.0027 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=11/0/0 | I2C fails=0
+        candidate: samples=50 active=30 strong=0 peak=0.0436 g
+
+VALIDATION RESULT
+Active ratio:       0.58
+Strong hits:        0
+Peak acceleration:  0.0436 g
+Peak H PGA:         0.0436 g
+Peak V PGA:         0.0000 g
+Threshold:          0.0324 g
+FALSE TRIGGER - DISCARDED
+
+DEBUG | NORMAL | VIB=0.0175 g | PGA H/V=0.0171/0.0037 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=11/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0122 g | PGA H/V=0.0113/0.0048 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=11/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0164 g | PGA H/V=0.0158/0.0040 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=11/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0148 g | PGA H/V=0.0146/0.0025 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=11/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0178 g | PGA H/V=0.0173/0.0042 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=11/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0181 g | PGA H/V=0.0179/0.0029 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=11/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0162 g | PGA H/V=0.0160/0.0025 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=11/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0216 g | PGA H/V=0.0215/0.0016 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=11/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0117 g | PGA H/V=0.0116/0.0019 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=11/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0340 g | PGA H/V=0.0313/0.0132 g | TH=0.0324 g | AMP=1 | ONSET=0 | TX ok/fail/drop=11/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0156 g | PGA H/V=0.0153/0.0030 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=11/0/0 | I2C fails=0
+
+CANDIDATE EVENT
+Validating for 600 ms...
+
+
+VALIDATION RESULT
+Active ratio:       0.68
+Strong hits:        4
+Peak acceleration:  0.1066 g
+Peak H PGA:         0.1028 g
+Peak V PGA:         0.0000 g
+Threshold:          0.0324 g
+EARTHQUAKE CONFIRMED
+
+================================
+EARTHQUAKE DETECTED
+================================
+NODE ID:           4
+SEQUENCE:          12
+LEVEL:             UNKNOWN
+INTENSITY:         UNKNOWN
+PEAK ACCEL:        0.0000 g
+PEAK H PGA:        0.0000 g
+PEAK V PGA:        0.0000 g
+PEAK H PGV:        0.000 cm/s
+PEAK V PGV:        0.000 cm/s
+RMS VIBRATION:     0.0000 g
+CAV:               0.0000 g*s
+DURATION:           0.000 s
+DOMINANT FREQ:     0.0 Hz
+MAGNITUDE EST:     0.00
+DISTANCE ASSUMED:  10.0 km
+JSON:              DROPPED
+================================
+
+DEBUG | CAPTURE | VIB=0.0128 g | PGA H/V=0.0099/0.0081 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=11/0/0 | I2C fails=0
+DEBUG | CAPTURE | VIB=0.0176 g | PGA H/V=0.0173/0.0033 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=11/0/0 | I2C fails=0
+DEBUG | CAPTURE | VIB=0.0591 g | PGA H/V=0.0589/0.0048 g | TH=0.0324 g | AMP=1 | ONSET=0 | TX ok/fail/drop=11/0/0 | I2C fails=0
+================================
+EARTHQUAKE DETECTED
+================================
+NODE ID:           4
+SEQUENCE:          12
+LEVEL:             STRONG
+INTENSITY:         VII
+PEAK ACCEL:        0.1950 g
+PEAK H PGA:        0.1940 g
+PEAK V PGA:        0.0392 g
+PEAK H PGV:        23.437 cm/s
+PEAK V PGV:        3.915 cm/s
+RMS VIBRATION:     0.0279 g
+CAV:               0.1004 g*s
+DURATION:           3.560 s
+DOMINANT FREQ:     3.0 Hz
+MAGNITUDE EST:     5.96
+DISTANCE ASSUMED:  10.0 km
+JSON:              QUEUED
+================================
+
+DEBUG | NORMAL | VIB=0.0308 g | PGA H/V=0.0306/0.0034 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=12/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0313 g | PGA H/V=0.0311/0.0030 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=12/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0164 g | PGA H/V=0.0154/0.0058 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=12/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0156 g | PGA H/V=0.0144/0.0061 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=12/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0054 g | PGA H/V=0.0031/0.0045 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=12/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0147 g | PGA H/V=0.0143/0.0035 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=12/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0183 g | PGA H/V=0.0182/0.0025 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=12/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0164 g | PGA H/V=0.0149/0.0068 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=12/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0158 g | PGA H/V=0.0152/0.0043 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=12/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0098 g | PGA H/V=0.0087/0.0045 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=12/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0157 g | PGA H/V=0.0130/0.0088 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=12/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0154 g | PGA H/V=0.0150/0.0032 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=12/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0183 g | PGA H/V=0.0181/0.0030 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=12/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0126 g | PGA H/V=0.0123/0.0029 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=12/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0182 g | PGA H/V=0.0173/0.0056 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=12/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0197 g | PGA H/V=0.0192/0.0042 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=12/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0136 g | PGA H/V=0.0133/0.0028 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=12/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0171 g | PGA H/V=0.0167/0.0037 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=12/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0117 g | PGA H/V=0.0111/0.0038 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=12/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0149 g | PGA H/V=0.0140/0.0051 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=12/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0168 g | PGA H/V=0.0168/0.0002 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=12/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0149 g | PGA H/V=0.0137/0.0059 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=12/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0179 g | PGA H/V=0.0173/0.0044 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=12/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0123 g | PGA H/V=0.0080/0.0093 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=12/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0153 g | PGA H/V=0.0147/0.0040 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=12/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0148 g | PGA H/V=0.0141/0.0046 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=12/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0147 g | PGA H/V=0.0139/0.0048 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=12/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0155 g | PGA H/V=0.0154/0.0021 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=12/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0169 g | PGA H/V=0.0165/0.0033 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=12/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0143 g | PGA H/V=0.0143/0.0004 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=12/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0134 g | PGA H/V=0.0129/0.0039 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=12/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0150 g | PGA H/V=0.0138/0.0058 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=12/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0144 g | PGA H/V=0.0144/0.0009 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=12/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0148 g | PGA H/V=0.0133/0.0065 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=12/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0119 g | PGA H/V=0.0074/0.0094 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=12/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0141 g | PGA H/V=0.0129/0.0056 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=12/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0153 g | PGA H/V=0.0147/0.0042 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=12/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0164 g | PGA H/V=0.0146/0.0075 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=12/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0141 g | PGA H/V=0.0118/0.0077 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=12/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0150 g | PGA H/V=0.0149/0.0018 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=12/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0102 g | PGA H/V=0.0095/0.0037 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=12/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0161 g | PGA H/V=0.0157/0.0037 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=12/0/0 | I2C fails=0
+
+CANDIDATE EVENT
+Validating for 600 ms...
+
+
+VALIDATION RESULT
+Active ratio:       0.37
+Strong hits:        0
+Peak acceleration:  0.0371 g
+Peak H PGA:         0.0328 g
+Peak V PGA:         0.0000 g
+Threshold:          0.0324 g
+FALSE TRIGGER - DISCARDED
+
+DEBUG | NORMAL | VIB=0.0154 g | PGA H/V=0.0142/0.0061 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=12/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0162 g | PGA H/V=0.0157/0.0041 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=12/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0160 g | PGA H/V=0.0152/0.0048 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=12/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0111 g | PGA H/V=0.0096/0.0055 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=12/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0170 g | PGA H/V=0.0167/0.0033 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=12/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0146 g | PGA H/V=0.0142/0.0033 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=12/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0203 g | PGA H/V=0.0201/0.0022 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=12/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0132 g | PGA H/V=0.0128/0.0031 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=12/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0136 g | PGA H/V=0.0131/0.0036 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=12/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0162 g | PGA H/V=0.0151/0.0060 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=12/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0167 g | PGA H/V=0.0159/0.0051 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=12/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0179 g | PGA H/V=0.0177/0.0028 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=12/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0136 g | PGA H/V=0.0136/0.0005 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=12/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0136 g | PGA H/V=0.0129/0.0045 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=12/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0158 g | PGA H/V=0.0158/0.0011 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=12/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0182 g | PGA H/V=0.0176/0.0046 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=12/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0180 g | PGA H/V=0.0176/0.0038 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=12/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0153 g | PGA H/V=0.0153/0.0003 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=12/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0166 g | PGA H/V=0.0161/0.0039 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=12/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0172 g | PGA H/V=0.0170/0.0025 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=12/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0155 g | PGA H/V=0.0151/0.0036 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=12/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0191 g | PGA H/V=0.0180/0.0062 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=12/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0148 g | PGA H/V=0.0076/0.0127 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=12/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0198 g | PGA H/V=0.0186/0.0067 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=12/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0138 g | PGA H/V=0.0128/0.0053 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=12/0/0 | I2C fails=0
+
+CANDIDATE EVENT
+Validating for 600 ms...
+
+DEBUG | CANDIDATE | VIB=0.0087 g | PGA H/V=0.0048/0.0072 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=12/0/0 | I2C fails=0
+        candidate: samples=40 active=22 strong=1 peak=0.0682 g
+
+VALIDATION RESULT
+Active ratio:       0.43
+Strong hits:        1
+Peak acceleration:  0.0682 g
+Peak H PGA:         0.0681 g
+Peak V PGA:         0.0000 g
+Threshold:          0.0324 g
+FALSE TRIGGER - DISCARDED
+
+DEBUG | NORMAL | VIB=0.0136 g | PGA H/V=0.0133/0.0028 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=12/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0112 g | PGA H/V=0.0112/0.0004 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=12/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0152 g | PGA H/V=0.0134/0.0071 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=12/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0176 g | PGA H/V=0.0173/0.0031 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=12/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0146 g | PGA H/V=0.0146/0.0008 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=12/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0124 g | PGA H/V=0.0110/0.0056 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=12/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0126 g | PGA H/V=0.0117/0.0047 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=12/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0085 g | PGA H/V=0.0072/0.0044 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=12/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0152 g | PGA H/V=0.0151/0.0019 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=12/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0123 g | PGA H/V=0.0109/0.0057 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=12/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0160 g | PGA H/V=0.0160/0.0002 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=12/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0146 g | PGA H/V=0.0140/0.0043 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=12/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0176 g | PGA H/V=0.0166/0.0060 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=12/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0180 g | PGA H/V=0.0180/0.0003 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=12/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0183 g | PGA H/V=0.0173/0.0060 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=12/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0142 g | PGA H/V=0.0127/0.0064 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=12/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0146 g | PGA H/V=0.0146/0.0010 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=12/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0174 g | PGA H/V=0.0171/0.0032 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=12/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0139 g | PGA H/V=0.0129/0.0052 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=12/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0159 g | PGA H/V=0.0158/0.0008 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=12/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0186 g | PGA H/V=0.0183/0.0038 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=12/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0161 g | PGA H/V=0.0161/0.0003 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=12/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0161 g | PGA H/V=0.0161/0.0013 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=12/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0139 g | PGA H/V=0.0136/0.0029 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=12/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0132 g | PGA H/V=0.0129/0.0024 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=12/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0182 g | PGA H/V=0.0175/0.0048 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=12/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0151 g | PGA H/V=0.0144/0.0047 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=12/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0161 g | PGA H/V=0.0150/0.0059 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=12/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0080 g | PGA H/V=0.0057/0.0056 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=12/0/0 | I2C fails=0
+
+CANDIDATE EVENT
+Validating for 600 ms...
+
+
+VALIDATION RESULT
+Active ratio:       0.28
+Strong hits:        0
+Peak acceleration:  0.0351 g
+Peak H PGA:         0.0351 g
+Peak V PGA:         0.0000 g
+Threshold:          0.0324 g
+FALSE TRIGGER - DISCARDED
+
+DEBUG | NORMAL | VIB=0.0142 g | PGA H/V=0.0139/0.0030 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=12/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0111 g | PGA H/V=0.0108/0.0024 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=12/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0155 g | PGA H/V=0.0148/0.0044 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=12/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0139 g | PGA H/V=0.0138/0.0011 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=12/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0147 g | PGA H/V=0.0142/0.0040 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=12/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0188 g | PGA H/V=0.0179/0.0057 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=12/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0147 g | PGA H/V=0.0145/0.0022 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=12/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0139 g | PGA H/V=0.0137/0.0026 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=12/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0143 g | PGA H/V=0.0137/0.0042 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=12/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0118 g | PGA H/V=0.0118/0.0008 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=12/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0158 g | PGA H/V=0.0158/0.0009 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=12/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0131 g | PGA H/V=0.0125/0.0037 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=12/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0103 g | PGA H/V=0.0090/0.0050 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=12/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0154 g | PGA H/V=0.0154/0.0000 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=12/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0128 g | PGA H/V=0.0128/0.0005 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=12/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0150 g | PGA H/V=0.0144/0.0042 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=12/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0224 g | PGA H/V=0.0222/0.0032 g | TH=0.0324 g | AMP=0 | ONSET=0 | TX ok/fail/drop=12/0/0 | I2C fails=0
+
+CANDIDATE EVENT
+Validating for 600 ms...
+
+
+VALIDATION RESULT
+Active ratio:       0.33
+Strong hits:        0
+Peak acceleration:  0.0512 g
+Peak H PGA:         0.0509 g
+Peak V PGA:         0.0000 g
+Threshold:          0.0324 g
+FALSE TRIGGER - DISCARDED
+
+
+================================
+EARTHQUAKE ALERT SLAVE
+================================
+NODE ID:           4
+CHANNEL:           1
+ESP-NOW VERSION:   v2
+MASTER:            98:F4:AB:3A:62:00
+SAMPLE RATE:       100 Hz
+CAPTURE RATE:      10 Hz
+CAPTURE SPAN:      5 s (2 s pre + 3 s post)
+LOW-PASS:          15.0 Hz
+================================
+CALIBRATION COMPLETE
+GRAVITY:           X=0.0084 Y=-0.0988 Z=-0.9343 g
+VERTICAL AXIS:     2
+NOISE RMS:         0.01666 g
+DETECTION THRESH:  0.08329 g
+MAGNITUDE DISTANCE: 10.0 km assumed
+INTENSITY:         instrumental MMI-like estimate
+READY
+
+DEBUG | NORMAL | VIB=0.0035 g | PGA H/V=0.0034/0.0009 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0024 g | PGA H/V=0.0017/0.0016 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0042 g | PGA H/V=0.0040/0.0014 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0062 g | PGA H/V=0.0060/0.0017 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0064 g | PGA H/V=0.0055/0.0034 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0050 g | PGA H/V=0.0008/0.0050 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0042 g | PGA H/V=0.0033/0.0025 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0051 g | PGA H/V=0.0048/0.0017 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0041 g | PGA H/V=0.0040/0.0012 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0023 g | PGA H/V=0.0023/0.0000 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0035 g | PGA H/V=0.0025/0.0025 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0050 g | PGA H/V=0.0050/0.0006 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0014 g | PGA H/V=0.0014/0.0002 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0025 g | PGA H/V=0.0013/0.0021 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0026 g | PGA H/V=0.0012/0.0022 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0019 g | PGA H/V=0.0005/0.0018 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0050 g | PGA H/V=0.0050/0.0004 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0022 g | PGA H/V=0.0018/0.0012 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0017 g | PGA H/V=0.0016/0.0003 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0077 g | PGA H/V=0.0042/0.0064 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0030 g | PGA H/V=0.0023/0.0019 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0088 g | PGA H/V=0.0059/0.0065 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0029 g | PGA H/V=0.0029/0.0003 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0028 g | PGA H/V=0.0026/0.0009 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0089 g | PGA H/V=0.0087/0.0019 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0050 g | PGA H/V=0.0042/0.0026 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0063 g | PGA H/V=0.0057/0.0026 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0011 g | PGA H/V=0.0009/0.0006 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0032 g | PGA H/V=0.0031/0.0007 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0073 g | PGA H/V=0.0016/0.0071 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0040 g | PGA H/V=0.0025/0.0031 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0047 g | PGA H/V=0.0027/0.0038 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0083 g | PGA H/V=0.0082/0.0007 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0064 g | PGA H/V=0.0049/0.0041 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0079 g | PGA H/V=0.0079/0.0004 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0056 g | PGA H/V=0.0055/0.0010 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0084 g | PGA H/V=0.0082/0.0017 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0175 g | PGA H/V=0.0175/0.0009 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0061 g | PGA H/V=0.0060/0.0013 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0075 g | PGA H/V=0.0062/0.0043 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0041 g | PGA H/V=0.0024/0.0033 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0036 g | PGA H/V=0.0024/0.0027 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0037 g | PGA H/V=0.0025/0.0027 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0023 g | PGA H/V=0.0023/0.0002 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0069 g | PGA H/V=0.0039/0.0057 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0077 g | PGA H/V=0.0061/0.0047 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0048 g | PGA H/V=0.0042/0.0023 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0065 g | PGA H/V=0.0062/0.0021 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0035 g | PGA H/V=0.0035/0.0004 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0011 g | PGA H/V=0.0010/0.0005 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0025 g | PGA H/V=0.0024/0.0005 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0025 g | PGA H/V=0.0016/0.0019 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0037 g | PGA H/V=0.0032/0.0019 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0139 g | PGA H/V=0.0138/0.0019 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0053 g | PGA H/V=0.0033/0.0042 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0051 g | PGA H/V=0.0051/0.0002 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0034 g | PGA H/V=0.0034/0.0001 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0081 g | PGA H/V=0.0074/0.0033 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0167 g | PGA H/V=0.0150/0.0075 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0031 g | PGA H/V=0.0029/0.0011 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0009 g | PGA H/V=0.0003/0.0008 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0377 g | PGA H/V=0.0363/0.0102 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0041 g | PGA H/V=0.0040/0.0011 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0048 g | PGA H/V=0.0048/0.0005 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0079 g | PGA H/V=0.0078/0.0013 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0104 g | PGA H/V=0.0054/0.0089 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0204 g | PGA H/V=0.0201/0.0037 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0152 g | PGA H/V=0.0149/0.0029 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0064 g | PGA H/V=0.0063/0.0009 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0046 g | PGA H/V=0.0043/0.0018 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0010 g | PGA H/V=0.0009/0.0004 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0028 g | PGA H/V=0.0019/0.0021 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0044 g | PGA H/V=0.0044/0.0000 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0034 g | PGA H/V=0.0033/0.0004 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0097 g | PGA H/V=0.0096/0.0013 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0110 g | PGA H/V=0.0085/0.0070 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0047 g | PGA H/V=0.0032/0.0035 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0098 g | PGA H/V=0.0097/0.0013 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0042 g | PGA H/V=0.0037/0.0020 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0066 g | PGA H/V=0.0047/0.0047 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0064 g | PGA H/V=0.0059/0.0024 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0103 g | PGA H/V=0.0102/0.0013 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0073 g | PGA H/V=0.0073/0.0007 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0068 g | PGA H/V=0.0066/0.0018 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0046 g | PGA H/V=0.0033/0.0031 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0023 g | PGA H/V=0.0006/0.0022 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0053 g | PGA H/V=0.0019/0.0049 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0030 g | PGA H/V=0.0021/0.0022 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0023 g | PGA H/V=0.0015/0.0017 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0035 g | PGA H/V=0.0021/0.0028 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0026 g | PGA H/V=0.0022/0.0015 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0019 g | PGA H/V=0.0010/0.0016 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0023 g | PGA H/V=0.0023/0.0002 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0048 g | PGA H/V=0.0040/0.0026 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0030 g | PGA H/V=0.0025/0.0017 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0021 g | PGA H/V=0.0016/0.0013 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0012 g | PGA H/V=0.0006/0.0010 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0074 g | PGA H/V=0.0056/0.0048 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0033 g | PGA H/V=0.0022/0.0025 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0060 g | PGA H/V=0.0024/0.0055 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0047 g | PGA H/V=0.0034/0.0033 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0024 g | PGA H/V=0.0021/0.0012 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0031 g | PGA H/V=0.0027/0.0015 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0032 g | PGA H/V=0.0029/0.0014 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0052 g | PGA H/V=0.0050/0.0012 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0024 g | PGA H/V=0.0018/0.0016 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0057 g | PGA H/V=0.0057/0.0004 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0058 g | PGA H/V=0.0058/0.0010 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0097 g | PGA H/V=0.0091/0.0033 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0045 g | PGA H/V=0.0037/0.0026 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+
+CANDIDATE EVENT
+Validating for 600 ms...
+
+DEBUG | CANDIDATE | VIB=0.0877 g | PGA H/V=0.0875/0.0055 g | TH=0.0833 g | AMP=1 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+        candidate: samples=10 active=8 strong=0 peak=0.1275 g
+
+VALIDATION RESULT
+Active ratio:       0.67
+Strong hits:        2
+Peak acceleration:  0.2446 g
+Peak H PGA:         0.2238 g
+Peak V PGA:         0.0000 g
+Threshold:          0.0833 g
+EARTHQUAKE CONFIRMED
+
+================================
+EARTHQUAKE DETECTED
+================================
+NODE ID:           4
+SEQUENCE:          1
+LEVEL:             UNKNOWN
+INTENSITY:         UNKNOWN
+PEAK ACCEL:        0.0000 g
+PEAK H PGA:        0.0000 g
+PEAK V PGA:        0.0000 g
+PEAK H PGV:        0.000 cm/s
+PEAK V PGV:        0.000 cm/s
+RMS VIBRATION:     0.0000 g
+CAV:               0.0000 g*s
+DURATION:           0.000 s
+DOMINANT FREQ:     0.0 Hz
+MAGNITUDE EST:     0.00
+DISTANCE ASSUMED:  10.0 km
+JSON:              DROPPED
+================================
+
+DEBUG | CAPTURE | VIB=0.0300 g | PGA H/V=0.0256/0.0156 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | CAPTURE | VIB=0.0177 g | PGA H/V=0.0175/0.0031 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+DEBUG | CAPTURE | VIB=0.0112 g | PGA H/V=0.0112/0.0003 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=0/0/0 | I2C fails=0
+================================
+EARTHQUAKE DETECTED
+================================
+NODE ID:           4
+SEQUENCE:          1
+LEVEL:             STRONG
+INTENSITY:         VI
+PEAK ACCEL:        0.2446 g
+PEAK H PGA:        0.2238 g
+PEAK V PGA:        0.0287 g
+PEAK H PGV:        6.891 cm/s
+PEAK V PGV:        10.986 cm/s
+RMS VIBRATION:     0.0320 g
+CAV:               0.0951 g*s
+DURATION:           1.480 s
+DOMINANT FREQ:     0.5 Hz
+MAGNITUDE EST:     6.19
+DISTANCE ASSUMED:  10.0 km
+JSON:              QUEUED
+================================
+
+DEBUG | NORMAL | VIB=0.0069 g | PGA H/V=0.0063/0.0028 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0045 g | PGA H/V=0.0038/0.0024 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0030 g | PGA H/V=0.0028/0.0011 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0061 g | PGA H/V=0.0058/0.0017 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0047 g | PGA H/V=0.0046/0.0003 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0058 g | PGA H/V=0.0039/0.0043 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0042 g | PGA H/V=0.0034/0.0023 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0083 g | PGA H/V=0.0082/0.0009 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0047 g | PGA H/V=0.0035/0.0032 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0063 g | PGA H/V=0.0048/0.0041 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0019 g | PGA H/V=0.0019/0.0000 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0070 g | PGA H/V=0.0065/0.0025 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0058 g | PGA H/V=0.0055/0.0019 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0053 g | PGA H/V=0.0044/0.0030 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0041 g | PGA H/V=0.0015/0.0038 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0054 g | PGA H/V=0.0044/0.0032 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0076 g | PGA H/V=0.0071/0.0029 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0094 g | PGA H/V=0.0070/0.0063 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0064 g | PGA H/V=0.0062/0.0017 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0111 g | PGA H/V=0.0090/0.0064 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0028 g | PGA H/V=0.0020/0.0020 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0037 g | PGA H/V=0.0036/0.0011 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0062 g | PGA H/V=0.0040/0.0047 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0109 g | PGA H/V=0.0094/0.0056 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0081 g | PGA H/V=0.0081/0.0005 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0068 g | PGA H/V=0.0065/0.0020 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0037 g | PGA H/V=0.0036/0.0003 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0006 g | PGA H/V=0.0005/0.0001 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0046 g | PGA H/V=0.0045/0.0005 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0009 g | PGA H/V=0.0005/0.0007 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0043 g | PGA H/V=0.0030/0.0031 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0125 g | PGA H/V=0.0125/0.0008 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0025 g | PGA H/V=0.0006/0.0024 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0079 g | PGA H/V=0.0068/0.0040 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0043 g | PGA H/V=0.0042/0.0010 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0027 g | PGA H/V=0.0025/0.0009 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0064 g | PGA H/V=0.0057/0.0028 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0042 g | PGA H/V=0.0042/0.0003 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0035 g | PGA H/V=0.0026/0.0023 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0025 g | PGA H/V=0.0025/0.0002 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0146 g | PGA H/V=0.0146/0.0002 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0103 g | PGA H/V=0.0097/0.0035 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0045 g | PGA H/V=0.0018/0.0041 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0062 g | PGA H/V=0.0060/0.0016 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0046 g | PGA H/V=0.0041/0.0020 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0125 g | PGA H/V=0.0123/0.0025 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0041 g | PGA H/V=0.0037/0.0018 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0076 g | PGA H/V=0.0037/0.0066 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0025 g | PGA H/V=0.0023/0.0009 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0009 g | PGA H/V=0.0008/0.0005 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0026 g | PGA H/V=0.0005/0.0026 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0019 g | PGA H/V=0.0015/0.0012 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0324 g | PGA H/V=0.0321/0.0044 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0054 g | PGA H/V=0.0033/0.0043 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0046 g | PGA H/V=0.0039/0.0024 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0069 g | PGA H/V=0.0054/0.0043 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0042 g | PGA H/V=0.0042/0.0002 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0056 g | PGA H/V=0.0055/0.0008 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0088 g | PGA H/V=0.0085/0.0020 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0067 g | PGA H/V=0.0041/0.0052 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0064 g | PGA H/V=0.0058/0.0027 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0029 g | PGA H/V=0.0026/0.0011 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0089 g | PGA H/V=0.0076/0.0046 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0089 g | PGA H/V=0.0079/0.0041 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0050 g | PGA H/V=0.0043/0.0025 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0059 g | PGA H/V=0.0040/0.0044 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0072 g | PGA H/V=0.0035/0.0063 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0026 g | PGA H/V=0.0025/0.0009 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0044 g | PGA H/V=0.0044/0.0004 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0090 g | PGA H/V=0.0065/0.0063 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0026 g | PGA H/V=0.0026/0.0004 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0066 g | PGA H/V=0.0064/0.0013 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0045 g | PGA H/V=0.0011/0.0044 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0057 g | PGA H/V=0.0054/0.0016 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0122 g | PGA H/V=0.0076/0.0095 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0057 g | PGA H/V=0.0057/0.0001 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0038 g | PGA H/V=0.0034/0.0019 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0148 g | PGA H/V=0.0147/0.0017 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0064 g | PGA H/V=0.0051/0.0039 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0043 g | PGA H/V=0.0043/0.0003 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0071 g | PGA H/V=0.0069/0.0016 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0059 g | PGA H/V=0.0056/0.0020 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0009 g | PGA H/V=0.0008/0.0003 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0034 g | PGA H/V=0.0032/0.0010 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0067 g | PGA H/V=0.0066/0.0012 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0045 g | PGA H/V=0.0043/0.0015 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0026 g | PGA H/V=0.0020/0.0017 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0109 g | PGA H/V=0.0109/0.0007 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0100 g | PGA H/V=0.0038/0.0093 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0070 g | PGA H/V=0.0066/0.0022 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0053 g | PGA H/V=0.0053/0.0006 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0036 g | PGA H/V=0.0033/0.0013 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0020 g | PGA H/V=0.0018/0.0007 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0075 g | PGA H/V=0.0073/0.0015 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0044 g | PGA H/V=0.0028/0.0034 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0036 g | PGA H/V=0.0036/0.0002 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0086 g | PGA H/V=0.0085/0.0015 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0061 g | PGA H/V=0.0032/0.0052 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0103 g | PGA H/V=0.0101/0.0021 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0034 g | PGA H/V=0.0030/0.0017 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0063 g | PGA H/V=0.0063/0.0007 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0083 g | PGA H/V=0.0076/0.0033 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0054 g | PGA H/V=0.0034/0.0043 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0047 g | PGA H/V=0.0047/0.0003 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0121 g | PGA H/V=0.0121/0.0008 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0057 g | PGA H/V=0.0057/0.0010 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0026 g | PGA H/V=0.0024/0.0011 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0178 g | PGA H/V=0.0174/0.0038 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0180 g | PGA H/V=0.0176/0.0038 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0272 g | PGA H/V=0.0267/0.0050 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0266 g | PGA H/V=0.0265/0.0020 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+
+CANDIDATE EVENT
+Validating for 600 ms...
+
+DEBUG | CANDIDATE | VIB=0.0711 g | PGA H/V=0.0710/0.0031 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+        candidate: samples=10 active=5 strong=0 peak=0.0930 g
+
+VALIDATION RESULT
+Active ratio:       0.10
+Strong hits:        0
+Peak acceleration:  0.0930 g
+Peak H PGA:         0.0926 g
+Peak V PGA:         0.0000 g
+Threshold:          0.0833 g
+FALSE TRIGGER - DISCARDED
+
+DEBUG | NORMAL | VIB=0.0263 g | PGA H/V=0.0260/0.0041 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0274 g | PGA H/V=0.0267/0.0061 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0206 g | PGA H/V=0.0202/0.0039 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0237 g | PGA H/V=0.0219/0.0090 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0221 g | PGA H/V=0.0219/0.0027 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0294 g | PGA H/V=0.0288/0.0060 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0233 g | PGA H/V=0.0232/0.0017 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0251 g | PGA H/V=0.0246/0.0052 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0243 g | PGA H/V=0.0241/0.0032 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0264 g | PGA H/V=0.0263/0.0020 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0217 g | PGA H/V=0.0216/0.0013 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0221 g | PGA H/V=0.0217/0.0044 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0102 g | PGA H/V=0.0098/0.0027 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0265 g | PGA H/V=0.0260/0.0052 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0239 g | PGA H/V=0.0237/0.0032 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0245 g | PGA H/V=0.0240/0.0046 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0216 g | PGA H/V=0.0204/0.0071 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0241 g | PGA H/V=0.0234/0.0058 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0227 g | PGA H/V=0.0226/0.0027 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0216 g | PGA H/V=0.0216/0.0002 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0195 g | PGA H/V=0.0194/0.0020 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0285 g | PGA H/V=0.0284/0.0029 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0218 g | PGA H/V=0.0218/0.0002 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0250 g | PGA H/V=0.0250/0.0004 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0271 g | PGA H/V=0.0269/0.0034 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0286 g | PGA H/V=0.0278/0.0067 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0257 g | PGA H/V=0.0257/0.0001 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0232 g | PGA H/V=0.0232/0.0015 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0281 g | PGA H/V=0.0278/0.0042 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0309 g | PGA H/V=0.0304/0.0056 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0221 g | PGA H/V=0.0221/0.0020 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0219 g | PGA H/V=0.0218/0.0024 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0290 g | PGA H/V=0.0285/0.0052 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0203 g | PGA H/V=0.0203/0.0008 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0240 g | PGA H/V=0.0236/0.0045 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0192 g | PGA H/V=0.0192/0.0006 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0266 g | PGA H/V=0.0262/0.0048 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0246 g | PGA H/V=0.0223/0.0104 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0289 g | PGA H/V=0.0287/0.0041 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0343 g | PGA H/V=0.0343/0.0005 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0328 g | PGA H/V=0.0325/0.0048 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0282 g | PGA H/V=0.0281/0.0024 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0322 g | PGA H/V=0.0318/0.0052 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0174 g | PGA H/V=0.0169/0.0040 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0166 g | PGA H/V=0.0166/0.0011 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0275 g | PGA H/V=0.0262/0.0083 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0299 g | PGA H/V=0.0298/0.0022 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0266 g | PGA H/V=0.0266/0.0010 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0234 g | PGA H/V=0.0232/0.0034 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0228 g | PGA H/V=0.0228/0.0001 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0205 g | PGA H/V=0.0200/0.0043 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0268 g | PGA H/V=0.0260/0.0066 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0144 g | PGA H/V=0.0142/0.0023 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0372 g | PGA H/V=0.0365/0.0075 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0208 g | PGA H/V=0.0205/0.0032 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0315 g | PGA H/V=0.0300/0.0096 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0295 g | PGA H/V=0.0277/0.0102 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0315 g | PGA H/V=0.0314/0.0023 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0237 g | PGA H/V=0.0237/0.0010 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0265 g | PGA H/V=0.0263/0.0031 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0273 g | PGA H/V=0.0268/0.0052 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0285 g | PGA H/V=0.0269/0.0093 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0218 g | PGA H/V=0.0218/0.0003 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0203 g | PGA H/V=0.0200/0.0034 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0311 g | PGA H/V=0.0300/0.0081 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0300 g | PGA H/V=0.0299/0.0028 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0191 g | PGA H/V=0.0191/0.0006 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
+DEBUG | NORMAL | VIB=0.0284 g | PGA H/V=0.0278/0.0057 g | TH=0.0833 g | AMP=0 | ONSET=0 | TX ok/fail/drop=1/0/0 | I2C fails=0
